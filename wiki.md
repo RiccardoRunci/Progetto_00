@@ -23,8 +23,8 @@ Ho usato Gradle come build automation software (versione 9.4.1);
 Ho implementato il progetto in Java (java SE version "25.0.2" 2026-01-20 LTS );
 Ho Usato la libreria projectlombok.org per le annotazioni nel codice (versione 1.18.46);
 Ho Usato la libreria Junit6 per i test (versione6.1.1)
-Ho usato la libreria JavaFX per la grafica del gioco (versione ___);
-Ho usato la libreria Gson per la serializzazione in formato JSON (versione ___);
+Ho usato la libreria JavaFX per la grafica del gioco (versione 25);
+Ho usato la libreria Gson per la serializzazione in formato JSON (versione 2.14);
 --------------------------------------------------------------------------------------------
 3)■ CLASSI E RESPONSABILITÀ ■
 
