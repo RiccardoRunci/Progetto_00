@@ -1,0 +1,34 @@
+/*Ho deciso di lasciare questo file molto commentato perchè, durante le lezioni mi è stato utile ripescare
+* (copiando e incollando) le varie dipendenze -e i task necessari per farle funzionare al meglio - direttamente
+* da queste righe.*/
+plugins { application }
+repositories { mavenCentral() }
+
+dependencies {
+    //JUNIT(6):
+    testImplementation(platform("org.junit:junit-bom:6.1.1")) //importa junit6:
+    testImplementation("org.junit.jupiter:junit-jupiter") //importa l'engine di junit6:
+    // RISOLUZIONE DEL PROBLEMA: Launcher necessario a Gradle/IDE per eseguire JUnit 6
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+
+    /*PER IMPORTARE LA LIBRERIA https://projectlombok.org */
+    /*Implementation serve a usare la sintassi di lombok nella sinstassi del sorgente.*/
+    implementation("org.projectlombok:lombok:1.18.46") //a livello implementazione (che copre compile e runtyme).
+    annotationProcessor("org.projectlombok:lombok:1.18.46") /*serve per aggiungere il funzionamento di lombook che si interfaccia con java.*/
+
+    implementation(libs.guava)
+}
+
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(25)
+    }
+}
+
+application { mainClass = "it.unicam.cs.mpgc.rpg120666.Main.Main1" }
+tasks.test { // Obbligatorio per eseguire i test con JUnit
+    useJUnitPlatform()
+    /*Ti fa vedere test per test se passato, skippato o fallito!*/
+    testLogging{ events("passed", "skipped", "failed")}
+}
