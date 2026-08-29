@@ -18,11 +18,6 @@ dependencies {
     // RISOLUZIONE DEL PROBLEMA: Launcher necessario a Gradle/IDE per eseguire JUnit 6
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
-    /*PER IMPORTARE LA LIBRERIA https://projectlombok.org */
-    /*Implementation serve a usare la sintassi di lombok nella sinstassi del sorgente.*/
-    implementation("org.projectlombok:lombok:1.18.46") //a livello implementazione (che copre compile e runtyme).
-    annotationProcessor("org.projectlombok:lombok:1.18.46") /*serve per aggiungere il funzionamento di lombook che si interfaccia con java.*/
-
     implementation(libs.guava)
 }
 //JAVAFX(25):

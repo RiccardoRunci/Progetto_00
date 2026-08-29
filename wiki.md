@@ -2,15 +2,15 @@ Il Progetto - Ancora senza titolo
 (Wiki del Progetto)
 --------------------------------------------------------------------------------------------
 INDICE:
-1)Descrizione del Progetto
-2)Software e versioni di Software utilizzate
-3)Classi e Responsabilità
-4)Interfacce
-5)Persistenza dei Dati
-6)Estensibilità
-7)Principi SOLID & Clean Code
-8)Test
-9)Dichiarazione Uso AI
+1. Descrizione del Progetto
+2. Software e versioni di Software utilizzate
+3. Classi e Responsabilità
+4. Interfacce
+5. Persistenza dei Dati
+6. Estensibilità
+7. Principi SOLID & Clean Code
+8. Test
+9. Dichiarazione Uso AI
 --------------------------------------------------------------------------------------------
 1)■ DESCRIZIONE DEL PROGETTO ■
 
@@ -19,9 +19,9 @@ Ancora senza titolo e trama.
 --------------------------------------------------------------------------------------------
 2)■ SOFTWARE E VERSIONI DI SOFTWARE UTILIZZATE ■
 
+Ho Usato i Javadoc per le annotazioni del codice;
 Ho usato Gradle come build automation software (versione 9.4.1);
 Ho implementato il progetto in Java (java SE version "25.0.2" 2026-01-20 LTS );
-Ho Usato la libreria projectlombok.org per le annotazioni nel codice (versione 1.18.46);
 Ho Usato la libreria Junit6 per i test (versione6.1.1)
 Ho usato la libreria JavaFX per la grafica del gioco (versione 25);
 Ho usato la libreria Gson per la serializzazione in formato JSON (versione 2.14);
@@ -61,5 +61,33 @@ Spero di averlo fatto bene, visto che è parte del programma del corso.
 Ho deciso di usare la libreria JUnit6 per implementare i test delle classi del gioco.
 --------------------------------------------------------------------------------------------
 9)■ DICHIARAZIONE USO AI ■
-Ho usato l'AI solo come "collega" di studi (durante il periodo in cui studiavo).
-Una volta visto che tutti i miei appunti "funzionavano", ho deciso di implementare il gioco senza consultare nuovamente l'AI.
+Ho usato molto l'AI  come "collega" di studi (durante il periodo in cui studiavo).
+Mi ero successivamente ripromesso di non ri-utilizzarla per il progetto, ma, invece sono incappato nel seguente scenario:
+Nella classe che ho chiamato "UtilityPersonaggio" avevo 2 metodi quasi uguali,
+l'unica cosa che cambiava era la logica del < o <=.
+
+    public static boolean controllaCreazionePuntiVitaPersonaggio (int puntiVitaPersonaggio)
+    {
+        if (puntiVitaPersonaggio<=0)
+            throw new IllegalArgumentException("Attenzione, errore nella classe astratta Personaggio:\n " +
+                    "I suoi punti vita: "+puntiVitaPersonaggio+" sono <=0.\"n"+
+                    "Non posso creare un personaggio con questi punti vita!");
+        else
+            return true;
+    }
+
+	public static boolean controllaPuntiVitaPersonaggio (int puntiVitaPersonaggio)
+    {
+        if (puntiVitaPersonaggio<0)
+            throw new IllegalArgumentException("Attenzione, errore nella classe astratta Personaggio:\n " +
+                    "I suoi punti vita: "+puntiVitaPersonaggio+" sono <0.\"n"+
+                    "Il personaggio dovrebbe essere già morto!");
+        else
+            return true;
+    }
+
+
+L'ia mi ha suggerito di creare un enumerazione che specificava se - il controllo della vita del personaggio -
+era da fare in fase di creazione o in fase di aggiornamento.
+Perchè non posso creare un personaggio con la vita <=0, ma quando muore un personaggio per forza deve avere i suoi punti vita = 0.
+E niente: IA 1, Riccardo 0.
