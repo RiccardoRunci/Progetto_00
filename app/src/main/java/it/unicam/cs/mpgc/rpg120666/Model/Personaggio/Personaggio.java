@@ -2,6 +2,8 @@
  * @author Runci Riccardo.
  * @since versione 0.*/
 package it.unicam.cs.mpgc.rpg120666.Model.Personaggio;
+import it.unicam.cs.mpgc.rpg120666.Model.Utility.ClasseUtility;
+import it.unicam.cs.mpgc.rpg120666.Model.Utility.EnumControlloCreazioneAggiornamento;
 
 public abstract class Personaggio
 {
@@ -15,11 +17,14 @@ public abstract class Personaggio
      * @param nomePersonaggio (String) il nome del personaggio, non deve essere null e vuoto.
      * @param puntiVitaPersonaggio (int) l'energia vitale del personaggio, non deve essere <=0.
      * @throws IllegalArgumentException il nome è null o vuoto, e se la vita è<=0.
-     * @see UtilityPersonaggio = Classe per i controlli sul nome e sui punti vita del personaggio.*/
+     * @see it.unicam.cs.mpgc.rpg120666.Model.Utility.ClasseUtility = Classe per i controlli sul nome e sui punti vita generali.*/
     public Personaggio( String  nomePersonaggio, int puntiVitaPersonaggio)
     {
-        if (UtilityPersonaggio.controllaNomePersonaggio(nomePersonaggio) &&
-                UtilityPersonaggio.controlloPuntiVitaPersonaggio(puntiVitaPersonaggio, EnumFaseVitaPersonaggio.CREAZIONE)) {
+        if (ClasseUtility.controllaStringa(nomePersonaggio,this.getClass().getName()) &&
+                (ClasseUtility.verificaNumeriInteri(puntiVitaPersonaggio,
+                        EnumControlloCreazioneAggiornamento.CREAZIONE,
+                        this.getClass().getName())))
+        {
             this.nomePersonaggio = nomePersonaggio;
             this.puntiVitaPersonaggio = puntiVitaPersonaggio;
         }
@@ -33,9 +38,9 @@ public abstract class Personaggio
     /**Metodo setNomePersonaggio. Imposta il nome del personaggio.
      * @param nomePersonaggio (String) parametro che non deve essere null, oppure vuoto.
      * @throws IllegalArgumentException se il nome è null o blank.
-     * @see UtilityPersonaggio = Classe per i controlli sul nome e sui punti vita del personaggio.*/
+     * @see it.unicam.cs.mpgc.rpg120666.Model.Utility.ClasseUtility = Classe per i controlli sul nome e sui punti vita generali.*/
     public void setNomePersonaggio(String nomePersonaggio) {
-        if(UtilityPersonaggio.controllaNomePersonaggio(nomePersonaggio)) {
+        if(ClasseUtility.controllaStringa(nomePersonaggio,this.getClass().getName())) {
             /*Se passo un parametro non valido la classe utility già ha lanciato l'eccezione.
              * Così evito di fare un metodo set con un parametro sbagliato.*/
             this.nomePersonaggio = nomePersonaggio;
@@ -44,11 +49,11 @@ public abstract class Personaggio
     /**Metodo setPuntiVitaPersonaggio. Imposta i punti vita del personaggio.
      * @param puntiVitaPersonaggio (int) valore dei punti vita, deve essere >= 0.
      * @throws IllegalArgumentException se puntiVita è negativo.
-     * @see UtilityPersonaggio = Classe per i controlli sul nome e sui punti vita del personaggio.*/
+     * @see it.unicam.cs.mpgc.rpg120666.Model.Utility.ClasseUtility = Classe per i controlli sul nome e sui punti vita generali.*/
     public void setPuntiVitaPersonaggio(int puntiVitaPersonaggio) {
-        if (UtilityPersonaggio.controlloPuntiVitaPersonaggio(puntiVitaPersonaggio, EnumFaseVitaPersonaggio.AGGIORNAMENTO)){
-            /*Come sopra, se passo un intero <0, la classe utility già ha lanciato l'eccezione.*/
-        this.puntiVitaPersonaggio = puntiVitaPersonaggio;
+        if (ClasseUtility.verificaNumeriInteri(puntiVitaPersonaggio, EnumControlloCreazioneAggiornamento.AGGIORNAMENTO, this.getClass().getName()))
+        {    /*Come sopra, se passo un intero <0, la classe utility già ha lanciato l'eccezione.*/
+            this.puntiVitaPersonaggio = puntiVitaPersonaggio;
         }
     }
     /**Metodo toString:
@@ -57,7 +62,7 @@ public abstract class Personaggio
     public String toString(){
         return "Sono un Personaggio, della classe"+this.getClass()+"\n"+
                 "Il mio nome è: "+this.getNomePersonaggio()+
-                "I miei punti vita sono:"+this.puntiVitaPersonaggio;
+                "I miei punti vita sono:"+this.getPuntiVitaPersonaggio();
     }
     /**Metodo hashCode:
      *@return (int) che specifica in quale bucket andrà a cacciarsi l'oggetto.*/
@@ -76,15 +81,25 @@ public abstract class Personaggio
         return this.getNomePersonaggio().equals(other.getNomePersonaggio()) &&
                 (this.getPuntiVitaPersonaggio() == other.getPuntiVitaPersonaggio());
     }
-    /**Metodo che serve per vedere se il personaggio ha (o non ha) punti vita.
+    /**@deprecated  perché devo farlo abstract!
+     * Perchè è un metodo comune che hanno tutte le classi che estendono Personaggio.
+     * Metodo che serve per vedere se il personaggio ha (o non ha) punti vita.
      * @return (boolean) true, se è ancora vivo (se ha ancora della vita >0).
      * False, altrimenti (se non ha più vita).*/
-    public boolean controllaSePersonaggioVive(){
+    @Deprecated
+    public boolean controllaSePersonaggioVive()
+    {
         if (this.getPuntiVitaPersonaggio()==0) /*è morto*/ {return false;}
         else /*è in vita*/ return true;
     }
+    /**Metodo astratto che dovrà essere riscritto in tutte le classi che estenderanno Personaggio.
+     * Questo perchè magari è utile scoprire se un personaggio può morire in qualche modo e un altro in un altro.
+     * @return (boolean) true, se è ancora vivo (se ha ancora della vita >0).
+     * False, altrimenti (se non ha più vita).*/
+    public abstract boolean controllaSePersonaggioInVita();
+
     /*TODO: a parte i test, vedi di fare qualcosa per serializzare i personaggi!
-    *  comunque questa è una classe astratta, non puoi fare i test perché non puoi creare oggetti di classi astratte!
+    *  comunque questa è una classe astratta, non puoi fare i test perché non puoi creare oggetti di classi astratte
     * Quindi significa che devi estendere questa classe.*/
 
 }
