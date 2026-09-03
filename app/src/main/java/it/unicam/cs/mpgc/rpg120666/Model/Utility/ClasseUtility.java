@@ -16,7 +16,13 @@ public abstract class ClasseUtility
      * @return (boolean) true se la stringaPassata va bene (non null & non empty).*/
     public static boolean controllaStringa (String stringaPassata, String NomeClasse)
     {
-        //todo  qualcosa per controllare che NomeClasse non sia empty o null o ecc...
+        /*todo qualcosa per salvare in un file txt tutte le classi di Attori, così da permettere l'uso di questo
+        *  controllo solo da parte delle effettive classi del gioco Magari nel main(),
+        *  creo un metodo statico che si avvia un pò prima di tutti?!?!?*/
+        if(NomeClasse==null || NomeClasse.isEmpty())
+            throw new IllegalArgumentException("Attenzione, errore nella classe: " +NomeClasse+"\n"+
+                    "la stringa passata: "+NomeClasse+" è null, oppure vuoto;\n");
+
         if (stringaPassata==null || stringaPassata.isEmpty())
             throw new IllegalArgumentException("Attenzione, errore nella classe: " +NomeClasse+"\n"+
                     "la stringa passata: "+stringaPassata+" è null, oppure vuoto;\n");
@@ -37,7 +43,12 @@ public abstract class ClasseUtility
      * @return true se il controllo va a buon fine.*/
     public static boolean verificaNumeriInteri (int NumeriInteri, EnumControlloCreazioneAggiornamento fase, String NomeClasse)
     {
-        //todo qualcosa per controllare che NomeClasse non sia empty o null o ecc...
+        /*todo qualcosa per salvare in un file txt tutte le classi di Attori, così da permettere l'uso di questo
+         *  controllo solo da parte delle effettive classi del gioco Magari nel main(),
+         *  creo un metodo statico che si avvia un pò prima di tutti?!?!?*/
+        if(NomeClasse==null || NomeClasse.isEmpty())
+            throw new IllegalArgumentException("Attenzione, errore nella classe: " +NomeClasse+"\n"+
+                    "la stringa passata: "+NomeClasse+" è null, oppure vuoto;\n");
         switch(fase)
         {
             case CREAZIONE:

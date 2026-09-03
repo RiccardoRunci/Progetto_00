@@ -81,25 +81,12 @@ public abstract class Personaggio
         return this.getNomePersonaggio().equals(other.getNomePersonaggio()) &&
                 (this.getPuntiVitaPersonaggio() == other.getPuntiVitaPersonaggio());
     }
-    /**@deprecated  perché devo farlo abstract!
-     * Perchè è un metodo comune che hanno tutte le classi che estendono Personaggio.
-     * Metodo che serve per vedere se il personaggio ha (o non ha) punti vita.
-     * @return (boolean) true, se è ancora vivo (se ha ancora della vita >0).
-     * False, altrimenti (se non ha più vita).*/
-    @Deprecated
-    public boolean controllaSePersonaggioVive()
-    {
-        if (this.getPuntiVitaPersonaggio()==0) /*è morto*/ {return false;}
-        else /*è in vita*/ return true;
-    }
     /**Metodo astratto che dovrà essere riscritto in tutte le classi che estenderanno Personaggio.
      * Questo perchè magari è utile scoprire se un personaggio può morire in qualche modo e un altro in un altro.
      * @return (boolean) true, se è ancora vivo (se ha ancora della vita >0).
      * False, altrimenti (se non ha più vita).*/
     public abstract boolean controllaSePersonaggioInVita();
 
-    /*TODO: a parte i test, vedi di fare qualcosa per serializzare i personaggi!
-    *  comunque questa è una classe astratta, non puoi fare i test perché non puoi creare oggetti di classi astratte
-    * Quindi significa che devi estendere questa classe.*/
+    /*TODO: a parte i test, vedi di fare qualcosa per serializzare i personaggi!*/
 
 }
