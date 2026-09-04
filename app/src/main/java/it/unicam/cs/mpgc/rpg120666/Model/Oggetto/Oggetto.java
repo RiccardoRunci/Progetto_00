@@ -18,10 +18,10 @@ public abstract class Oggetto
      * @see it.unicam.cs.mpgc.rpg120666.Model.Utility.ClasseUtility = Classe per i controlli sul nome e sui punti vita generali.*/
     public Oggetto(String nomeOggetto, int quantitaOggetto)
     {
-        if (ClasseUtility.controllaStringa(nomeOggetto,this.getClass().getName()) &&
+        if (ClasseUtility.controllaStringa(nomeOggetto,"Oggetto") &&
                 (ClasseUtility.verificaNumeriInteri(quantitaOggetto,
                         EnumControlloCreazioneAggiornamento.CREAZIONE,
-                        this.getClass().getName())))
+                        "Oggetto")))
                 {
                     this.nomeOggetto = nomeOggetto;
                     this.quantitaOggetto = quantitaOggetto;
@@ -38,7 +38,7 @@ public abstract class Oggetto
      * @throws IllegalArgumentException se il nome è null o blank.
      * @see it.unicam.cs.mpgc.rpg120666.Model.Utility.ClasseUtility = Classe per i controlli sul nome e sui punti vita generali.*/
     public void setNomePersonaggio(String nomeOggetto) {
-        if(ClasseUtility.controllaStringa(nomeOggetto,this.getClass().getName())) {
+        if(ClasseUtility.controllaStringa(nomeOggetto,"Oggetto")) {
             /*Se passo un parametro non valido la classe utility già ha lanciato l'eccezione.
              * Così evito di fare un metodo set con un parametro sbagliato.*/
             this.nomeOggetto = nomeOggetto;
@@ -49,7 +49,7 @@ public abstract class Oggetto
      * @throws IllegalArgumentException se 'quantitaOggetto' è negativo.
      * @see it.unicam.cs.mpgc.rpg120666.Model.Utility.ClasseUtility = Classe per i controlli sul nome e sui punti int generali.*/
     public void setQuantitaOggetto(int quantitaOggetto) {
-        if (ClasseUtility.verificaNumeriInteri(quantitaOggetto, EnumControlloCreazioneAggiornamento.AGGIORNAMENTO, this.getClass().getName()))
+        if (ClasseUtility.verificaNumeriInteri(quantitaOggetto, EnumControlloCreazioneAggiornamento.AGGIORNAMENTO, "Oggetto"))
         {    /*Come sopra, se passo un intero <0, la classe utility già ha lanciato l'eccezione.*/
             this.quantitaOggetto = quantitaOggetto;
         }
@@ -62,7 +62,7 @@ public abstract class Oggetto
     @Override
     public String toString()
     {
-        return "Sono un Oggetto, della classe"+this.getClass()+"\n"+
+        return "Sono un Oggetto, della classe Oggetto!\n"+
                 "Il mio nome è: "+this.getNomeOggetto()+
                 "La mia quantità è:"+this.getQuantitaOggetto();
     }

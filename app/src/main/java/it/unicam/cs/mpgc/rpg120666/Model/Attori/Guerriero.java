@@ -6,19 +6,19 @@ import it.unicam.cs.mpgc.rpg120666.Model.Utility.EnumControlloCreazioneAggiornam
 
 public class Guerriero extends Personaggio implements InterfacciaGuerriero
 {
-    public static final int DANNO_DA_FORZA= 10;
+    private static final int DANNO_DA_FORZA= 10;
     private int puntiScudo;
 
     public Guerriero(){}
     public Guerriero(String nomeGuerriero,int puntiVita, int puntiScudo)
     {
         super(nomeGuerriero,puntiVita);
-        if(ClasseUtility.verificaNumeriInteri(puntiScudo, EnumControlloCreazioneAggiornamento.CREAZIONE,this.getClass().getName()))
+        if(ClasseUtility.verificaNumeriInteri(puntiScudo, EnumControlloCreazioneAggiornamento.CREAZIONE,"Guerriero"))
             this.puntiScudo = puntiScudo;
     }
     public void setPuntiScudo(int puntiScudo)
     {
-        if (ClasseUtility.verificaNumeriInteri(puntiScudo,EnumControlloCreazioneAggiornamento.AGGIORNAMENTO,this.getClass().getName()))
+        if (ClasseUtility.verificaNumeriInteri(puntiScudo,EnumControlloCreazioneAggiornamento.AGGIORNAMENTO,"Guerriero"))
             this.puntiScudo = puntiScudo;
     }
     public int getPuntiScudo()
@@ -36,21 +36,29 @@ public class Guerriero extends Personaggio implements InterfacciaGuerriero
     public boolean eseguiAttaccoFisico(Personaggio personaggio)
     {
         //todo ANCHE questo metodo fà più o meno la stessa cosa dei 2 metodi di mago, che vogliamo fare?
-        // todo Intanto li scrivo così posso cominciare a fare i test. Poi magari li riscrivo con le interfacce.
         if(personaggio.controllaSePersonaggioInVita())
         {
-            personaggio.setPuntiVitaPersonaggio(personaggio.getPuntiVitaPersonaggio()-DANNO_DA_FORZA);
-            return true;
+            if(personaggio.getPuntiVitaPersonaggio()<=DANNO_DA_FORZA)
+            {  //Colpisco il nemico e muore!
+                personaggio.setPuntiVitaPersonaggio(0);
+                return true;
+            }
+            else
+            {
+                //Colpisco il nemico e sopravvive!
+                personaggio.setPuntiVitaPersonaggio(personaggio.getPuntiVitaPersonaggio() - DANNO_DA_FORZA);
+                return true;
+            }
         }
-        else return false; //il personaggio è già morto
+        return false;
     }
     @Override
     public String toString()
     {
-        return "Sono un Personaggio, della classe"+this.getClass()+"\n"+
-                "Il mio nome è: "+super.getNomePersonaggio()+
-                "I miei punti vita sono: "+super.getPuntiVitaPersonaggio()+
-                "Il mio numero di punti scudo è: "+this.getPuntiScudo();
+        return "Sono un Personaggio, della classe Guerriero!\n"+
+                "Il mio nome: "+super.getNomePersonaggio()+"\n"+
+                "I miei punti vita sono: "+super.getPuntiVitaPersonaggio()+"\n"+
+                "Il mio numero di punti scudo: "+this.getPuntiScudo()+"\n";
     }
     @Override
     public int hashCode()
@@ -61,7 +69,7 @@ public class Guerriero extends Personaggio implements InterfacciaGuerriero
     public boolean equals(Object obj)
     {
         if(this==obj) return true;
-        if(!(obj instanceof Mago)) return false;
+        if(!(obj instanceof Guerriero)) return false;
         if(!super.equals(obj)) return false; //Riga da aggiungere in un equals di una classe che ne estende un altra.
         Guerriero other = (Guerriero)obj;
         return this.getPuntiScudo()==(other.getPuntiScudo());

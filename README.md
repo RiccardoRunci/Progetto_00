@@ -26,6 +26,21 @@ cd <nome-cartella>
 ### Esecuzione
 ```bash
 ./gradlew run
+
+```cmd di windows
+gradlew.bat run
+
+```powershell di windows
+./gradlew.bat run
+
+```NOTE:
+1)Se si esegue su un terminale cmd di windows, prima di eseguire il programma, digitare "chcp 65001".
+  Serve per dire al cmd di usare la codifica UTF-8. Perchè il terminale di intellij salta questa cosa.
+  Anche se l'ide intellij è impostato su utf8, non funziona. Continua a fare segni strani.
+  Se il comando viene digitato nel terminale di intellij (indifferentemente se è selezionato "Windows powershell" o "local")
+  comunque non funziona.
+2)Se si esegue in un terminale powershell (a parte, non quello compreso in intellij) Puoi usare anche "chcp 65001",
+  Non funziona uguale.
 ```
 
 ---

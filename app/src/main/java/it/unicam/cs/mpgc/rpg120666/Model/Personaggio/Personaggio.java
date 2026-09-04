@@ -20,10 +20,9 @@ public abstract class Personaggio
      * @see it.unicam.cs.mpgc.rpg120666.Model.Utility.ClasseUtility = Classe per i controlli sul nome e sui punti vita generali.*/
     public Personaggio( String  nomePersonaggio, int puntiVitaPersonaggio)
     {
-        if (ClasseUtility.controllaStringa(nomePersonaggio,this.getClass().getName()) &&
+        if (ClasseUtility.controllaStringa(nomePersonaggio,"Personaggio") &&
                 (ClasseUtility.verificaNumeriInteri(puntiVitaPersonaggio,
-                        EnumControlloCreazioneAggiornamento.CREAZIONE,
-                        this.getClass().getName())))
+                        EnumControlloCreazioneAggiornamento.CREAZIONE,"Personaggio")))
         {
             this.nomePersonaggio = nomePersonaggio;
             this.puntiVitaPersonaggio = puntiVitaPersonaggio;
@@ -40,7 +39,7 @@ public abstract class Personaggio
      * @throws IllegalArgumentException se il nome è null o blank.
      * @see it.unicam.cs.mpgc.rpg120666.Model.Utility.ClasseUtility = Classe per i controlli sul nome e sui punti vita generali.*/
     public void setNomePersonaggio(String nomePersonaggio) {
-        if(ClasseUtility.controllaStringa(nomePersonaggio,this.getClass().getName())) {
+        if(ClasseUtility.controllaStringa(nomePersonaggio,"Personaggio")) {
             /*Se passo un parametro non valido la classe utility già ha lanciato l'eccezione.
              * Così evito di fare un metodo set con un parametro sbagliato.*/
             this.nomePersonaggio = nomePersonaggio;
@@ -51,7 +50,7 @@ public abstract class Personaggio
      * @throws IllegalArgumentException se puntiVita è negativo.
      * @see it.unicam.cs.mpgc.rpg120666.Model.Utility.ClasseUtility = Classe per i controlli sul nome e sui punti vita generali.*/
     public void setPuntiVitaPersonaggio(int puntiVitaPersonaggio) {
-        if (ClasseUtility.verificaNumeriInteri(puntiVitaPersonaggio, EnumControlloCreazioneAggiornamento.AGGIORNAMENTO, this.getClass().getName()))
+        if (ClasseUtility.verificaNumeriInteri(puntiVitaPersonaggio, EnumControlloCreazioneAggiornamento.AGGIORNAMENTO, "Personaggio"))
         {    /*Come sopra, se passo un intero <0, la classe utility già ha lanciato l'eccezione.*/
             this.puntiVitaPersonaggio = puntiVitaPersonaggio;
         }
@@ -60,7 +59,7 @@ public abstract class Personaggio
      *@return una descrizione del personaggio*/
     @Override
     public String toString(){
-        return "Sono un Personaggio, della classe"+this.getClass()+"\n"+
+        return "Sono un Personaggio, della classe Personaggio!\n"+
                 "Il mio nome è: "+this.getNomePersonaggio()+
                 "I miei punti vita sono:"+this.getPuntiVitaPersonaggio();
     }

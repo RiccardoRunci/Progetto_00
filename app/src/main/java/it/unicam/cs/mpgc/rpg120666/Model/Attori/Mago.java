@@ -7,14 +7,14 @@ import it.unicam.cs.mpgc.rpg120666.Model.Utility.EnumControlloCreazioneAggiornam
 public class Mago extends Personaggio implements IntefacciaMago
 {
     private int numeroMagieDisponibili;
-    public static final int DANNO_DA_MAGIA= 3;
-    public static final int CURA_MAGICA= 6;
+    private static final int DANNO_DA_MAGIA= 3;
+    private static final int CURA_MAGICA= 6;
 
     public Mago(){}
     public Mago(String nomeMago, int puntiVitaMago, int numeroMagieDisponibili)
     {
         super(nomeMago, puntiVitaMago);
-        if(ClasseUtility.verificaNumeriInteri(numeroMagieDisponibili, EnumControlloCreazioneAggiornamento.CREAZIONE, this.getClass().getName()))
+        if(ClasseUtility.verificaNumeriInteri(numeroMagieDisponibili, EnumControlloCreazioneAggiornamento.CREAZIONE, "Mago"))
         {
             this.numeroMagieDisponibili = numeroMagieDisponibili;
         }
@@ -22,8 +22,8 @@ public class Mago extends Personaggio implements IntefacciaMago
 
     public void setNumeroMagieDisponibili(int numeroMagieDisponibili)
     {
-        if(ClasseUtility.verificaNumeriInteri(numeroMagieDisponibili, EnumControlloCreazioneAggiornamento.AGGIORNAMENTO, this.getClass().getName()))
-        this.numeroMagieDisponibili = numeroMagieDisponibili;
+        if(ClasseUtility.verificaNumeriInteri(numeroMagieDisponibili, EnumControlloCreazioneAggiornamento.AGGIORNAMENTO, "Mago"))
+            this.numeroMagieDisponibili = numeroMagieDisponibili;
     }
     public int getNumeroMagieDisponibili()
     {
@@ -32,22 +32,31 @@ public class Mago extends Personaggio implements IntefacciaMago
 
     @Override
     public boolean eseguiAttaccoMagico(Personaggio personaggio)
-    { //todo Questi 2 bei metodi fanno più o meno la stessa cosa, quindi devo fare quella magia dell'interfacce.
-        if (this.numeroMagieDisponibili==0)
+    {
+        if (this.numeroMagieDisponibili==0 || (!this.controllaSePersonaggioInVita()))
         return false;
         else if(personaggio.controllaSePersonaggioInVita())
         {
-            this.numeroMagieDisponibili--;
-            personaggio.setPuntiVitaPersonaggio(personaggio.getPuntiVitaPersonaggio()-DANNO_DA_MAGIA);
-            return true;
+            if(personaggio.getPuntiVitaPersonaggio()<=DANNO_DA_MAGIA)
+            {
+                this.numeroMagieDisponibili--;
+                personaggio.setPuntiVitaPersonaggio(0);
+                return true;
+            }
+            else
+            {
+                this.numeroMagieDisponibili--;
+                personaggio.setPuntiVitaPersonaggio(personaggio.getPuntiVitaPersonaggio() - DANNO_DA_MAGIA);
+                return true;
+            }
         }
-        else return false; //il personaggio è già morto
+        else return false;
     }
 
     @Override
     public boolean eseguiCuraMagica(Personaggio personaggio)
-    { //todo Questi 2 bei metodi fanno più o meno la stessa cosa, quindi devo fare quella magia dell'interfacce.
-        if (this.numeroMagieDisponibili==0)
+    {
+        if (this.numeroMagieDisponibili==0 || (!this.controllaSePersonaggioInVita()))
             return false;
         else  if(personaggio.controllaSePersonaggioInVita())
         {
@@ -69,7 +78,7 @@ public class Mago extends Personaggio implements IntefacciaMago
     @Override
     public String toString()
     {
-        return "Sono un Personaggio, della classe"+this.getClass()+"\n"+
+        return "Sono un Personaggio, della classe Mago\n"+
                 "Il mio nome è: "+super.getNomePersonaggio()+
                 "I miei punti vita sono: "+super.getPuntiVitaPersonaggio()+
                 "Il mio numero di magie disponibili è: "+this.getNumeroMagieDisponibili();
