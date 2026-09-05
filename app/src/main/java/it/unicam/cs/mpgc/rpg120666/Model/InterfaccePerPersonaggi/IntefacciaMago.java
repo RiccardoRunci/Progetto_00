@@ -1,4 +1,4 @@
-package it.unicam.cs.mpgc.rpg120666.Model.InterfaccePersonaggi;
+package it.unicam.cs.mpgc.rpg120666.Model.InterfaccePerPersonaggi;
 
 import it.unicam.cs.mpgc.rpg120666.Model.Personaggio.Personaggio;
 

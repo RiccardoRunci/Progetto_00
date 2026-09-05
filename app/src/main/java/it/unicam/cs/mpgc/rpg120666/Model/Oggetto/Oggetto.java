@@ -2,10 +2,11 @@
  * @author Runci Riccardo.
  * @since versione 0.*/
 package it.unicam.cs.mpgc.rpg120666.Model.Oggetto;
+import it.unicam.cs.mpgc.rpg120666.Model.OggettiPerMatrice.OggettiPerMatrice;
 import it.unicam.cs.mpgc.rpg120666.Model.Utility.ClasseUtility;
 import it.unicam.cs.mpgc.rpg120666.Model.Utility.EnumControlloCreazioneAggiornamento;
 
-public abstract class Oggetto
+public abstract class Oggetto implements OggettiPerMatrice
 {
     private String nomeOggetto;
     private int quantitaOggetto;

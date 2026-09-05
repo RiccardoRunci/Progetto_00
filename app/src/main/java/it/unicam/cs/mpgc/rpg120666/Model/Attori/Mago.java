@@ -1,5 +1,5 @@
 package it.unicam.cs.mpgc.rpg120666.Model.Attori;
-import it.unicam.cs.mpgc.rpg120666.Model.InterfaccePersonaggi.IntefacciaMago;
+import it.unicam.cs.mpgc.rpg120666.Model.InterfaccePerPersonaggi.IntefacciaMago;
 import it.unicam.cs.mpgc.rpg120666.Model.Personaggio.Personaggio;
 import it.unicam.cs.mpgc.rpg120666.Model.Utility.ClasseUtility;
 import it.unicam.cs.mpgc.rpg120666.Model.Utility.EnumControlloCreazioneAggiornamento;
@@ -79,9 +79,9 @@ public class Mago extends Personaggio implements IntefacciaMago
     public String toString()
     {
         return "Sono un Personaggio, della classe Mago\n"+
-                "Il mio nome è: "+super.getNomePersonaggio()+
-                "I miei punti vita sono: "+super.getPuntiVitaPersonaggio()+
-                "Il mio numero di magie disponibili è: "+this.getNumeroMagieDisponibili();
+                "Il mio nome: "+super.getNomePersonaggio()+"\n"+
+                "I miei punti vita sono: "+super.getPuntiVitaPersonaggio()+"\n"+
+                "Il mio numero di magie disponibili: "+this.getNumeroMagieDisponibili()+"\n";
     }
     @Override
     public int hashCode()

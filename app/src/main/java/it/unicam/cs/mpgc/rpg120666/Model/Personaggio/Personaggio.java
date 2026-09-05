@@ -2,10 +2,11 @@
  * @author Runci Riccardo.
  * @since versione 0.*/
 package it.unicam.cs.mpgc.rpg120666.Model.Personaggio;
+import it.unicam.cs.mpgc.rpg120666.Model.OggettiPerMatrice.OggettiPerMatrice;
 import it.unicam.cs.mpgc.rpg120666.Model.Utility.ClasseUtility;
 import it.unicam.cs.mpgc.rpg120666.Model.Utility.EnumControlloCreazioneAggiornamento;
 
-public abstract class Personaggio
+public abstract class Personaggio implements OggettiPerMatrice
 {
     /**Campo della classe che rappresenta il nome del personaggio:*/
     private String nomePersonaggio;
