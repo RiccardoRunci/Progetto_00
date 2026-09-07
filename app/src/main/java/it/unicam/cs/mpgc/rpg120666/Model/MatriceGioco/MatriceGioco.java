@@ -3,8 +3,13 @@ import it.unicam.cs.mpgc.rpg120666.Model.Attori.Guerriero;
 import it.unicam.cs.mpgc.rpg120666.Model.Attori.Mago;
 import it.unicam.cs.mpgc.rpg120666.Model.OggettiPerMatrice.OggettiPerMatrice;
 import it.unicam.cs.mpgc.rpg120666.Model.Oggetto.Oggetto;
-import it.unicam.cs.mpgc.rpg120666.Model.Personaggio.Personaggio;
+import it.unicam.cs.mpgc.rpg120666.Model.Utility.EnumListaPersonaggiGioco;
+import it.unicam.cs.mpgc.rpg120666.Model.Utility.InventoreNomiPersonaggi;
+import it.unicam.cs.mpgc.rpg120666.Model.Utility.EnumListaPersonaggiGioco.*;
+
 import java.util.Random;
+
+
 
 public class MatriceGioco
 {
@@ -97,17 +102,29 @@ public class MatriceGioco
         for(int i=0;i<this.numeroNemici;i++)
         {
             //todo SECONDO ME NON FUNZIONA! (il fatto che un oggetto Personaggio faccia i metodi di mago e di guerriero)!
-            if(i%2==0)                                               //this.numeroNemici perché mi servivano 2 int (senza che li ri-dichiaravo).
+            if(i%2==0)
             {
-                pers = new Guerriero("Agamennone_num:" + i, this.numeroNemici, this.numeroNemici);
-                //todo fai il codice per inserirli dentro una cella a caso della matrice!
-                this.setOggettoNellaMatrice(pers,this.trovaCellaVuota());
+                try
+                {
+                    pers = new Guerriero(InventoreNomiPersonaggi.ritornaNomeACaso(EnumListaPersonaggiGioco.GUERRIERO)+i,
+                            generatoreRandom.nextInt(40-5)+1,
+                            generatoreRandom.nextInt(40-5)+1);
+                    //todo fai il codice per inserirli dentro una cella a caso della matrice!
+                    this.setOggettoNellaMatrice(pers, this.trovaCellaVuota());
+                }
+                catch (Exception e) { throw new RuntimeException(e); } ;
             }
             else
             {
-                pers = new Mago("Merlino_num:" + i, this.numeroNemici, this.numeroNemici);
+                try
+                {
+                    pers = new Mago(InventoreNomiPersonaggi.ritornaNomeACaso(EnumListaPersonaggiGioco.MAGO)+i,
+                        generatoreRandom.nextInt(40-5)+1,
+                        generatoreRandom.nextInt(40-5)+1);
                 //todo fai il codice per inserirli dentro una cella a caso della matrice!
                 this.setOggettoNellaMatrice(pers,this.trovaCellaVuota());
+                }
+                catch (Exception e) { throw new RuntimeException(e); } ;
             }
         }
 
