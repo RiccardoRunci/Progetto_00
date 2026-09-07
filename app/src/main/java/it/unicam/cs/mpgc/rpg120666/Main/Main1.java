@@ -13,7 +13,7 @@ public class Main1
 
     public static void main(String[] args)
     {
-        MatriceGioco gioco = new MatriceGioco(EnumDifficoltaGioco.FACILE);
+        MatriceGioco gioco = new MatriceGioco(EnumDifficoltaGioco.DIFFICILE);
         ManagerMovimento manager = new ManagerMovimento(gioco);
         System.out.println(gioco.toString());
 

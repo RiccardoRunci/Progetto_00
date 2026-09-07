@@ -60,7 +60,6 @@ public class MatriceGioco
             case FACILE -> new OggettiPerMatrice[CELLE_MATRICE_FACILE][CELLE_MATRICE_FACILE];
             case MEDIA -> new OggettiPerMatrice[CELLE_MATRICE_MEDIA][CELLE_MATRICE_MEDIA];
             case DIFFICILE -> new OggettiPerMatrice[CELLE_MATRICE_DIFFICILE][CELLE_MATRICE_DIFFICILE];
-            default -> throw new IllegalStateException("Eccezione nella classe MatriceGioco: difficoltà non valida!");
         };
     }
     /**Inserisce nemici, oggetti, ecc. in base alla difficoltà.*/
@@ -98,7 +97,6 @@ public class MatriceGioco
     private void popolaMatrice()
     {
         OggettiPerMatrice pers;
-        Oggetto ogg;
         for(int i=0;i<this.numeroNemici;i++)
         {
             //todo SECONDO ME NON FUNZIONA! (il fatto che un oggetto Personaggio faccia i metodi di mago e di guerriero)!
@@ -112,7 +110,7 @@ public class MatriceGioco
                     //todo fai il codice per inserirli dentro una cella a caso della matrice!
                     this.setOggettoNellaMatrice(pers, this.trovaCellaVuota());
                 }
-                catch (Exception e) { throw new RuntimeException(e); } ;
+                catch (Exception e) { throw new RuntimeException(e); }
             }
             else
             {
@@ -136,17 +134,20 @@ public class MatriceGioco
     }
     private CellaMatrice trovaCellaVuota()
     {
-        for (int i = 0; i < this.matrice.length; i++)
+        int x = this.generatoreRandom.nextInt(this.matrice.length);
+        int y = this.generatoreRandom.nextInt(this.matrice.length);
+        if(this.matrice[x][y]==null)
+            return new CellaMatrice(x,y);
+        else
         {
-            for (int j = 0; j < this.matrice.length; j++)
+            do
             {
-                if (matrice[i][j] == null)
-                {
-                    return new CellaMatrice(i, j);
-                }
+                x = this.generatoreRandom.nextInt(this.matrice.length);
+                y = this.generatoreRandom.nextInt(this.matrice.length);
             }
+            while(this.matrice[x][y]!=null);
+            return new CellaMatrice(x,y);
         }
-        return null; // nessuna cella vuota
     }
 
 //    private boolean controllaSeLaCellaELibera(CellaMatrice cella)
