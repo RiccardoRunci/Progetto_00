@@ -55,10 +55,10 @@ public class Guerriero extends Personaggio implements InterfacciaGuerriero
     @Override
     public String toString()
     {
-        return "Sono un Personaggio, della classe Guerriero!\n"+
-                "Il mio nome: "+super.getNomePersonaggio()+"\n"+
-                "I miei punti vita sono: "+super.getPuntiVitaPersonaggio()+"\n"+
-                "Il mio numero di punti scudo: "+this.getPuntiScudo()+"\n";
+        return "CLASSE GUERRIERO!\n"+
+                "NOME: "+super.getNomePersonaggio()+"\n"+
+                "VITA: "+super.getPuntiVitaPersonaggio()+"\n"+
+                "SCUDO: "+this.getPuntiScudo();
     }
     @Override
     public int hashCode()

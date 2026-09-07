@@ -131,28 +131,12 @@ public class MatriceGioco
         }
         return null; // nessuna cella vuota
     }
-    public boolean siPuoMuovereIlPersonaggio(Personaggio personaggio, CellaMatrice cella)
-    {
-        if(!personaggio.controllaSePersonaggioInVita()) return false; //se il personaggio è morto non si muove!
-        else if(!(this.controllaConfiniMatrice(cella))) return false; //se vai fuori i confini della matrice!
-        else if (!(this.controllaSeLaCellaELibera(cella))) //se la cella è occupata da qualcosa
-        {
-            //dipende che cosa è questo qualcosa!
-            //se è un oggetto, allora il personaggio lo prende!
-            //se è un altro personaggio, allora si dovrebbe cominciare il combattimento!
-        }
-        else //la cella[x][y] è libera!
-        {
-            this.matrice[cella.getX()][cella.getY()] = personaggio; //il personaggio stà dentro la cella vuota!
-            return true; //il personaggio si è mosso!
-        }
-        return false;
-    }
-    private boolean controllaSeLaCellaELibera(CellaMatrice cella)
-    {
-        return (this.matrice[cella.getX()][cella.getY()] == null); /*True = cella libera, scritto come vuole Intelli j!*/
-    }
-    private boolean controllaConfiniMatrice(CellaMatrice cella)
+
+//    private boolean controllaSeLaCellaELibera(CellaMatrice cella)
+//    {
+//        return (this.matrice[cella.getX()][cella.getY()] == null); /*True = cella libera, scritto come vuole Intelli j!*/
+//    }
+    public boolean controllaConfiniMatrice(CellaMatrice cella)
     {
         if(cella.getX()<0 || cella.getX()>this.matrice.length-1 || cella.getY()<0 || cella.getY()>this.matrice.length-1)
         {

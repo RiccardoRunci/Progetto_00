@@ -78,10 +78,10 @@ public class Mago extends Personaggio implements IntefacciaMago
     @Override
     public String toString()
     {
-        return "Sono un Personaggio, della classe Mago\n"+
-                "Il mio nome: "+super.getNomePersonaggio()+"\n"+
-                "I miei punti vita sono: "+super.getPuntiVitaPersonaggio()+"\n"+
-                "Il mio numero di magie disponibili: "+this.getNumeroMagieDisponibili()+"\n";
+        return "CLASSE MAGO\n"+
+                "NOME: "+super.getNomePersonaggio()+"\n"+
+                "VITA: "+super.getPuntiVitaPersonaggio()+"\n"+
+                "MAGIE: "+this.getNumeroMagieDisponibili()+"\n";
     }
     @Override
     public int hashCode()

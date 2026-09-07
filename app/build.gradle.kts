@@ -31,7 +31,7 @@ java {
     }
 }
 //CLASSE MAIN:
-application { mainClass = "it.unicam.cs.mpgc.rpg120666.Main.Main1" }
+application { mainClass = "it.unicam.cs.mpgc.rpg120666.Main.MainProvaClasseInvetoreNomi" }
 tasks.test { // Obbligatorio per eseguire i test con JUnit
     useJUnitPlatform()
     /*Ti fa vedere test per test se passato, skippato o fallito!*/

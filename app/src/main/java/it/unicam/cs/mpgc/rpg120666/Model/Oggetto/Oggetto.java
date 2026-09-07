@@ -63,9 +63,9 @@ public abstract class Oggetto implements OggettiPerMatrice
     @Override
     public String toString()
     {
-        return "Sono un Oggetto, della classe Oggetto!\n"+
-                "Il mio nome è: "+this.getNomeOggetto()+
-                "La mia quantità è:"+this.getQuantitaOggetto();
+        return "CLASSE OGGETTO!\n"+
+                "NOME: "+this.getNomeOggetto()+"\n"+
+                "QUANTITA:"+this.getQuantitaOggetto();
     }
     /**Metodo equals:
      *@return (boolean) True, se i due oggetti confrontati sono uguali.

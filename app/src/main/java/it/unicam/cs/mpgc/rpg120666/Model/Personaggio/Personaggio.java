@@ -60,9 +60,9 @@ public abstract class Personaggio implements OggettiPerMatrice
      *@return una descrizione del personaggio*/
     @Override
     public String toString(){
-        return "Sono un Personaggio, della classe Personaggio!\n"+
-                "Il mio nome è: "+this.getNomePersonaggio()+
-                "I miei punti vita sono:"+this.getPuntiVitaPersonaggio();
+        return "CLASSE PERSONAGGIO!\n"+
+                "NOME: "+this.getNomePersonaggio()+"\n"+
+                "VITA:"+this.getPuntiVitaPersonaggio();
     }
     /**Metodo hashCode:
      *@return (int) che specifica in quale bucket andrà a cacciarsi l'oggetto.*/
