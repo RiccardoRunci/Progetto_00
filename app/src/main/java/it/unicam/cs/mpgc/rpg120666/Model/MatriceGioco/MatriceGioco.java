@@ -41,6 +41,11 @@ public class MatriceGioco
             throw new ArrayIndexOutOfBoundsException("Errore del metodo get della classe MatriceGioco\nStai fuori dalla matrice!\n");
         }
     }
+    //Metodo get:
+    public int getDimensione()
+    {
+        return this.matrice.length;
+    }
     // Costruttore vuoto
     public MatriceGioco() {}
     // Costruttore con difficoltà
