@@ -107,7 +107,8 @@ public class MatriceGioco
             {
                 try
                 {
-                    pers = new Guerriero(InventoreNomiNemici.ritornaNomeACaso(EnumListaNemiciGioco.GUERRIERO)+i,
+                    char lettera = (char) ('A' + i); //Mi serve per fare "_Lettera" nel nome, non i (perchè ho un controllo sulle cifre nel nome).
+                    pers = new Guerriero(InventoreNomiNemici.ritornaNomeACaso(EnumListaNemiciGioco.GUERRIERO)+"_"+lettera,
                             generatoreRandom.nextInt(40-5)+1,
                             generatoreRandom.nextInt(40-5)+1);
 
@@ -119,7 +120,8 @@ public class MatriceGioco
             {
                 try
                 {
-                    pers = new Mago(InventoreNomiNemici.ritornaNomeACaso(EnumListaNemiciGioco.MAGO)+i,
+                    char lettera = (char) ('A' + i);
+                    pers = new Mago(InventoreNomiNemici.ritornaNomeACaso(EnumListaNemiciGioco.MAGO)+"_"+lettera,
                         generatoreRandom.nextInt(40-5)+1,
                         generatoreRandom.nextInt(40-5)+1);
 
