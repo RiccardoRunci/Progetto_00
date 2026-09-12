@@ -4,7 +4,7 @@
 * 'NOMI_GUERRIERO.txt' o dal file 'NOMI_MAGO.txt'.*/
 package it.unicam.cs.mpgc.rpg120666.Model.Utility;
 
-public enum EnumListaPersonaggiGioco
+public enum EnumListaNemiciGioco
 {
     MAGO,
     GUERRIERO

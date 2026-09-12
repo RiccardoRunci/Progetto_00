@@ -26,21 +26,21 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Random;
 
-public abstract class InventoreNomiPersonaggi
+public abstract class InventoreNomiNemici
 {
  /**Metodo statico, utile a estrarre dai file .txt (localizzati nella cartella statica di gradle, resources)
- * un singolo nome. Che sia presente nell' enumerazione 'tipoPersonaggio'.
- * @param tipoPersonaggio = GUERRIERO, MAGO, Ecc... Sono le opzioni dell'enumerazione;
+ * un singolo nome. Che sia presente nell' enumerazione 'tipoNemico'.
+ * @param tipoNemico = GUERRIERO, MAGO, Ecc... Sono le opzioni dell'enumerazione;
  * @return listaNomi.get(n_caso).toUpperCase() = il nome letto scritto in MAIUSCOLO, oppure "ERRORE" se è andato qualcosa storto;
  * @throws RuntimeException, IOException. * */
-    public static String ritornaNomeACaso(EnumListaPersonaggiGioco tipoPersonaggio) /*throws Exception*/
+    public static String ritornaNomeACaso(EnumListaNemiciGioco tipoNemico) /*throws Exception*/
     {
         ArrayList<String> listaNomi = new ArrayList<>();
         Random rand = new Random();
-        InputStream is = InventoreNomiPersonaggi.class.getClassLoader() .getResourceAsStream("NOMI_"+tipoPersonaggio+".txt");
+        InputStream is = InventoreNomiNemici.class.getClassLoader() .getResourceAsStream("NOMI_"+tipoNemico+".txt");
         if (is == null)
         {
-            throw new RuntimeException("Il file: Nomi"+tipoPersonaggio+".txt \n" +
+            throw new RuntimeException("Il file: Nomi"+tipoNemico+".txt \n" +
                     "Non trovato nella mitica cartella Resources di gradle!\n" +
                     "Quella dei file STATICI (utili alle configurazioni del gioco)! \n" +
                     "Quella dove tu devi copiare il file dentro: 'Cartella_Radice/app/src/main/resources'!\n, " +

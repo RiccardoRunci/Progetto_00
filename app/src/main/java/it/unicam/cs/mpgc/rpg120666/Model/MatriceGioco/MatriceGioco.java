@@ -2,8 +2,8 @@ package it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco;
 import it.unicam.cs.mpgc.rpg120666.Model.Nemico.ElencoClassiEsteseNemico.Guerriero;
 import it.unicam.cs.mpgc.rpg120666.Model.Nemico.ElencoClassiEsteseNemico.Mago;
 import it.unicam.cs.mpgc.rpg120666.Model.ElementiPerMatrice.ElementiPerMatrice;
-import it.unicam.cs.mpgc.rpg120666.Model.Utility.EnumListaPersonaggiGioco;
-import it.unicam.cs.mpgc.rpg120666.Model.Utility.InventoreNomiPersonaggi;
+import it.unicam.cs.mpgc.rpg120666.Model.Utility.EnumListaNemiciGioco;
+import it.unicam.cs.mpgc.rpg120666.Model.Utility.InventoreNomiNemici;
 
 import java.util.Random;
 
@@ -107,7 +107,7 @@ public class MatriceGioco
             {
                 try
                 {
-                    pers = new Guerriero(InventoreNomiPersonaggi.ritornaNomeACaso(EnumListaPersonaggiGioco.GUERRIERO)+i,
+                    pers = new Guerriero(InventoreNomiNemici.ritornaNomeACaso(EnumListaNemiciGioco.GUERRIERO)+i,
                             generatoreRandom.nextInt(40-5)+1,
                             generatoreRandom.nextInt(40-5)+1);
 
@@ -119,7 +119,7 @@ public class MatriceGioco
             {
                 try
                 {
-                    pers = new Mago(InventoreNomiPersonaggi.ritornaNomeACaso(EnumListaPersonaggiGioco.MAGO)+i,
+                    pers = new Mago(InventoreNomiNemici.ritornaNomeACaso(EnumListaNemiciGioco.MAGO)+i,
                         generatoreRandom.nextInt(40-5)+1,
                         generatoreRandom.nextInt(40-5)+1);
 
@@ -147,6 +147,12 @@ public class MatriceGioco
             {
                 x = this.generatoreRandom.nextInt(this.matrice.length);
                 y = this.generatoreRandom.nextInt(this.matrice.length);
+
+                // Escludo l'ultima cella in basso a destra. CI METTO L'EROE!
+                if (x == this.matrice.length - 1 && y == this.matrice.length - 1)
+                {
+                    continue; // ripeti
+                }
             }
             while(this.matrice[x][y]!=null);
             return new CellaMatrice(x,y);
