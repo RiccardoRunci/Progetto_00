@@ -1,11 +1,11 @@
 package it.unicam.cs.mpgc.rpg120666.View;
 
 import it.unicam.cs.mpgc.rpg120666.Controller.MatriceGiocoController;
-import it.unicam.cs.mpgc.rpg120666.Model.Attori.Guerriero;
-import it.unicam.cs.mpgc.rpg120666.Model.Attori.Mago;
+import it.unicam.cs.mpgc.rpg120666.Model.Nemico.ElencoClassiEsteseNemico.Guerriero;
+import it.unicam.cs.mpgc.rpg120666.Model.Nemico.ElencoClassiEsteseNemico.Mago;
 import it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco.CellaMatrice;
 import it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco.MatriceGioco;
-import it.unicam.cs.mpgc.rpg120666.Model.OggettiPerMatrice.OggettiPerMatrice;
+import it.unicam.cs.mpgc.rpg120666.Model.ElementiPerMatrice.ElementiPerMatrice;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 
@@ -17,24 +17,25 @@ public class MatriceGiocoView
 
     /*Metodo get del contenitore GridPane!*/
     public GridPane getGridPane() { return gridPane; }
-    /**Costruttore della classe View. */
+    /**Costruttore della classe View.*/
     public MatriceGiocoView(int dimensioneMatrice)
     {
         this.gridPane = new GridPane();
         this.matriceDiLabel = new Label[dimensioneMatrice][dimensioneMatrice];
-        if(dimensioneMatrice > 0)
+        if (dimensioneMatrice > 0)
             this.inizializzazioneGraficaMatrice(dimensioneMatrice);
     }
 
     public void setController(MatriceGiocoController controller) {
         this.controller = controller;
     }
+
     /**Metodo che serve per 'inizializzare' la matrice. Questo metodo colora solo tutte le label della matrice
      * in grigio (tipo colore che rappresenta l'inattività). Per farlo crea delle nuove label (tante quante le celle
      * della matrice), le 'dimensiona', le colora in grigio.
      * POI mette la nuova label appena creata DENTO LA MATRICE!
      * E DICE AL GRIDPANE (il contenitore che rappresenta visivamente una specie di matrice) "METTI QUESTA cella/label
-     * nelle coordinate x e y" come se fosse una cella della matrice!*/
+     * nelle coordinate x e y" come se fosse una cella della matrice! */
     private void inizializzazioneGraficaMatrice(int dim)
     {
         for (int x = 0; x < dim; x++)
@@ -49,9 +50,14 @@ public class MatriceGiocoView
                 // AGGIUNTA: click sulla cella-----------------------------------------------------------------------
                 final int fx = x; //variabili per l'espressione lambda, l'espressione.
                 final int fy = y; //la lambda vede solo variabili finali!
-                cella.setOnMouseClicked(event -> {
+                cella.setOnMouseClicked(event ->
+                {
                     if (controller != null)
+                    {
                         controller.cellaCliccata(fx, fy);
+                        controller.apriFinestraDettagli(fx, fy);
+                    }
+
                 });
                 //---------------------------------------------------------------------------------------------------
 
@@ -60,14 +66,15 @@ public class MatriceGiocoView
             }
         }
     }
+
     public void aggiorna(MatriceGioco matriceGiocoPassata)
     {
-        int dim=this.matriceDiLabel.length;
-        OggettiPerMatrice ogg;
-        for (int i=0;i<dim;i++)
-            for (int j=0;j<dim;j++)
+        int dim = this.matriceDiLabel.length;
+        ElementiPerMatrice ogg;
+        for (int i = 0; i < dim; i++)
+            for (int j = 0; j < dim; j++)
             {
-                ogg = matriceGiocoPassata.getOggettoDellaMatrice(new CellaMatrice(i,j));
+                ogg = matriceGiocoPassata.getOggettoDellaMatrice(new CellaMatrice(i, j));
 
                 if (ogg == null)
                 {
@@ -77,17 +84,15 @@ public class MatriceGiocoView
                 else
                 {
                     matriceDiLabel[i][j].setText(ogg.toString());
-                    if(ogg instanceof Guerriero)
-                    {
-                        matriceDiLabel[i][j].setStyle("-fx-background-color: red; -fx-border-color: black;");
-                    }
-                    else if(ogg instanceof Mago)
-                    {
-                        matriceDiLabel[i][j].setStyle("-fx-background-color: blue; -fx-border-color: black");
-                    }
+                    if (ogg instanceof Guerriero) { matriceDiLabel[i][j].setStyle("-fx-background-color: red; -fx-border-color: black;"); }
+                    else if (ogg instanceof Mago) { matriceDiLabel[i][j].setStyle("-fx-background-color: blue; -fx-border-color: black"); }
                 }
             }
-
     }
 
+    public void evidenziaCella(int x, int y)
+    {
+       // evidenzia la cella selezionata
+        matriceDiLabel[x][y].setStyle("-fx-border-color: yellow; -fx-background-color: orange;");
+    }
 }

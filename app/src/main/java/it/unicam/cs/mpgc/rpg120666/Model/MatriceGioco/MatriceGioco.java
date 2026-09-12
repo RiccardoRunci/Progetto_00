@@ -1,11 +1,9 @@
 package it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco;
-import it.unicam.cs.mpgc.rpg120666.Model.Attori.Guerriero;
-import it.unicam.cs.mpgc.rpg120666.Model.Attori.Mago;
-import it.unicam.cs.mpgc.rpg120666.Model.OggettiPerMatrice.OggettiPerMatrice;
-import it.unicam.cs.mpgc.rpg120666.Model.Oggetto.Oggetto;
+import it.unicam.cs.mpgc.rpg120666.Model.Nemico.ElencoClassiEsteseNemico.Guerriero;
+import it.unicam.cs.mpgc.rpg120666.Model.Nemico.ElencoClassiEsteseNemico.Mago;
+import it.unicam.cs.mpgc.rpg120666.Model.ElementiPerMatrice.ElementiPerMatrice;
 import it.unicam.cs.mpgc.rpg120666.Model.Utility.EnumListaPersonaggiGioco;
 import it.unicam.cs.mpgc.rpg120666.Model.Utility.InventoreNomiPersonaggi;
-import it.unicam.cs.mpgc.rpg120666.Model.Utility.EnumListaPersonaggiGioco.*;
 
 import java.util.Random;
 
@@ -15,23 +13,23 @@ public class MatriceGioco
 {
     private Random generatoreRandom;
     private int numeroNemici, numeroOggetti;
-    private static final int CELLE_MATRICE_FACILE = 16;
-    private static final int CELLE_MATRICE_MEDIA = 32;
-    private static final int CELLE_MATRICE_DIFFICILE = 64;
-    private OggettiPerMatrice[][] matrice;
-    //private HashMap<CellaMatrice, OggettiPerMatrice> hashMapNemici_Oggetti; /* = new HashMap<>();*/
+    private static final int CELLE_MATRICE_FACILE = 8; // 16
+    private static final int CELLE_MATRICE_MEDIA = 16; //32
+    private static final int CELLE_MATRICE_DIFFICILE = 32; //64
+    private ElementiPerMatrice[][] matrice;
+    //private HashMap<CellaMatrice, ElementiPerMatrice> hashMapNemici_Oggetti; /* = new HashMap<>();*/
 
     //Metodo set:
-    public void setOggettoNellaMatrice(OggettiPerMatrice oggetto,CellaMatrice cella)
+    public void setOggettoNellaMatrice(ElementiPerMatrice oggetto, CellaMatrice cella)
     {
-        if (this.controllaConfiniMatrice(cella) && oggetto!=null /*&& oggetto instanceof OggettiPerMatrice*/ )
+        if (this.controllaConfiniMatrice(cella) && oggetto!=null /*&& oggetto instanceof ElementiPerMatrice*/ )
         {   //true se sto dentro i confini:
             this.matrice[cella.getX()][cella.getY()] = oggetto;
             //this.hashMapNemici_Oggetti.put(cella, oggetto);
         }
     }
     //Metodo get:
-    public OggettiPerMatrice getOggettoDellaMatrice(CellaMatrice cella)
+    public ElementiPerMatrice getOggettoDellaMatrice(CellaMatrice cella)
     {
         if(this.controllaConfiniMatrice(cella)) //se è true sto dentro la matrice!
             return this.matrice[cella.getX()][cella.getY()];
@@ -58,13 +56,13 @@ public class MatriceGioco
     }
 
     /**Crea la matrice in base alla difficoltà.*/
-    private OggettiPerMatrice[][] creaMatriceInBaseAllaDifficolta(EnumDifficoltaGioco difficolta)
+    private ElementiPerMatrice[][] creaMatriceInBaseAllaDifficolta(EnumDifficoltaGioco difficolta)
     {
         return switch (difficolta)
         {
-            case FACILE -> new OggettiPerMatrice[CELLE_MATRICE_FACILE][CELLE_MATRICE_FACILE];
-            case MEDIA -> new OggettiPerMatrice[CELLE_MATRICE_MEDIA][CELLE_MATRICE_MEDIA];
-            case DIFFICILE -> new OggettiPerMatrice[CELLE_MATRICE_DIFFICILE][CELLE_MATRICE_DIFFICILE];
+            case FACILE -> new ElementiPerMatrice[CELLE_MATRICE_FACILE][CELLE_MATRICE_FACILE];
+            case MEDIA -> new ElementiPerMatrice[CELLE_MATRICE_MEDIA][CELLE_MATRICE_MEDIA];
+            case DIFFICILE -> new ElementiPerMatrice[CELLE_MATRICE_DIFFICILE][CELLE_MATRICE_DIFFICILE];
         };
     }
     /**Inserisce nemici, oggetti, ecc. in base alla difficoltà.*/
@@ -77,23 +75,23 @@ public class MatriceGioco
                 // Inserisci pochi nemici
                 this.numeroNemici = this.generatoreRandom.nextInt(CELLE_MATRICE_FACILE/4)+1; //[1,...,4]
                 // Inserisci tanti oggetti
-                this.numeroOggetti = this.generatoreRandom.nextInt(CELLE_MATRICE_FACILE/2)+1; //[1,...,8]
+                this.numeroOggetti = this.generatoreRandom.nextInt(CELLE_MATRICE_FACILE/2)+1; //[1,...,4]
                 this.popolaMatrice();
             }
             case MEDIA ->
             {
                 // Inserisci medi nemici
-                this.numeroNemici = this.generatoreRandom.nextInt(CELLE_MATRICE_MEDIA/3)+1; //[1,...,10 ]
+                this.numeroNemici = this.generatoreRandom.nextInt(CELLE_MATRICE_MEDIA/3)+1; //[1,...,3 ]
                 // Inserisci medi oggetti
-                this.numeroOggetti=this.numeroNemici; // mi faccio andare bene [1,...,10] anche per gli oggetti!
+                this.numeroOggetti=this.numeroNemici; // mi faccio andare bene [1,...,3] anche per gli oggetti!
                 this.popolaMatrice();
             }
             case DIFFICILE ->
             {
                 // Inserisci molti nemici
-                this.numeroNemici = this.generatoreRandom.nextInt(CELLE_MATRICE_DIFFICILE/2)+1; //[1,...,32]
+                this.numeroNemici = this.generatoreRandom.nextInt(CELLE_MATRICE_DIFFICILE/2)+1; //[1,...,16]
                 // Inserisci pochi oggetti
-                this.numeroOggetti = this.generatoreRandom.nextInt(CELLE_MATRICE_FACILE/4)+1; //[1,...,16]
+                this.numeroOggetti = this.generatoreRandom.nextInt(CELLE_MATRICE_FACILE/4)+1; //[1,...,8]
                 this.popolaMatrice();
             }
             default -> { /*Non dovrebbe mai accadere*/ }
@@ -101,10 +99,10 @@ public class MatriceGioco
     }
     private void popolaMatrice()
     {
-        OggettiPerMatrice pers;
+        ElementiPerMatrice pers;
         for(int i=0;i<this.numeroNemici;i++)
         {
-            //todo SECONDO ME NON FUNZIONA! (il fatto che un oggetto Personaggio faccia i metodi di mago e di guerriero)!
+            //todo SECONDO ME NON FUNZIONA! (il fatto che un oggetto Nemico faccia i metodi di mago e di guerriero)!
             if(i%2==0)
             {
                 try
@@ -112,7 +110,7 @@ public class MatriceGioco
                     pers = new Guerriero(InventoreNomiPersonaggi.ritornaNomeACaso(EnumListaPersonaggiGioco.GUERRIERO)+i,
                             generatoreRandom.nextInt(40-5)+1,
                             generatoreRandom.nextInt(40-5)+1);
-                    //todo fai il codice per inserirli dentro una cella a caso della matrice!
+
                     this.setOggettoNellaMatrice(pers, this.trovaCellaVuota());
                 }
                 catch (Exception e) { throw new RuntimeException(e); }
@@ -124,10 +122,10 @@ public class MatriceGioco
                     pers = new Mago(InventoreNomiPersonaggi.ritornaNomeACaso(EnumListaPersonaggiGioco.MAGO)+i,
                         generatoreRandom.nextInt(40-5)+1,
                         generatoreRandom.nextInt(40-5)+1);
-                //todo fai il codice per inserirli dentro una cella a caso della matrice!
+
                 this.setOggettoNellaMatrice(pers,this.trovaCellaVuota());
                 }
-                catch (Exception e) { throw new RuntimeException(e); } ;
+                catch (Exception e) { throw new RuntimeException(e); }
             }
         }
 

@@ -71,7 +71,7 @@ l'unica cosa che cambiava era la logica del < o <=.
         if (puntiVitaPersonaggio<=0)
             throw new IllegalArgumentException("Attenzione, errore nella classe astratta Personaggio:\n " +
                     "I suoi punti vita: "+puntiVitaPersonaggio+" sono <=0.\"n"+
-                    "Non posso creare un personaggio con questi punti vita!");
+                    "Non posso creare un nemico con questi punti vita!");
         else
             return true;
     }
@@ -81,13 +81,13 @@ l'unica cosa che cambiava era la logica del < o <=.
         if (puntiVitaPersonaggio<0)
             throw new IllegalArgumentException("Attenzione, errore nella classe astratta Personaggio:\n " +
                     "I suoi punti vita: "+puntiVitaPersonaggio+" sono <0.\"n"+
-                    "Il personaggio dovrebbe essere già morto!");
+                    "Il nemico dovrebbe essere già morto!");
         else
             return true;
     }
 
 
-L'ia mi ha suggerito di creare un enumerazione che specificava se - il controllo della vita del personaggio -
+L'ia mi ha suggerito di creare un enumerazione che specificava se - il controllo della vita del nemico -
 era da fare in fase di creazione o in fase di aggiornamento.
-Perchè non posso creare un personaggio con la vita <=0, ma quando muore un personaggio per forza deve avere i suoi punti vita = 0.
+Perchè non posso creare un nemico con la vita <=0, ma quando muore un nemico per forza deve avere i suoi punti vita = 0.
 E niente: IA 1, Riccardo 0.

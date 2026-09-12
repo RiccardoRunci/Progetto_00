@@ -1,10 +1,10 @@
-package it.unicam.cs.mpgc.rpg120666.Model.Attori;
-import it.unicam.cs.mpgc.rpg120666.Model.InterfaccePerPersonaggi.InterfacciaGuerriero;
-import it.unicam.cs.mpgc.rpg120666.Model.Personaggio.Personaggio;
+package it.unicam.cs.mpgc.rpg120666.Model.Nemico.ElencoClassiEsteseNemico;
+import it.unicam.cs.mpgc.rpg120666.Model.Nemico.InterfaccePerNemico.InterfacciaGuerriero;
+import it.unicam.cs.mpgc.rpg120666.Model.Nemico.Nemico;
 import it.unicam.cs.mpgc.rpg120666.Model.Utility.ClasseUtility;
 import it.unicam.cs.mpgc.rpg120666.Model.Utility.EnumControlloCreazioneAggiornamento;
 
-public class Guerriero extends Personaggio implements InterfacciaGuerriero
+public class Guerriero extends Nemico implements InterfacciaGuerriero
 {
     private static final int DANNO_DA_FORZA= 10;
     private int puntiScudo;
@@ -26,27 +26,27 @@ public class Guerriero extends Personaggio implements InterfacciaGuerriero
         return this.puntiScudo;
     }
     @Override
-    public boolean controllaSePersonaggioInVita()
+    public boolean controllaSeNemicoInVita()
     {
-        if (super.getPuntiVitaPersonaggio()==0) /*è morto*/ {return false;}
+        if (super.getPuntiVitaNemico()==0) /*è morto*/ {return false;}
         else /*è in vita*/ return true;
     }
 
     @Override
-    public boolean eseguiAttaccoFisico(Personaggio personaggio)
+    public boolean eseguiAttaccoFisico(Nemico nemico)
     {
         //todo ANCHE questo metodo fà più o meno la stessa cosa dei 2 metodi di mago, che vogliamo fare?
-        if(personaggio.controllaSePersonaggioInVita())
+        if(nemico.controllaSeNemicoInVita())
         {
-            if(personaggio.getPuntiVitaPersonaggio()<=DANNO_DA_FORZA)
+            if(nemico.getPuntiVitaNemico()<=DANNO_DA_FORZA)
             {  //Colpisco il nemico e muore!
-                personaggio.setPuntiVitaPersonaggio(0);
+                nemico.setPuntiVitaNemico(0);
                 return true;
             }
             else
             {
                 //Colpisco il nemico e sopravvive!
-                personaggio.setPuntiVitaPersonaggio(personaggio.getPuntiVitaPersonaggio() - DANNO_DA_FORZA);
+                nemico.setPuntiVitaNemico(nemico.getPuntiVitaNemico() - DANNO_DA_FORZA);
                 return true;
             }
         }
@@ -56,8 +56,8 @@ public class Guerriero extends Personaggio implements InterfacciaGuerriero
     public String toString()
     {
         return "CLASSE GUERRIERO!\n"+
-                "NOME: "+super.getNomePersonaggio()+"\n"+
-                "VITA: "+super.getPuntiVitaPersonaggio()+"\n"+
+                "NOME: "+super.getNomeNemico()+"\n"+
+                "VITA: "+super.getPuntiVitaNemico()+"\n"+
                 "SCUDO: "+this.getPuntiScudo();
     }
     @Override

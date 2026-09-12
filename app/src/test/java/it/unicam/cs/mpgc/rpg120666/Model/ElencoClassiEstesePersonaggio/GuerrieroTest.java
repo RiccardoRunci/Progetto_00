@@ -1,4 +1,5 @@
-package it.unicam.cs.mpgc.rpg120666.Model.Attori;
+package it.unicam.cs.mpgc.rpg120666.Model.ElencoClassiEstesePersonaggio;
+import it.unicam.cs.mpgc.rpg120666.Model.Nemico.ElencoClassiEsteseNemico.Guerriero;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -29,13 +30,13 @@ public class GuerrieroTest
     @Test
     public void testGetNome()
     {
-        assertEquals("Spartaco", Gue1.getNomePersonaggio());
+        assertEquals("Spartaco", Gue1.getNomeNemico());
     }
 
     @Test public void testSetNome()
     {
-        Gue1.setNomePersonaggio("Agamennone");
-        assertEquals("Agamennone", Gue1.getNomePersonaggio());
+        Gue1.setNomeNemico("Agamennone");
+        assertEquals("Agamennone", Gue1.getNomeNemico());
     }
 
     @Test
@@ -54,11 +55,11 @@ public class GuerrieroTest
         assertFalse(Gue2.equals(Gue1));// o assertNotEquals! OK! è grave come errore?
         assertFalse(Gue2.equals(Gue1));
         assertTrue(Gue2.equals(Gue2));
-        Gue2.setNomePersonaggio("Spartaco");
+        Gue2.setNomeNemico("Spartaco");
         assertTrue(Gue2.equals(Gue1));
 
-        Gue1.setPuntiVitaPersonaggio(79);
-        Gue2.setPuntiVitaPersonaggio(79);
+        Gue1.setPuntiVitaNemico(79);
+        Gue2.setPuntiVitaNemico(79);
         assertTrue(Gue2.equals(Gue1));
 
 
@@ -70,29 +71,29 @@ public class GuerrieroTest
     @Test
     void testIllegalArgumentException()
     {
-        Gue1.setPuntiVitaPersonaggio(0);
+        Gue1.setPuntiVitaNemico(0);
         Gue1.setPuntiScudo(0);
         assertThrows(IllegalArgumentException.class, () -> {
-           Gue1.setNomePersonaggio("");
-           Gue1.setPuntiVitaPersonaggio(-1);
+           Gue1.setNomeNemico("");
+           Gue1.setPuntiVitaNemico(-1);
            Gue1.setPuntiScudo(-1);
         });
     }
    @Test
     void testNUM2GeneraleSaluteGuerriero()
     {
-        Gue2.setPuntiVitaPersonaggio(10);
+        Gue2.setPuntiVitaNemico(10);
         Gue1.eseguiAttaccoFisico(Gue2);
-        assertFalse(Gue2.controllaSePersonaggioInVita());
+        assertFalse(Gue2.controllaSeNemicoInVita());
     }
     @Test
     void testNUM3GeneraleSaluteGuerriero()
     {
-        Gue2.setPuntiVitaPersonaggio(20);
+        Gue2.setPuntiVitaNemico(20);
         Gue1.eseguiAttaccoFisico(Gue2);
-        assertTrue(Gue2.controllaSePersonaggioInVita());
-        assertTrue(Gue2.getPuntiVitaPersonaggio() == 10);
+        assertTrue(Gue2.controllaSeNemicoInVita());
+        assertTrue(Gue2.getPuntiVitaNemico() == 10);
         Gue1.eseguiAttaccoFisico(Gue2);
-        assertFalse(Gue2.controllaSePersonaggioInVita());
+        assertFalse(Gue2.controllaSeNemicoInVita());
     }
 }

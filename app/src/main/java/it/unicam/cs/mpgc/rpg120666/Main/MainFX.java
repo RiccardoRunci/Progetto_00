@@ -1,5 +1,6 @@
 package it.unicam.cs.mpgc.rpg120666.Main;
 
+import it.unicam.cs.mpgc.rpg120666.Controller.ManagerTastiera;
 import it.unicam.cs.mpgc.rpg120666.Controller.MatriceGiocoController;
 import it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco.EnumDifficoltaGioco;
 import it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco.MatriceGioco;
@@ -33,6 +34,12 @@ public class MainFX extends Application
 
         // 5) SCENA
         Scene scena = new Scene(view.getGridPane());
+
+        //5.1)PER I CONTROLLI DA TASTIERA
+        ManagerTastiera managerTastiera = new ManagerTastiera(controller);
+        scena.setOnKeyPressed(event -> {
+            managerTastiera.gestisciTasto(event.getCode());
+        });
 
         // 6) STAGE = palcoscenico (su cui si basa la scena)
         palcoscenico.setScene(scena);

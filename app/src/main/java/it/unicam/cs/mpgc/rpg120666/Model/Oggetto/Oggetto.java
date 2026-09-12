@@ -2,14 +2,14 @@
  * @author Runci Riccardo.
  * @since versione 0.*/
 package it.unicam.cs.mpgc.rpg120666.Model.Oggetto;
-import it.unicam.cs.mpgc.rpg120666.Model.OggettiPerMatrice.OggettiPerMatrice;
+import it.unicam.cs.mpgc.rpg120666.Model.ElementiPerMatrice.ElementiPerMatrice;
 import it.unicam.cs.mpgc.rpg120666.Model.Utility.ClasseUtility;
 import it.unicam.cs.mpgc.rpg120666.Model.Utility.EnumControlloCreazioneAggiornamento;
 
-public abstract class Oggetto implements OggettiPerMatrice
+public abstract class Oggetto implements ElementiPerMatrice
 {
     private String nomeOggetto;
-    private int quantitaOggetto;
+    //private int quantitaOggetto;
     /**Costruttore vuoto che mi servirà per javaFx e/o Hibernate.*/
     public Oggetto(){}
     /**Fa Creare una nuova istanza di Oggetto da parte di una classe che la estenderà.
@@ -25,7 +25,7 @@ public abstract class Oggetto implements OggettiPerMatrice
                         "Oggetto")))
                 {
                     this.nomeOggetto = nomeOggetto;
-                    this.quantitaOggetto = quantitaOggetto;
+                    //this.quantitaOggetto = quantitaOggetto;
                 }
     }
     /**Metodo getNomeOggetto.
@@ -33,7 +33,7 @@ public abstract class Oggetto implements OggettiPerMatrice
     public String getNomeOggetto() { return this.nomeOggetto; }
     /**Metodo getQuantitaOggetto.
      * @return (int) la quantità dell'Oggetto.*/
-    public int getQuantitaOggetto() { return this.quantitaOggetto; }
+   // public int getQuantitaOggetto() { return this.quantitaOggetto; }
     /**Metodo setNomeOggetto. Imposta il nome dell'Oggetto.
      * @param nomeOggetto (String) parametro che non deve essere null, oppure vuoto.
      * @throws IllegalArgumentException se il nome è null o blank.

@@ -1,10 +1,10 @@
-package it.unicam.cs.mpgc.rpg120666.Model.Attori;
-import it.unicam.cs.mpgc.rpg120666.Model.InterfaccePerPersonaggi.IntefacciaMago;
-import it.unicam.cs.mpgc.rpg120666.Model.Personaggio.Personaggio;
+package it.unicam.cs.mpgc.rpg120666.Model.Nemico.ElencoClassiEsteseNemico;
+import it.unicam.cs.mpgc.rpg120666.Model.Nemico.InterfaccePerNemico.IntefacciaMago;
+import it.unicam.cs.mpgc.rpg120666.Model.Nemico.Nemico;
 import it.unicam.cs.mpgc.rpg120666.Model.Utility.ClasseUtility;
 import it.unicam.cs.mpgc.rpg120666.Model.Utility.EnumControlloCreazioneAggiornamento;
 
-public class Mago extends Personaggio implements IntefacciaMago
+public class Mago extends Nemico implements IntefacciaMago
 {
     private int numeroMagieDisponibili;
     private static final int DANNO_DA_MAGIA= 3;
@@ -31,22 +31,22 @@ public class Mago extends Personaggio implements IntefacciaMago
     }
 
     @Override
-    public boolean eseguiAttaccoMagico(Personaggio personaggio)
+    public boolean eseguiAttaccoMagico(Nemico nemico)
     {
-        if (this.numeroMagieDisponibili==0 || (!this.controllaSePersonaggioInVita()))
+        if (this.numeroMagieDisponibili==0 || (!this.controllaSeNemicoInVita()))
         return false;
-        else if(personaggio.controllaSePersonaggioInVita())
+        else if(nemico.controllaSeNemicoInVita())
         {
-            if(personaggio.getPuntiVitaPersonaggio()<=DANNO_DA_MAGIA)
+            if(nemico.getPuntiVitaNemico()<=DANNO_DA_MAGIA)
             {
                 this.numeroMagieDisponibili--;
-                personaggio.setPuntiVitaPersonaggio(0);
+                nemico.setPuntiVitaNemico(0);
                 return true;
             }
             else
             {
                 this.numeroMagieDisponibili--;
-                personaggio.setPuntiVitaPersonaggio(personaggio.getPuntiVitaPersonaggio() - DANNO_DA_MAGIA);
+                nemico.setPuntiVitaNemico(nemico.getPuntiVitaNemico() - DANNO_DA_MAGIA);
                 return true;
             }
         }
@@ -54,14 +54,14 @@ public class Mago extends Personaggio implements IntefacciaMago
     }
 
     @Override
-    public boolean eseguiCuraMagica(Personaggio personaggio)
+    public boolean eseguiCuraMagica(Nemico nemico)
     {
-        if (this.numeroMagieDisponibili==0 || (!this.controllaSePersonaggioInVita()))
+        if (this.numeroMagieDisponibili==0 || (!this.controllaSeNemicoInVita()))
             return false;
-        else  if(personaggio.controllaSePersonaggioInVita())
+        else  if(nemico.controllaSeNemicoInVita())
         {
             this.numeroMagieDisponibili--;
-            personaggio.setPuntiVitaPersonaggio(personaggio.getPuntiVitaPersonaggio()+CURA_MAGICA);
+            nemico.setPuntiVitaNemico(nemico.getPuntiVitaNemico()+CURA_MAGICA);
             return true;
         }
         return false;
@@ -70,17 +70,17 @@ public class Mago extends Personaggio implements IntefacciaMago
      * @return (boolean) true, se è ancora vivo (se ha ancora della vita >0).
      * False, altrimenti (se non ha più vita).*/
     @Override
-    public boolean controllaSePersonaggioInVita()
+    public boolean controllaSeNemicoInVita()
     {
-        if (super.getPuntiVitaPersonaggio()==0) /*è morto*/ {return false;}
+        if (super.getPuntiVitaNemico()==0) /*è morto*/ {return false;}
         else /*è in vita*/ return true;
     }
     @Override
     public String toString()
     {
         return "CLASSE MAGO\n"+
-                "NOME: "+super.getNomePersonaggio()+"\n"+
-                "VITA: "+super.getPuntiVitaPersonaggio()+"\n"+
+                "NOME: "+super.getNomeNemico()+"\n"+
+                "VITA: "+super.getPuntiVitaNemico()+"\n"+
                 "MAGIE: "+this.getNumeroMagieDisponibili()+"\n";
     }
     @Override

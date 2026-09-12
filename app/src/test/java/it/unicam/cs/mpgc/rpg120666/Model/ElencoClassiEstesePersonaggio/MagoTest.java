@@ -1,5 +1,7 @@
-package it.unicam.cs.mpgc.rpg120666.Model.Attori;
+package it.unicam.cs.mpgc.rpg120666.Model.ElencoClassiEstesePersonaggio;
 
+import it.unicam.cs.mpgc.rpg120666.Model.Nemico.ElencoClassiEsteseNemico.Guerriero;
+import it.unicam.cs.mpgc.rpg120666.Model.Nemico.ElencoClassiEsteseNemico.Mago;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -29,14 +31,14 @@ public class MagoTest
     @Test
     public void testGetSetNome()
     {
-        assertEquals("Merlino", mag1.getNomePersonaggio());
-        mag1.setNomePersonaggio("Circe");
-        assertEquals("Circe", mag1.getNomePersonaggio());
-        mag2.setNomePersonaggio("Merlino");
-        assertEquals("Merlino", mag2.getNomePersonaggio());
+        assertEquals("Merlino", mag1.getNomeNemico());
+        mag1.setNomeNemico("Circe");
+        assertEquals("Circe", mag1.getNomeNemico());
+        mag2.setNomeNemico("Merlino");
+        assertEquals("Merlino", mag2.getNomeNemico());
         assertThrows(IllegalArgumentException.class, () -> {
-            mag1.setNomePersonaggio("");
-            mag2.setNomePersonaggio("");
+            mag1.setNomeNemico("");
+            mag2.setNomeNemico("");
         });
     }
     @Test
@@ -44,13 +46,13 @@ public class MagoTest
     {
         assertEquals(mag1, mag1);
         assertEquals(mag2, mag2);
-        mag2.setNomePersonaggio("Merlino");
+        mag2.setNomeNemico("Merlino");
         assertEquals(mag1, mag2);
-        mag2.setNomePersonaggio("Circe");
+        mag2.setNomeNemico("Circe");
         assertNotEquals(mag1,mag2);
 
-        mag1.setNomePersonaggio("Circe");
-        mag2.setNomePersonaggio("Circe");
+        mag1.setNomeNemico("Circe");
+        mag2.setNomeNemico("Circe");
 
         mag1.setNumeroMagieDisponibili(1);
         assertNotEquals(mag1,mag2);
@@ -58,9 +60,9 @@ public class MagoTest
         mag2.setNumeroMagieDisponibili(1);
         assertEquals(mag1,mag2);
 
-        mag1.setPuntiVitaPersonaggio(10);
+        mag1.setPuntiVitaNemico(10);
         assertNotEquals(mag1,mag2);
-        mag2.setPuntiVitaPersonaggio(10);
+        mag2.setPuntiVitaNemico(10);
         assertEquals(mag1,mag2);
     }
 
@@ -68,8 +70,8 @@ public class MagoTest
     public void testVitaMaghiEMagie()
     {
         assertThrows(IllegalArgumentException.class, () -> {
-            mag1.setPuntiVitaPersonaggio(-1);
-            mag2.setPuntiVitaPersonaggio(-1);
+            mag1.setPuntiVitaNemico(-1);
+            mag2.setPuntiVitaNemico(-1);
             mag1.setNumeroMagieDisponibili(-1);
         });
 
@@ -86,12 +88,12 @@ public class MagoTest
         assertTrue(mag1.getNumeroMagieDisponibili()==0);
         assertTrue(mag2.getNumeroMagieDisponibili()==0);
 
-        mag1.setPuntiVitaPersonaggio(30);
-        mag2.setPuntiVitaPersonaggio(30);
+        mag1.setPuntiVitaNemico(30);
+        mag2.setPuntiVitaNemico(30);
         mag1.setNumeroMagieDisponibili(10);
         mag2.setNumeroMagieDisponibili(10);
         for(int i=0;i<10;i++) assertTrue(mag1.eseguiAttaccoMagico(mag2));
-        assertFalse(mag2.controllaSePersonaggioInVita());
+        assertFalse(mag2.controllaSeNemicoInVita());
         assertTrue(mag1.getNumeroMagieDisponibili()==0);
 
         assertFalse(mag1.eseguiCuraMagica(mag2)); //Non posso resuscitare i morti!
@@ -104,10 +106,10 @@ public class MagoTest
     {
         Guerriero gue1=new Guerriero("Silla",4,50);
         mag1.eseguiCuraMagica(gue1);
-        assertTrue(gue1.getPuntiVitaPersonaggio()==10);
-        gue1.setPuntiVitaPersonaggio(2);
+        assertTrue(gue1.getPuntiVitaNemico()==10);
+        gue1.setPuntiVitaNemico(2);
         mag1.eseguiAttaccoMagico(gue1);
-        assertFalse(gue1.controllaSePersonaggioInVita());
+        assertFalse(gue1.controllaSeNemicoInVita());
     }
 
     @Test
@@ -119,7 +121,7 @@ public class MagoTest
         assertTrue(s.contains("50"));
         assertFalse(s.contains("Silla"));
 
-        mag1.setPuntiVitaPersonaggio(79);
+        mag1.setPuntiVitaNemico(79);
         String s1 = mag1.toString();
         assertTrue(s1.contains("79"));
     }
