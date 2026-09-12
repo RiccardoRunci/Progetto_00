@@ -21,7 +21,7 @@
  *
  * @author Runci Riccardo.
  * @since versione 0.*/
-package it.unicam.cs.mpgc.rpg120666.Model.Utility;
+package it.unicam.cs.mpgc.rpg120666.Model.Nemico;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Random;

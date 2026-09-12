@@ -6,6 +6,8 @@ import it.unicam.cs.mpgc.rpg120666.Model.Nemico.ElencoClassiEsteseNemico.Mago;
 import it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco.CellaMatrice;
 import it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco.MatriceGioco;
 import it.unicam.cs.mpgc.rpg120666.Model.ElementiPerMatrice.ElementiPerMatrice;
+import it.unicam.cs.mpgc.rpg120666.Model.Oggetto.ElencoClassiEsteseOggetto.Arma;
+import it.unicam.cs.mpgc.rpg120666.Model.Oggetto.ElencoClassiEsteseOggetto.Medikit;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 
@@ -85,7 +87,9 @@ public class MatriceGiocoView
                 {
                     matriceDiLabel[i][j].setText(ogg.toString());
                     if (ogg instanceof Guerriero) { matriceDiLabel[i][j].setStyle("-fx-background-color: red; -fx-border-color: black;"); }
-                    else if (ogg instanceof Mago) { matriceDiLabel[i][j].setStyle("-fx-background-color: blue; -fx-border-color: black"); }
+                    else if (ogg instanceof Mago) { matriceDiLabel[i][j].setStyle("-fx-background-color: blue; -fx-border-color: black;"); }
+                    else if(ogg instanceof Arma) { matriceDiLabel[i][j].setStyle("-fx-background-color: yellow; -fx-border-color: red;"); }
+                    else if (ogg instanceof Medikit) { matriceDiLabel[i][j].setStyle("-fx-background-color: green; -fx-border-color: black;"); }
                 }
             }
     }

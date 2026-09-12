@@ -1,0 +1,10 @@
+Bayer
+Pfizer
+Moderna
+Angelini
+Malboro
+Camel
+LuckyStrike
+Roche
+Sanofi
+AstraZeneca

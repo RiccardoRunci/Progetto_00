@@ -2,8 +2,12 @@ package it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco;
 import it.unicam.cs.mpgc.rpg120666.Model.Nemico.ElencoClassiEsteseNemico.Guerriero;
 import it.unicam.cs.mpgc.rpg120666.Model.Nemico.ElencoClassiEsteseNemico.Mago;
 import it.unicam.cs.mpgc.rpg120666.Model.ElementiPerMatrice.ElementiPerMatrice;
-import it.unicam.cs.mpgc.rpg120666.Model.Utility.EnumListaNemiciGioco;
-import it.unicam.cs.mpgc.rpg120666.Model.Utility.InventoreNomiNemici;
+import it.unicam.cs.mpgc.rpg120666.Model.Nemico.EnumListaNemiciGioco;
+import it.unicam.cs.mpgc.rpg120666.Model.Nemico.InventoreNomiNemici;
+import it.unicam.cs.mpgc.rpg120666.Model.Oggetto.ElencoClassiEsteseOggetto.Arma;
+import it.unicam.cs.mpgc.rpg120666.Model.Oggetto.ElencoClassiEsteseOggetto.Medikit;
+import it.unicam.cs.mpgc.rpg120666.Model.Oggetto.EnumListaOggettiGioco;
+import it.unicam.cs.mpgc.rpg120666.Model.Oggetto.InventoreNomiOggetti;
 
 import java.util.Random;
 
@@ -35,7 +39,7 @@ public class MatriceGioco
             return this.matrice[cella.getX()][cella.getY()];
         else
         {
-            System.out.println("Errore del metodo get della classe MatriceGioco\nStai fuori dalla matrice!\n"); //todo ricordati di levare questo printf quando funziona tutto!
+            //System.out.println("Errore del metodo get della classe MatriceGioco\nStai fuori dalla matrice!\n");
             throw new ArrayIndexOutOfBoundsException("Errore del metodo get della classe MatriceGioco\nStai fuori dalla matrice!\n");
         }
     }
@@ -134,6 +138,24 @@ public class MatriceGioco
          for(int j=0;j<this.numeroOggetti;j++)
          {
                 //todo devo ancora fare le classi che estendono Oggetto!
+             if(j%2==0)
+             {
+                 try
+                 {
+                     char lettera = (char) ('A' + j); //Mi serve per fare "_Lettera" nel nome, non i (perchè ho un controllo sulle cifre nel nome).
+                     pers = new Medikit(InventoreNomiOggetti.ritornaNomeACaso(EnumListaOggettiGioco.MEDIKIT)+"_"+lettera,
+                             generatoreRandom.nextInt(40-5)+1);
+                     this.setOggettoNellaMatrice(pers, this.trovaCellaVuota());
+                 }
+                 catch (Exception e) { throw new RuntimeException(e); }
+             }
+             else
+             {
+                 char lettera = (char) ('A' + j); //Mi serve per fare "_Lettera" nel nome, non i (perchè ho un controllo sulle cifre nel nome).
+                 pers = new Arma(InventoreNomiOggetti.ritornaNomeACaso(EnumListaOggettiGioco.ARMA)+"_"+lettera,
+                         generatoreRandom.nextInt(40-5)+1);
+                 this.setOggettoNellaMatrice(pers, this.trovaCellaVuota());
+             }
          }
 
     }
@@ -184,7 +206,7 @@ public class MatriceGioco
             for (int j = 0; j < this.matrice[i].length; j++)
             {
                 if(this.matrice[i][j]!=null)
-                Mat.append(this.matrice[i][j].toString()+"\t");
+                    Mat.append(this.matrice[i][j].toString()+"\t");
                 else
                     Mat.append("VUOTA\t");
             }

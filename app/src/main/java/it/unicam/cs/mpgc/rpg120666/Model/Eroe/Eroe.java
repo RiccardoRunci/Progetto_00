@@ -12,7 +12,7 @@ public class Eroe implements ElementiPerMatrice
     private int puntiVitaEroe;
     private CellaMatrice cellaPosizioneEroe;
     private ZainoEroe oggettiEroe;
-    private static final int DANNO_DA_FORZA= 15;
+    private int dannoCausato=10;
 
     public Eroe(){}
     public Eroe(String nomeEroe, int puntiVitaEroe,CellaMatrice cellaPosizioneEroe)
@@ -30,6 +30,14 @@ public class Eroe implements ElementiPerMatrice
     public int getPuntiVitaEroe(){ return this.puntiVitaEroe; }
     public ZainoEroe getOggettiEroe() { return this.oggettiEroe; }
     public CellaMatrice getCellaPosizioneEroe() { return this.cellaPosizioneEroe; }
+    public int getDannoCausato() { return this.dannoCausato; }
+    public void setDannoCausato(int dannoCausato)
+    {
+        if(ClasseUtility.verificaNumeriInteri(dannoCausato,EnumControlloCreazioneAggiornamento.AGGIORNAMENTO,"EROE"))
+            this.dannoCausato=dannoCausato;
+        else
+            throw new IllegalArgumentException("parametro: "+dannoCausato+" invalido (classe Eroe,metodo set).");
+    }
     public void setNomeEroe(String nomeEroe)
     {
         if((ClasseUtility.controllaStringa(nomeEroe,"EROE")))
@@ -91,7 +99,7 @@ public class Eroe implements ElementiPerMatrice
     {
         if(nemico!=null)
         {
-            int vitaNemico=nemico.getPuntiVitaNemico()-DANNO_DA_FORZA;
+            int vitaNemico=nemico.getPuntiVitaNemico()-this.getDannoCausato();
             nemico.setPuntiVitaNemico(vitaNemico);
             return true;
         }
@@ -110,5 +118,9 @@ public class Eroe implements ElementiPerMatrice
     public CellaMatrice posizioneCellaEroe()
     {
         return this.getCellaPosizioneEroe();
+    }
+    public boolean controllaSeMorto()
+    { //se è true vuol dire che è morto!
+        return (this.getPuntiVitaEroe()<=0);
     }
 }

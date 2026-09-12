@@ -1,8 +1,8 @@
 package it.unicam.cs.mpgc.rpg120666.Main;
-import it.unicam.cs.mpgc.rpg120666.Model.Utility.InventoreNomiNemici;
-import static it.unicam.cs.mpgc.rpg120666.Model.Utility.EnumListaNemiciGioco.*;
+import it.unicam.cs.mpgc.rpg120666.Model.Nemico.InventoreNomiNemici;
+import static it.unicam.cs.mpgc.rpg120666.Model.Nemico.EnumListaNemiciGioco.*;
 
-public class MainProvaClasseInvetoreNomi
+public class MainProvaClasseInvetoreNomiNemici
 {
     public static void main(String[] args)
     {
