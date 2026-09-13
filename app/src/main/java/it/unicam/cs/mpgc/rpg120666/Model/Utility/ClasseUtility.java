@@ -42,8 +42,8 @@ public abstract class ClasseUtility
      * @return true se il controllo va a buon fine.*/
     public static boolean verificaNumeriInteri (int NumeriInteri, EnumControlloCreazioneAggiornamento fase, String NomeClasse)
     {
-        String s = String.valueOf(NumeriInteri);
-        if(!(s.chars().allMatch(Character::isDigit)) && NumeriInteri>0) return false;
+        /*String s = String.valueOf(NumeriInteri);
+        if(s.chars().anyMatch(Character::isLetter) || NumeriInteri < 0) return false;*/
 
         if(NomeClasse==null || NomeClasse.isEmpty())
             throw new IllegalArgumentException("Attenzione, errore nella classe: " +NomeClasse+"\n"+

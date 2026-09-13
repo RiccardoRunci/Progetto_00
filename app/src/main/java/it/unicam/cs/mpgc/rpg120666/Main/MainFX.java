@@ -2,6 +2,7 @@ package it.unicam.cs.mpgc.rpg120666.Main;
 
 import it.unicam.cs.mpgc.rpg120666.Controller.ManagerTastiera;
 import it.unicam.cs.mpgc.rpg120666.Controller.MatriceGiocoController;
+import it.unicam.cs.mpgc.rpg120666.Model.Difficolta.EnumDifficolta;
 import it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco.EnumDifficoltaGioco;
 import it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco.MatriceGioco;
 import it.unicam.cs.mpgc.rpg120666.View.MatriceGiocoView;
@@ -20,7 +21,7 @@ public class MainFX extends Application
     public void start(Stage palcoscenico) throws Exception
     {
         // 1) MODEL
-        MatriceGioco model = new MatriceGioco(EnumDifficoltaGioco.MEDIA);
+        MatriceGioco model = new MatriceGioco(EnumDifficolta.MEDIA);
 
         // 2) VIEW
         int dimensione = model.getDimensione();

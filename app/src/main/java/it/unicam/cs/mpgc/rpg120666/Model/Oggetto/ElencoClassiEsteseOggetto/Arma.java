@@ -12,9 +12,9 @@ public class Arma extends Oggetto implements InterfacciaArma
     public Arma() { }
     public Arma(String nomeOggetto,int puntiDannoPiu)
     {
-        if(!ClasseUtility.controllaStringa(nomeOggetto,"Medikit"))
+        if(!ClasseUtility.controllaStringa(nomeOggetto,"ARMA"))
             throw new IllegalArgumentException("");
-        if(!ClasseUtility.verificaNumeriInteri(puntiDannoPiu, EnumControlloCreazioneAggiornamento.AGGIORNAMENTO,"ARMA"))
+        if(!ClasseUtility.verificaNumeriInteri(puntiDannoPiu, EnumControlloCreazioneAggiornamento.CREAZIONE,"ARMA"))
             throw new IllegalArgumentException("");
         super(nomeOggetto);
         this.puntiDannoPiu = puntiDannoPiu;

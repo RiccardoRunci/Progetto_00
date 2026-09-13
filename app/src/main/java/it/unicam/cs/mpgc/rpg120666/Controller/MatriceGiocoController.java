@@ -41,22 +41,24 @@ public class MatriceGiocoController
     public void apriFinestraDettagli(int x, int y)
     {
         ElementiPerMatrice ogg = model.getOggettoDellaMatrice(new CellaMatrice(x, y));
+        if(ogg!=null)
+        {
+            VBox root = new VBox(20);
+            root.setStyle("-fx-padding: 20; -fx-alignment: center;");
 
-        VBox root = new VBox(20);
-        root.setStyle("-fx-padding: 20; -fx-alignment: center;");
+            Label titolo = new Label("Dettagli dell'oggetto");
+            titolo.setStyle("-fx-font-size: 20; -fx-font-weight: bold;");
 
-        Label titolo = new Label("Dettagli dell'oggetto");
-        titolo.setStyle("-fx-font-size: 20; -fx-font-weight: bold;");
+            Label contenuto = new Label(ogg.toString());
+            contenuto.setStyle("-fx-font-size: 16;");
 
-        Label contenuto = new Label(ogg.toString());
-        contenuto.setStyle("-fx-font-size: 16;");
+            root.getChildren().addAll(titolo, contenuto);
 
-        root.getChildren().addAll(titolo, contenuto);
-
-        Stage finestra = new Stage();
-        finestra.setTitle("Dettagli cella");
-        finestra.setScene(new Scene(root, 400, 200));
-        finestra.show();
+            Stage finestra = new Stage();
+            finestra.setTitle("Dettagli cella");
+            finestra.setScene(new Scene(root, 400, 200));
+            finestra.show();
+        }
     }
 
     public void muoviSu()

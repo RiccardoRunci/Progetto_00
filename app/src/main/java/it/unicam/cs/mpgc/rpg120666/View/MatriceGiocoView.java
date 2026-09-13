@@ -9,7 +9,9 @@ import it.unicam.cs.mpgc.rpg120666.Model.ElementiPerMatrice.ElementiPerMatrice;
 import it.unicam.cs.mpgc.rpg120666.Model.Oggetto.ElencoClassiEsteseOggetto.Arma;
 import it.unicam.cs.mpgc.rpg120666.Model.Oggetto.ElencoClassiEsteseOggetto.Medikit;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 
 public class MatriceGiocoView
 {
@@ -17,13 +19,19 @@ public class MatriceGiocoView
     private final Label[][] matriceDiLabel;
     private MatriceGiocoController controller;
 
+    private VBox ManagerLayoutVBox;
+    private Label lblNumNemici = new Label("NUMERO NEMICI: ");
+    private Label lblNumOggetti = new Label("NUMERO OGGETTI: ");;
+    private TextField txtNumOggetti= new TextField();
+    private TextField txtNumNemici= new TextField();
+
     /*Metodo get del contenitore GridPane!*/
     public GridPane getGridPane() { return gridPane; }
     /**Costruttore della classe View.*/
     public MatriceGiocoView(int dimensioneMatrice)
     {
-        this.gridPane = new GridPane();
-        this.matriceDiLabel = new Label[dimensioneMatrice][dimensioneMatrice];
+        this.gridPane = new GridPane(); //è il contenitore per la matrice di label
+        this.matriceDiLabel = new Label[dimensioneMatrice][dimensioneMatrice]; //la matrice di label
         if (dimensioneMatrice > 0)
             this.inizializzazioneGraficaMatrice(dimensioneMatrice);
     }

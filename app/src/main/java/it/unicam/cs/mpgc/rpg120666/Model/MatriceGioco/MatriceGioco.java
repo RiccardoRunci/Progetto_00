@@ -1,4 +1,6 @@
 package it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco;
+import it.unicam.cs.mpgc.rpg120666.Model.Difficolta.Difficolta;
+import it.unicam.cs.mpgc.rpg120666.Model.Difficolta.EnumDifficolta;
 import it.unicam.cs.mpgc.rpg120666.Model.Nemico.ElencoClassiEsteseNemico.Guerriero;
 import it.unicam.cs.mpgc.rpg120666.Model.Nemico.ElencoClassiEsteseNemico.Mago;
 import it.unicam.cs.mpgc.rpg120666.Model.ElementiPerMatrice.ElementiPerMatrice;
@@ -8,15 +10,12 @@ import it.unicam.cs.mpgc.rpg120666.Model.Oggetto.ElencoClassiEsteseOggetto.Arma;
 import it.unicam.cs.mpgc.rpg120666.Model.Oggetto.ElencoClassiEsteseOggetto.Medikit;
 import it.unicam.cs.mpgc.rpg120666.Model.Oggetto.EnumListaOggettiGioco;
 import it.unicam.cs.mpgc.rpg120666.Model.Oggetto.InventoreNomiOggetti;
-
 import java.util.Random;
-
-
-
 public class MatriceGioco
 {
     private Random generatoreRandom;
     private int numeroNemici, numeroOggetti;
+    Difficolta diffGioco;
     private static final int CELLE_MATRICE_FACILE = 8; // 16
     private static final int CELLE_MATRICE_MEDIA = 16; //32
     private static final int CELLE_MATRICE_DIFFICILE = 32; //64
@@ -48,19 +47,21 @@ public class MatriceGioco
     {
         return this.matrice.length;
     }
+    public int getNumeroNemici(){ return this.numeroNemici; }
+    public int getNumeroOggetti(){ return this.numeroOggetti; }
     // Costruttore vuoto
     public MatriceGioco() {}
     // Costruttore con difficoltà
-    public MatriceGioco(EnumDifficoltaGioco difficolta)
+    public MatriceGioco(EnumDifficolta difficolta)
     {
-        //this.hashMapNemici_Oggetti = new HashMap<>();
         this.generatoreRandom = new Random();
-        this.matrice = creaMatriceInBaseAllaDifficolta(difficolta);
-        settaNumeroOggettiMatrice(difficolta);
+        this.matrice = creaMatriceInBaseAllaDifficolta(difficolta); //Crea la dimensione della matrice!
+        this.diffGioco=new Difficolta(difficolta); //Crea il numero di nemici e oggetti nella matrice!
+        settaNumeroOggettiMatrice(difficolta);  //Crea il numero di nemici e oggetti nella matrice!
     }
 
     /**Crea la matrice in base alla difficoltà.*/
-    private ElementiPerMatrice[][] creaMatriceInBaseAllaDifficolta(EnumDifficoltaGioco difficolta)
+    private ElementiPerMatrice[][] creaMatriceInBaseAllaDifficolta(EnumDifficolta difficolta)
     {
         return switch (difficolta)
         {
@@ -70,32 +71,14 @@ public class MatriceGioco
         };
     }
     /**Inserisce nemici, oggetti, ecc. in base alla difficoltà.*/
-    private void settaNumeroOggettiMatrice(EnumDifficoltaGioco difficolta)
+    private void settaNumeroOggettiMatrice(EnumDifficolta difficolta)
     {
         switch (difficolta)
         {
-            case FACILE ->
+            case FACILE , MEDIA, DIFFICILE-> //con questo modo ho tolto 17 righe di codice :)
             {
-                // Inserisci pochi nemici
-                this.numeroNemici = this.generatoreRandom.nextInt(CELLE_MATRICE_FACILE/4)+1; //[1,...,4]
-                // Inserisci tanti oggetti
-                this.numeroOggetti = this.generatoreRandom.nextInt(CELLE_MATRICE_FACILE/2)+1; //[1,...,4]
-                this.popolaMatrice();
-            }
-            case MEDIA ->
-            {
-                // Inserisci medi nemici
-                this.numeroNemici = this.generatoreRandom.nextInt(CELLE_MATRICE_MEDIA/3)+1; //[1,...,3 ]
-                // Inserisci medi oggetti
-                this.numeroOggetti=this.numeroNemici; // mi faccio andare bene [1,...,3] anche per gli oggetti!
-                this.popolaMatrice();
-            }
-            case DIFFICILE ->
-            {
-                // Inserisci molti nemici
-                this.numeroNemici = this.generatoreRandom.nextInt(CELLE_MATRICE_DIFFICILE/2)+1; //[1,...,16]
-                // Inserisci pochi oggetti
-                this.numeroOggetti = this.generatoreRandom.nextInt(CELLE_MATRICE_FACILE/4)+1; //[1,...,8]
+                this.numeroNemici = this.diffGioco.getNumNemici();
+                this.numeroOggetti = this.diffGioco.getNumOggetti();
                 this.popolaMatrice();
             }
             default -> { /*Non dovrebbe mai accadere*/ }
