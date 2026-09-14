@@ -1,11 +1,8 @@
 package it.unicam.cs.mpgc.rpg120666.Main;
 
 import it.unicam.cs.mpgc.rpg120666.Controller.MatriceController;
-import it.unicam.cs.mpgc.rpg120666.Controller.MatriceGiocoController;
 import it.unicam.cs.mpgc.rpg120666.Model.Difficolta.EnumDifficolta;
-import it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco.EnumDifficoltaGioco;
 import it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco.MatriceGioco;
-import it.unicam.cs.mpgc.rpg120666.View.MatriceGiocoView;
 import it.unicam.cs.mpgc.rpg120666.View.MatriceView;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -17,7 +14,7 @@ public class MainFx2 extends Application
     public void start(Stage palcoscenico) throws Exception
     {
         // 1) MODEL
-        MatriceGioco model = new MatriceGioco(EnumDifficolta.MEDIA);
+        MatriceGioco model = new MatriceGioco(EnumDifficolta.DIFFICILE);
 
         // 2) VIEW
         int dimensione = model.getDimensione();

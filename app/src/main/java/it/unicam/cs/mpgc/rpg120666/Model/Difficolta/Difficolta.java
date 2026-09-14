@@ -20,7 +20,7 @@ public class Difficolta
             }
             case MEDIA -> {
                 this.livelloDifficolta="MEDIA";
-                this.numNemici=15;
+                this.numNemici=20;
                 this.numOggetti=15;
             }
             case DIFFICILE-> {

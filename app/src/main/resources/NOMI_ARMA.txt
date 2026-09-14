@@ -9,3 +9,11 @@ Bazzuka
 BFG90000
 Doppietta
 Spada
+Ascia
+Mazza
+Falce
+Martello
+Spadone
+Pugnale
+Candelabro
+Arco

@@ -17,7 +17,7 @@ public abstract class ClasseUtility
      * @return (boolean) true se la stringaPassata va bene (non null & non empty).*/
     public static boolean controllaStringa (String stringaPassata, String NomeClasse)
     {
-        if (stringaPassata.chars().anyMatch(Character::isDigit)) return false; // nella è presente almeno un numero!
+
         if(NomeClasse==null || NomeClasse.isEmpty())
             throw new IllegalArgumentException("Attenzione, errore nella classe: " +NomeClasse+"\n"+
                     "la stringa passata: "+NomeClasse+" è null, oppure vuoto;\n");

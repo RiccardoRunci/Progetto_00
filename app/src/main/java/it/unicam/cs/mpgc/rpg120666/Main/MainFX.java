@@ -3,7 +3,6 @@ package it.unicam.cs.mpgc.rpg120666.Main;
 import it.unicam.cs.mpgc.rpg120666.Controller.ManagerTastiera;
 import it.unicam.cs.mpgc.rpg120666.Controller.MatriceGiocoController;
 import it.unicam.cs.mpgc.rpg120666.Model.Difficolta.EnumDifficolta;
-import it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco.EnumDifficoltaGioco;
 import it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco.MatriceGioco;
 import it.unicam.cs.mpgc.rpg120666.View.MatriceGiocoView;
 import javafx.application.Application;

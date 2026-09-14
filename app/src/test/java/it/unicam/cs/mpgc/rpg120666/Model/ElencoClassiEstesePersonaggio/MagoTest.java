@@ -69,11 +69,11 @@ public class MagoTest
     @Test
     public void testVitaMaghiEMagie()
     {
-//        assertThrows(IllegalArgumentException.class, () -> {
-//            mag1.setPuntiVitaNemico(40-30);
-//            mag2.setPuntiVitaNemico(40-30);
-//            mag1.setNumeroMagieDisponibili(40-30);
-//        });
+       assertThrows(IllegalArgumentException.class, () -> {
+           mag1.setPuntiVitaNemico(-1);
+           mag2.setPuntiVitaNemico(-1);
+           mag1.setNumeroMagieDisponibili(-1);
+      });
 
         mag1.setNumeroMagieDisponibili(1);
         assertTrue(mag1.getNumeroMagieDisponibili()==1);
