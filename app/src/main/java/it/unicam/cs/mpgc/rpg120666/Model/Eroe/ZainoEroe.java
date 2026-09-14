@@ -86,14 +86,14 @@ public class ZainoEroe
     public String toString()
     {
         return "OGGETTO ZAINO\n"+
-                "PROPRIETARIO:"+this.eroeProprietarioDelloZaino.toString()+
                 "OGGETTI CONTENUTI:\n"+this.elencaOggettiDelloZainoEroe();
     }
     private String elencaOggettiDelloZainoEroe()
     {
         StringBuilder s=new StringBuilder();
         Iterator<Map.Entry<Oggetto, Integer>> iteratoreMappa = oggettiPosseduti.entrySet().iterator();
-
+        if(this.oggettiPosseduti.isEmpty())
+            return "ZAINO VUOTO!";
         while (iteratoreMappa.hasNext())
         {
             Map.Entry<Oggetto, Integer> entry = iteratoreMappa.next();

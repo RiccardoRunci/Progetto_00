@@ -2,12 +2,16 @@ package it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco;
 import it.unicam.cs.mpgc.rpg120666.Model.Difficolta.Difficolta;
 import it.unicam.cs.mpgc.rpg120666.Model.Difficolta.EnumDifficolta;
 import it.unicam.cs.mpgc.rpg120666.Model.ElementiPerMatrice.ElementiPerMatrice;
+import it.unicam.cs.mpgc.rpg120666.Model.Eroe.Eroe;
+
 import java.util.Random;
 public class MatriceGioco
 {
-    Difficolta diffGioco;
+    private Difficolta diffGioco;
     private Random generatoreRandom;
-    PopolaMatriceNemiciOggetti popolaNemiciOggetti;
+    private PopolaMatriceNemiciOggetti popolaNemiciOggetti;
+    private PopolaMatriceEroe popolaMatriceEroe; //todo
+    private Eroe ilNostroEroe; //todo
     private static final int CELLE_MATRICE_FACILE = 8; // 16
     private static final int CELLE_MATRICE_MEDIA = 16; //32
     private static final int CELLE_MATRICE_DIFFICILE = 32; //64
@@ -16,13 +20,15 @@ public class MatriceGioco
     // Costruttore vuoto
     public MatriceGioco() {}
     // Costruttore con difficoltà
-    public MatriceGioco(EnumDifficolta difficolta)
+    public MatriceGioco(EnumDifficolta difficolta, Eroe IlNostroEroe) //todo
     {
         this.generatoreRandom = new Random();
         this.matrice = creaMatriceInBaseAllaDifficolta(difficolta); //Crea la dimensione della matrice!
         this.diffGioco=new Difficolta(difficolta); //Crea il numero di nemici e oggetti nella matrice!
         this.popolaNemiciOggetti = new PopolaMatriceNemiciOggetti(this,this.diffGioco);
-        //this.popolaNemiciOggetti.settaNumeroOggettiNemiciDellaMatrice(difficolta);
+        this.ilNostroEroe=IlNostroEroe; //todo
+        this.popolaMatriceEroe = new PopolaMatriceEroe(this,this.ilNostroEroe); //todo
+
     }
     /**Crea la matrice in base alla difficoltà.*/
     private ElementiPerMatrice[][] creaMatriceInBaseAllaDifficolta(EnumDifficolta difficolta)
@@ -61,6 +67,7 @@ public class MatriceGioco
     }
     public int getNumeroNemici(){ return this.diffGioco.getNumNemici(); }
     public int getNumeroOggetti(){ return this.diffGioco.getNumOggetti(); }
+
 
     public CellaMatrice trovaCellaVuota()
     {

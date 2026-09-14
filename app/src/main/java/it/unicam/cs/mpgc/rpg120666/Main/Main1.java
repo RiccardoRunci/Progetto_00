@@ -2,6 +2,7 @@ package it.unicam.cs.mpgc.rpg120666.Main;
 
 import it.unicam.cs.mpgc.rpg120666.Controller.ManagerMovimento;
 import it.unicam.cs.mpgc.rpg120666.Model.Difficolta.EnumDifficolta;
+import it.unicam.cs.mpgc.rpg120666.Model.Eroe.Eroe;
 import it.unicam.cs.mpgc.rpg120666.Model.Nemico.ElencoClassiEsteseNemico.Guerriero;
 import it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco.CellaMatrice;
 import it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco.MatriceGioco;
@@ -13,7 +14,8 @@ public class Main1
 
     public static void main(String[] args)
     {
-        MatriceGioco gioco = new MatriceGioco(EnumDifficolta.DIFFICILE);
+        Eroe ilNostroEroe = new Eroe("Riccardo",100);
+        MatriceGioco gioco = new MatriceGioco(EnumDifficolta.DIFFICILE,ilNostroEroe);
         ManagerMovimento manager = new ManagerMovimento(gioco);
         System.out.println(gioco.toString());
 

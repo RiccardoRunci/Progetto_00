@@ -15,15 +15,15 @@ public class Eroe implements ElementiPerMatrice
     private int dannoCausato=10;
 
     public Eroe(){}
-    public Eroe(String nomeEroe, int puntiVitaEroe,CellaMatrice cellaPosizioneEroe)
+    public Eroe(String nomeEroe, int puntiVitaEroe)
     {
         if((ClasseUtility.controllaStringa(nomeEroe,"EROE")) &&
                 (ClasseUtility.verificaNumeriInteri(puntiVitaEroe, EnumControlloCreazioneAggiornamento.CREAZIONE,"EROE")))
                 {
                     this.puntiVitaEroe=puntiVitaEroe;
                     this.nomeEroe = nomeEroe;
-                    this.cellaPosizioneEroe=cellaPosizioneEroe;
-                    this.oggettiEroe=new ZainoEroe(); //CREO LO ZAINO!
+                    //this.cellaPosizioneEroe=cellaPosizioneEroe;
+                    this.oggettiEroe=new ZainoEroe(this); //CREO LO ZAINO!
                 }
     }
     public String getNomeEroe(){ return this.nomeEroe; }

@@ -2,6 +2,7 @@ package it.unicam.cs.mpgc.rpg120666.View;
 
 import it.unicam.cs.mpgc.rpg120666.Controller.MatriceController;
 import it.unicam.cs.mpgc.rpg120666.Model.ElementiPerMatrice.ElementiPerMatrice;
+import it.unicam.cs.mpgc.rpg120666.Model.Eroe.Eroe;
 import it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco.CellaMatrice;
 import it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco.MatriceGioco;
 import it.unicam.cs.mpgc.rpg120666.Model.Nemico.ElencoClassiEsteseNemico.Guerriero;
@@ -99,7 +100,8 @@ public class MatriceView
                     if (ogg instanceof Guerriero) { matriceDiLabel[i][j].setStyle("-fx-background-color: red; -fx-border-color: black;"); }
                     else if (ogg instanceof Mago) { matriceDiLabel[i][j].setStyle("-fx-background-color: blue; -fx-border-color: black;"); }
                     else if(ogg instanceof Arma) { matriceDiLabel[i][j].setStyle("-fx-background-color: yellow; -fx-border-color: red;"); }
-                    else if (ogg instanceof Medikit) { matriceDiLabel[i][j].setStyle("-fx-background-color: green; -fx-border-color: black;"); }
+                    else if (ogg instanceof Medikit) { matriceDiLabel[i][j].setStyle("-fx-background-color: green; -fx-border-color: black;");}
+                    else if (ogg instanceof Eroe) { matriceDiLabel[i][j].setStyle("-fx-background-color: purple; -fx-border-color: black;"); }
                 }
             }
     }

@@ -3,6 +3,7 @@ package it.unicam.cs.mpgc.rpg120666.Main;
 import it.unicam.cs.mpgc.rpg120666.Controller.ManagerTastiera;
 import it.unicam.cs.mpgc.rpg120666.Controller.MatriceGiocoController;
 import it.unicam.cs.mpgc.rpg120666.Model.Difficolta.EnumDifficolta;
+import it.unicam.cs.mpgc.rpg120666.Model.Eroe.Eroe;
 import it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco.MatriceGioco;
 import it.unicam.cs.mpgc.rpg120666.View.MatriceGiocoView;
 import javafx.application.Application;
@@ -19,8 +20,10 @@ public class MainFX extends Application
     @Override
     public void start(Stage palcoscenico) throws Exception
     {
+        //0)Creo L'eroe
+        Eroe ilNostroEroe = new  Eroe("Riccardo",100);
         // 1) MODEL
-        MatriceGioco model = new MatriceGioco(EnumDifficolta.MEDIA);
+        MatriceGioco model = new MatriceGioco(EnumDifficolta.MEDIA,ilNostroEroe);
 
         // 2) VIEW
         int dimensione = model.getDimensione();

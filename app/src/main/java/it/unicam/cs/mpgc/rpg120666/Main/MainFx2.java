@@ -2,6 +2,7 @@ package it.unicam.cs.mpgc.rpg120666.Main;
 
 import it.unicam.cs.mpgc.rpg120666.Controller.MatriceController;
 import it.unicam.cs.mpgc.rpg120666.Model.Difficolta.EnumDifficolta;
+import it.unicam.cs.mpgc.rpg120666.Model.Eroe.Eroe;
 import it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco.MatriceGioco;
 import it.unicam.cs.mpgc.rpg120666.View.MatriceView;
 import javafx.application.Application;
@@ -13,8 +14,10 @@ public class MainFx2 extends Application
     @Override
     public void start(Stage palcoscenico) throws Exception
     {
+        //0 Creo l'EROE!
+        Eroe IlNostroEroe = new Eroe("RICCARDO",50);
         // 1) MODEL
-        MatriceGioco model = new MatriceGioco(EnumDifficolta.DIFFICILE);
+        MatriceGioco model = new MatriceGioco(EnumDifficolta.DIFFICILE,IlNostroEroe);
 
         // 2) VIEW
         int dimensione = model.getDimensione();
