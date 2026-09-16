@@ -1,4 +1,5 @@
 package it.unicam.cs.mpgc.rpg120666.Model.ElencoClassiEstesePersonaggio;
+import it.unicam.cs.mpgc.rpg120666.Model.Eroe.Eroe;
 import it.unicam.cs.mpgc.rpg120666.Model.Nemico.ElencoClassiEsteseNemico.Guerriero;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -82,18 +83,21 @@ public class GuerrieroTest
    @Test
     void testNUM2GeneraleSaluteGuerriero()
     {
-        Gue2.setPuntiVitaNemico(10);
-        Gue1.eseguiAttaccoFisico(Gue2);
-        assertFalse(Gue2.controllaSeNemicoInVita());
+        Eroe e = new Eroe("Riccardo",100);
+        e.setPuntiVitaEroe(10);
+        Gue1.eseguiAttaccoFisico(e);
+        assertTrue(e.controllaSeMorto());
     }
     @Test
     void testNUM3GeneraleSaluteGuerriero()
     {
-        Gue2.setPuntiVitaNemico(20);
-        Gue1.eseguiAttaccoFisico(Gue2);
-        assertTrue(Gue2.controllaSeNemicoInVita());
-        assertTrue(Gue2.getPuntiVitaNemico() == 10);
-        Gue1.eseguiAttaccoFisico(Gue2);
-        assertFalse(Gue2.controllaSeNemicoInVita());
+        Eroe e = new Eroe("Riccardo",100);
+        e.setPuntiVitaEroe(20);
+        Gue1.eseguiAttaccoFisico(e);
+        assertFalse(e.controllaSeMorto());
+
+        assertTrue(e.getPuntiVitaEroe() == 10);
+        Gue1.eseguiAttaccoFisico(e);
+        assertTrue(e.controllaSeMorto());
     }
 }

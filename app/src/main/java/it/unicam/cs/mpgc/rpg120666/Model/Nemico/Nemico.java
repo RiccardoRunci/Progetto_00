@@ -3,6 +3,7 @@
  * @since versione 0.*/
 package it.unicam.cs.mpgc.rpg120666.Model.Nemico;
 import it.unicam.cs.mpgc.rpg120666.Model.ElementiPerMatrice.ElementiPerMatrice;
+import it.unicam.cs.mpgc.rpg120666.Model.Eroe.Eroe;
 import it.unicam.cs.mpgc.rpg120666.Model.Utility.ClasseUtility;
 import it.unicam.cs.mpgc.rpg120666.Model.Utility.EnumControlloCreazioneAggiornamento;
 
@@ -87,6 +88,11 @@ public abstract class Nemico implements ElementiPerMatrice
      * False, altrimenti (se non ha più vita).*/
     public abstract boolean controllaSeNemicoInVita();
 
-    /*TODO: a parte i test, vedi di fare qualcosa per serializzare i personaggi!*/
+    /**Metodo astratto che dovrà essere riscritto in tutte le classi che estenderanno Nemico.
+     * Questo perché magari perché un nemico può attaccare in qualche modo e un altro in un altro.
+     * @return (boolean) true, se l'attacco è andato a buon fine.
+     * False, altrimenti (se l'attacco non è andato a buon fine).
+    public abstract boolean attaccaFisicamente(Eroe e);*/
 
+    /*TODO: a parte i test, vedi di fare qualcosa per serializzare i personaggi!*/
 }

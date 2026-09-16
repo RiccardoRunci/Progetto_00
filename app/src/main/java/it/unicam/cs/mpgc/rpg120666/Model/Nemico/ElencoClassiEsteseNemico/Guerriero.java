@@ -1,4 +1,5 @@
 package it.unicam.cs.mpgc.rpg120666.Model.Nemico.ElencoClassiEsteseNemico;
+import it.unicam.cs.mpgc.rpg120666.Model.Eroe.Eroe;
 import it.unicam.cs.mpgc.rpg120666.Model.Nemico.InterfaccePerNemico.InterfacciaGuerriero;
 import it.unicam.cs.mpgc.rpg120666.Model.Nemico.Nemico;
 import it.unicam.cs.mpgc.rpg120666.Model.Utility.ClasseUtility;
@@ -33,20 +34,20 @@ public class Guerriero extends Nemico implements InterfacciaGuerriero
     }
 
     @Override
-    public boolean eseguiAttaccoFisico(Nemico nemico)
+    public boolean eseguiAttaccoFisico(Eroe eroe)
     {
         //todo ANCHE questo metodo fà più o meno la stessa cosa dei 2 metodi di mago, che vogliamo fare?
-        if(nemico.controllaSeNemicoInVita())
+        if(!eroe.controllaSeMorto()) //se l'eroe è ancora in vita!
         {
-            if(nemico.getPuntiVitaNemico()<=DANNO_DA_FORZA)
-            {  //Colpisco il nemico e muore!
-                nemico.setPuntiVitaNemico(0);
+            if(eroe.getPuntiVitaEroe()<=DANNO_DA_FORZA)
+            {  //Colpisco l'eroe e muore!
+                eroe.setPuntiVitaEroe(0);
                 return true;
             }
             else
             {
-                //Colpisco il nemico e sopravvive!
-                nemico.setPuntiVitaNemico(nemico.getPuntiVitaNemico() - DANNO_DA_FORZA);
+                //Colpisco l'eroe e sopravvive!
+                eroe.setPuntiVitaEroe(eroe.getPuntiVitaEroe() - DANNO_DA_FORZA);
                 return true;
             }
         }

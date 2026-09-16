@@ -24,37 +24,31 @@ public class ManagerIncontroNemiciOggetti
             throw new IllegalArgumentException("Parametro: 'cellaDestinazione' " +"\n"+
                     "passato al metodo: 'controllaIncontroNemicoOggetti', \n" +
                     "della classe: 'ManagerIncontroNemiciOggetti' è NULL!\n");
+        //Prendo l'oggetto contenuto nella matrice e lo salvo in una variabile di tipo ElementiPerMatrice.
+        ElementiPerMatrice elementoIncontrato = this.matriceGioco.getOggettoDellaMatrice(cellaDestinazione);
 
-        /*Se nella matrice, alla cellaDestinazione passata, è presente qualcosa al suo interno,
-        * la salvo in una variabile ElementiPerMatrice (variabile che comprende tutti gli oggetti che può
-        * contenere la matrice, perché tutti gli oggetti contenuti della matrice hanno:
-        * ClasseOggettoMatrice  implements ElementiPerMatrice)*/
-        if(this.matriceGioco.getOggettoDellaMatrice(cellaDestinazione)!=null) //Se dentro la cellaDestinazione c'è qualcosa:
-        {   //Per dichiarare questa variabile ha voluto che inserissi le {...} parentesi!
-            ElementiPerMatrice elementoIncontrato = this.matriceGioco.getOggettoDellaMatrice(cellaDestinazione);
-            if(elementoIncontrato instanceof Oggetto) //Il nostro eroe ha incontrato un oggetto!
-            {
-                this.incontratoOggetto();
-            }
-            if(elementoIncontrato instanceof Nemico) //Il nostro eroe ha incontrato un Nemico!
-            {
-                this.incontratoNemico();
-            }
-            return true; //Ha incontrato qualcosa!
-        }
-        else //cellaDestinazione VUOTA:
-        {
-            return false; //Non c'è nulla!
-        }
-    }
-    private boolean incontratoOggetto()
+        // Caso 1: cella vuota → movimento consentito
+        if (elementoIncontrato == null)
+            return true;
+
+        // Caso 2: oggetto → raccogli → movimento consentito
+        if (elementoIncontrato instanceof Oggetto ogg) //todo instanceof Classe nomeOggetto suggerito dall'IA
+            return incontratoOggetto(ogg);
+
+        // Caso 3: nemico → combatti → movimento dipende dal risultato
+        if (elementoIncontrato instanceof Nemico nem) //todo instanceof Classe nomeOggetto suggerito dall'IA
+            return incontratoNemico(nem);
+
+        return false; //se è successo qualcosa di storto.
+     }
+    private boolean incontratoOggetto(Oggetto ogg)
     {
-
-        return false;
+        return this.ilNostroEroe.prendiOggetto(ogg);
     }
-    private boolean incontratoNemico()
+    private boolean incontratoNemico(Nemico nem)
     {
-
-    return false;
+        //todo implementare un managerCombattimento(Eroe,Nemico)
+        ManagerCombattimentoEroeNemico manCombat= new ManagerCombattimentoEroeNemico(this.ilNostroEroe,nem);
+        return manCombat.combattimento();
     }
 }

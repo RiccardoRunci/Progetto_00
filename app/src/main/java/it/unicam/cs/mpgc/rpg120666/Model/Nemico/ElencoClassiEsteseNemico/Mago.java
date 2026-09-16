@@ -1,4 +1,5 @@
 package it.unicam.cs.mpgc.rpg120666.Model.Nemico.ElencoClassiEsteseNemico;
+import it.unicam.cs.mpgc.rpg120666.Model.Eroe.Eroe;
 import it.unicam.cs.mpgc.rpg120666.Model.Nemico.InterfaccePerNemico.IntefacciaMago;
 import it.unicam.cs.mpgc.rpg120666.Model.Nemico.Nemico;
 import it.unicam.cs.mpgc.rpg120666.Model.Utility.ClasseUtility;
@@ -31,22 +32,22 @@ public class Mago extends Nemico implements IntefacciaMago
     }
 
     @Override
-    public boolean eseguiAttaccoMagico(Nemico nemico)
+    public boolean eseguiAttaccoMagico(Eroe eroe)
     {
         if (this.numeroMagieDisponibili==0 || (!this.controllaSeNemicoInVita()))
         return false;
-        else if(nemico.controllaSeNemicoInVita())
+        else if(!eroe.controllaSeMorto())
         {
-            if(nemico.getPuntiVitaNemico()<=DANNO_DA_MAGIA)
+            if(eroe.getPuntiVitaEroe()<=DANNO_DA_MAGIA)
             {
                 this.numeroMagieDisponibili--;
-                nemico.setPuntiVitaNemico(0);
+                eroe.setPuntiVitaEroe(0);
                 return true;
             }
             else
             {
                 this.numeroMagieDisponibili--;
-                nemico.setPuntiVitaNemico(nemico.getPuntiVitaNemico() - DANNO_DA_MAGIA);
+                eroe.setPuntiVitaEroe(eroe.getPuntiVitaEroe() - DANNO_DA_MAGIA);
                 return true;
             }
         }
@@ -54,17 +55,16 @@ public class Mago extends Nemico implements IntefacciaMago
     }
 
     @Override
-    public boolean eseguiCuraMagica(Nemico nemico)
+    public boolean eseguiAutoCuraMagica()
     {
         if (this.numeroMagieDisponibili==0 || (!this.controllaSeNemicoInVita()))
             return false;
-        else  if(nemico.controllaSeNemicoInVita())
+        else
         {
             this.numeroMagieDisponibili--;
-            nemico.setPuntiVitaNemico(nemico.getPuntiVitaNemico()+CURA_MAGICA);
+            this.setPuntiVitaNemico(this.getPuntiVitaNemico()+CURA_MAGICA);
             return true;
         }
-        return false;
     }
     /**Metodo che serve per vedere se il personaggio ha (o non ha) punti vita.
      * @return (boolean) true, se è ancora vivo (se ha ancora della vita >0).

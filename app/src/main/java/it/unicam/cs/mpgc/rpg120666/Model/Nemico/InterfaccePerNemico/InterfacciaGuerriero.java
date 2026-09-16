@@ -1,8 +1,8 @@
 package it.unicam.cs.mpgc.rpg120666.Model.Nemico.InterfaccePerNemico;
-import it.unicam.cs.mpgc.rpg120666.Model.Nemico.Nemico;
+import it.unicam.cs.mpgc.rpg120666.Model.Eroe.Eroe;
 
 public interface InterfacciaGuerriero
 {
-   public boolean eseguiAttaccoFisico(Nemico nemico);
+   public boolean eseguiAttaccoFisico(Eroe eroe);
 
 }
