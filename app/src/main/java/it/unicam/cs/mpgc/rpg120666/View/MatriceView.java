@@ -61,9 +61,9 @@ public class MatriceView
     }
     private void costruisciMatrice()
     {
-        for (int x = 0; x < this.dimensioneMatrice; x++)
+        for (int col = 0; col < this.dimensioneMatrice; col++)
         {
-            for (int y = 0; y < this.dimensioneMatrice; y++)
+            for (int row  = 0; row  < this.dimensioneMatrice; row++)
             {
 
                 Label cella = new Label();
@@ -71,17 +71,20 @@ public class MatriceView
                 cella.setMaxSize(20, 20);
                 cella.setStyle("-fx-border-color: black; -fx-alignment: center;");
 
-                final int fx = x;
-                final int fy = y;
-                cella.setOnMouseClicked(e -> this.matriceController.cellaCliccata(fx, fy));
-
-                this.matriceDiLabel[x][y] = cella;
-                this.ManagerGridPaneMatrice.add(cella, x, y);
+                final int fColonna = col;
+                final int fRiga = row;
+                cella.setOnMouseClicked(e -> this.matriceController.cellaCliccata(fRiga, fColonna));
+                /**@Documented L'IA mi ha detto che il metodo .add di GridPane prende prima l'elemento da mettere,
+                 * poi (differentemente da come siamo abituati a scorrere le matrici) la colonna e dopo la riga!*/
+                this.matriceDiLabel[col][row] = cella;
+                this.ManagerGridPaneMatrice.add(cella, col, row);
             }
         }
     }
     public void aggiorna(MatriceGioco matriceModel)
     {
+        /**todo i rinominala in COLONNA
+         * j rinominala in RIGA*/
         int dim = this.matriceDiLabel.length;
         ElementiPerMatrice ogg;
         for (int i = 0; i < dim; i++)

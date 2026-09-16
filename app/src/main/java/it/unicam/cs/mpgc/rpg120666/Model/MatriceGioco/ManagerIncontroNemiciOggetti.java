@@ -47,7 +47,6 @@ public class ManagerIncontroNemiciOggetti
     }
     private boolean incontratoNemico(Nemico nem)
     {
-        //todo implementare un managerCombattimento(Eroe,Nemico)
         ManagerCombattimentoEroeNemico manCombat= new ManagerCombattimentoEroeNemico(this.ilNostroEroe,nem);
         return manCombat.combattimento();
     }

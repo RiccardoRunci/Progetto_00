@@ -28,10 +28,11 @@ public class MatriceController
     {
 
     }
-    public void cellaCliccata(int x, int y)
+    public void cellaCliccata(int riga,int colonna)
     {
-        System.out.println("Hai cliccato la cella: " + x + "," + y);
-        ElementiPerMatrice ogg = this.matriceModel.getOggettoDellaMatrice(new CellaMatrice(x, y));
+        /**@Document IA mi ha detto che il GridPane.add vuole prima la colonna poi la riga!*/
+        System.out.println("Hai cliccato la cella: " + riga + "," +colonna);
+        ElementiPerMatrice ogg = this.matriceModel.getOggettoDellaMatrice(new CellaMatrice(colonna, riga));
         if (ogg == null) { System.out.println("Cella vuota."); }
         else { System.out.println("Contenuto della cella: \n" + ogg.toString()); }
         this.matriceView.aggiorna(matriceModel);

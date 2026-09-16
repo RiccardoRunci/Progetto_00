@@ -33,18 +33,39 @@ public class ManagerCombattimentoEroeNemico
             if (this.ilNemico instanceof Guerriero g)
             {
                 g.eseguiAttaccoFisico(ilNostroEroe);
-                if (ilNostroEroe.controllaSeMorto()) return false;
+                System.out.println("Il guerriero ha attaccato il nostro eroe!\n");
+                if (ilNostroEroe.controllaSeMorto())
+                {
+                    System.out.println("Il Nostro eroe e' morto!\n");
+                    return false;
+                }
                 ilNostroEroe.attaccaFisicamente(g);
-                if (!g.controllaSeNemicoInVita()) return true;
+                System.out.println("Il nostro eroe ha attaccato il guerriero!\n");
+                if (!g.controllaSeNemicoInVita())
+                {
+                    System.out.println("Il Nostro eroe ha vinto contro il guerriero!\n");
+                    return true;
+                }
 
             }
             else if (this.ilNemico instanceof Mago m)
             {
                 m.eseguiAttaccoMagico(ilNostroEroe);
-                if (ilNostroEroe.controllaSeMorto()) return false;
+                System.out.println("Il mago ha attaccato il nostro eroe!\n");
+                if (ilNostroEroe.controllaSeMorto())
+                {
+                    System.out.println("Il nostro eroe è morto!\n");
+                    return false;
+                }
                 ilNostroEroe.attaccaFisicamente(m);
-                if (!m.controllaSeNemicoInVita()) return true;
+                System.out.println("Il nostro eroe ha attaccato il mago!\n");
+                if (!m.controllaSeNemicoInVita())
+                {
+                    System.out.println("Il nostro eroe ha vinto la battaglia contro il mago!\n");
+                    return true;
+                }
                 m.eseguiAutoCuraMagica(); //il mago si può ricaricare la vita!
+                System.out.println("Il mago ha usato una magia per ricaricarsi la vita!\n");
             }
         }
         return false; //se succede un imprevisto!

@@ -45,7 +45,7 @@ public class MatriceGioco
     {
         if (this.controllaConfiniMatrice(cella) && oggetto!=null /*&& oggetto instanceof ElementiPerMatrice*/ )
         {   //true se sto dentro i confini:
-            this.matrice[cella.getX()][cella.getY()] = oggetto;
+            this.matrice[cella.getRiga()][cella.getColonna()] = oggetto;
             //this.hashMapNemici_Oggetti.put(cella, oggetto);
         }
     }
@@ -53,7 +53,7 @@ public class MatriceGioco
     public ElementiPerMatrice getOggettoDellaMatrice(CellaMatrice cella)
     {
         if(this.controllaConfiniMatrice(cella)) //se è true sto dentro la matrice!
-            return this.matrice[cella.getX()][cella.getY()];
+            return this.matrice[cella.getRiga()][cella.getColonna()];
         else
         {
             //System.out.println("Errore del metodo get della classe MatriceGioco\nStai fuori dalla matrice!\n");
@@ -93,7 +93,7 @@ public class MatriceGioco
 
     public boolean controllaConfiniMatrice(CellaMatrice cella)
     {
-        if(cella.getX()<0 || cella.getX()>this.matrice.length-1 || cella.getY()<0 || cella.getY()>this.matrice.length-1)
+        if(cella.getRiga()<0 || cella.getColonna()>this.matrice.length-1 || cella.getColonna()<0 || cella.getColonna()>this.matrice.length-1)
         {
             System.out.print("Fuori dai confini della matrice!"); //todo eliminare questo system.out appena vedo che è corretto!
             return false; //false = fuori dai confini della matrice!
