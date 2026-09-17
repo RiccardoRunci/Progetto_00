@@ -88,11 +88,11 @@ public abstract class Nemico implements ElementiPerMatrice
      * False, altrimenti (se non ha più vita).*/
     public abstract boolean controllaSeNemicoInVita();
 
-    /**Metodo astratto che dovrà essere riscritto in tutte le classi che estenderanno Nemico.
-     * Questo perché magari perché un nemico può attaccare in qualche modo e un altro in un altro.
-     * @return (boolean) true, se l'attacco è andato a buon fine.
-     * False, altrimenti (se l'attacco non è andato a buon fine).
-    public abstract boolean attaccaFisicamente(Eroe e);*/
+    /**Metodo che ammazza il nemico!*/
+    public void setMorto()
+    {
+        this.setPuntiVitaNemico(0);
+    }
 
     /*TODO: a parte i test, vedi di fare qualcosa per serializzare i personaggi!*/
 }

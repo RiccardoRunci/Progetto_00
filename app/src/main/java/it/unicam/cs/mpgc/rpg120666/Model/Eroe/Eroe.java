@@ -100,8 +100,17 @@ public class Eroe implements ElementiPerMatrice
         if(nemico!=null)
         {
             int vitaNemico=nemico.getPuntiVitaNemico()-this.getDannoCausato();
-            nemico.setPuntiVitaNemico(vitaNemico);
-            return true;
+            if(vitaNemico<=0)
+            {
+                nemico.setMorto();
+                return true;
+            }
+            else
+            {
+                nemico.setPuntiVitaNemico(vitaNemico);
+                return true;
+            }
+
         }
         else
             throw new NullPointerException("Nemico passato come parametro al metodo attacca di eroe nullo");

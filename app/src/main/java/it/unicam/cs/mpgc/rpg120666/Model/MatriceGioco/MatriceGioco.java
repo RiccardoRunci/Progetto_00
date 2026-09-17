@@ -67,7 +67,8 @@ public class MatriceGioco
     }
     public int getNumeroNemici(){ return this.diffGioco.getNumNemici(); }
     public int getNumeroOggetti(){ return this.diffGioco.getNumOggetti(); }
-
+    public Eroe getIlNostroEroe(){ return this.ilNostroEroe; }
+    public ElementiPerMatrice[][] getMatriceElementi() { return this.matrice; }
 
     public CellaMatrice trovaCellaVuota()
     {

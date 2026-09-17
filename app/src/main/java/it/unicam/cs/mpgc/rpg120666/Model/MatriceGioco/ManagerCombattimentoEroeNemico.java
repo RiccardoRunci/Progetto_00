@@ -44,9 +44,9 @@ public class ManagerCombattimentoEroeNemico
                 if (!g.controllaSeNemicoInVita())
                 {
                     System.out.println("Il Nostro eroe ha vinto contro il guerriero!\n");
+                    g=null; //Funzionerà????
                     return true;
                 }
-
             }
             else if (this.ilNemico instanceof Mago m)
             {
@@ -62,6 +62,7 @@ public class ManagerCombattimentoEroeNemico
                 if (!m.controllaSeNemicoInVita())
                 {
                     System.out.println("Il nostro eroe ha vinto la battaglia contro il mago!\n");
+                    m=null; //Funzionerà?
                     return true;
                 }
                 m.eseguiAutoCuraMagica(); //il mago si può ricaricare la vita!
