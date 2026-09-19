@@ -1,6 +1,8 @@
 package it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco;
+import it.unicam.cs.mpgc.rpg120666.Model.ElementiPerMatrice.ElementiPerMatrice;
 import it.unicam.cs.mpgc.rpg120666.Model.Eroe.Eroe;
-
+import it.unicam.cs.mpgc.rpg120666.Model.Nemico.Nemico;
+import it.unicam.cs.mpgc.rpg120666.Model.Oggetto.Oggetto;
 public class ManagerSpostamentoEroe
 {
     private Eroe ilNostroEroe;
@@ -45,15 +47,54 @@ public class ManagerSpostamentoEroe
             this.matriceGioco.setOggettoNellaMatrice(this.ilNostroEroe, cellaDestinazione);
             //E devo spostare L'Eroe dentro la cella di destinazione!
             this.ilNostroEroe.setCellaPosizioneEroe(cellaDestinazione);
-            System.out.println("ORA IL NOSTRO EROE\n" + //todo TOGLI QUESTO PRINTF quando 6 convinto che funziona!
-                    "SI TROVA NELLA NUOVA CELLA: " + cellaDestinazione.toString());
-            return true;
+
+            this.stampaMatriceCLI();
+           return true;
         }
         else
         {
             //todo TOGLI QUESTO PRINTF quando 6 convinto che funziona!
             System.out.println("Per qualche motivo il nostro eroe non si è riuscito a muovere dalla cella di partenza.\n");
             return false;
+        }
+    }
+    /**@Deprecated Metodo per "debug". Mi serviva per vedere come si comportava la matrice della classe MatriceGioco.
+     * Avevo un "bug" nel metodo setOggettoNellaMatrice(ElementiPerMatrice oggetto, CellaMatrice cella).
+     * Facevo un controllo (oggetto!=null) -> NON SI POTEVA!
+     * Invece la vecchia posizione dell'eroe (quella che doveva essere cancellata), veniva passata come null e quindi
+     * non si cancellava.
+     * Dato che sono riuscito a risolvere un bug che copilot non riusciva a risolvermi, sono rimasto affezionato e ho
+     * tenuto il metodo.*/
+    @Deprecated
+    private void stampaMatriceCLI()
+    {
+        /**Voglio controllare cosa succede:*/
+        ElementiPerMatrice[][] Matr =this.matriceGioco.getMatriceElementi();
+        ElementiPerMatrice element;
+        for(int riga=0; riga<this.matriceGioco.getMatriceElementi().length; riga++)
+        {
+            for (int colonna = 0; colonna < this.matriceGioco.getMatriceElementi().length; colonna++)
+            {
+                element= Matr[riga][colonna];
+                if (element==null)
+                {
+                    //System.out.print("[R:"+riga+"]"+"[C:"+colonna+"] = Vuota\t");
+                    System.out.print("-\t");
+                }
+                else
+                {
+                    if(element instanceof Nemico)
+                        //System.out.print("[R:"+riga+"]"+"[C:"+colonna+"] = Nemico\t");
+                        System.out.print("N\t");
+                    else if(element instanceof Oggetto)
+                        //System.out.print("[R:"+riga+"]"+"[C:"+colonna+"] = Oggetto\t");
+                        System.out.print("O\t");
+                    else if (element instanceof Eroe)
+                        //System.out.print("[R:"+riga+"]"+"[C:"+colonna+"] = Eroe\t");
+                        System.out.print("E\t");
+                }
+            }
+            System.out.print("\n");
         }
     }
 }

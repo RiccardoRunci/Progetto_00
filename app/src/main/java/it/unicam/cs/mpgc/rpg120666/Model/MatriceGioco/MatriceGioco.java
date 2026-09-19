@@ -43,7 +43,10 @@ public class MatriceGioco
     //Metodo set:
     public void setOggettoNellaMatrice(ElementiPerMatrice oggetto, CellaMatrice cella)
     {
-        if (this.controllaConfiniMatrice(cella) && oggetto!=null /*&& oggetto instanceof ElementiPerMatrice*/ )
+        /*Ho dovuto levare il controllo di "oggetto!=null" perchè quando vado a spostare l'eroe in una nuova
+        * cella, per forza devo passare null a questo metodo, per far mettere null nella vecchia cella dove stava
+        * l'eroe, prima che va nella nuova posizione!*/
+        if (this.controllaConfiniMatrice(cella) /*&& oggetto!=null*/ /*&& oggetto instanceof ElementiPerMatrice*/ )
         {   //true se sto dentro i confini:
             this.matrice[cella.getRiga()][cella.getColonna()] = oggetto;
             //this.hashMapNemici_Oggetti.put(cella, oggetto);

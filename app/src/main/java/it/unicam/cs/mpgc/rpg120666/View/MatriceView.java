@@ -108,30 +108,36 @@ public class MatriceView
     }
     public void aggiorna(ElementiPerMatrice[][] matriceElementi)
     {
-       /**Questa è una matrice "classica" ma di Label.
-        * Matrice[riga][colonna]*/
+        this.ManagerGridPaneMatrice.getChildren().clear();
+
         int dim = this.matriceDiLabel.length;
-        ElementiPerMatrice ogg;
+
         for (int rig = 0; rig < dim; rig++)
             for (int col = 0; col < dim; col++)
             {
-                ogg = matriceElementi[rig][col];
+                ElementiPerMatrice ogg = matriceElementi[rig][col];
+
+                Label lbl = matriceDiLabel[rig][col];
 
                 if (ogg == null)
                 {
-                    matriceDiLabel[rig][col].setText("Vuota");
-                    matriceDiLabel[rig][col].setStyle("-fx-background-color: lightgray; -fx-border-color: black;");
+                    lbl.setText("Vuota");
+                    lbl.setStyle("-fx-background-color: lightgray; -fx-border-color: black;");
                 }
                 else
                 {
-                    matriceDiLabel[rig][col].setText(ogg.toString());
-                    if (ogg instanceof Guerriero) { matriceDiLabel[rig][col].setStyle("-fx-background-color: red; -fx-border-color: black;"); }
-                    else if (ogg instanceof Mago) { matriceDiLabel[rig][col].setStyle("-fx-background-color: blue; -fx-border-color: black;"); }
-                    else if(ogg instanceof Arma) { matriceDiLabel[rig][col].setStyle("-fx-background-color: yellow; -fx-border-color: red;"); }
-                    else if (ogg instanceof Medikit) { matriceDiLabel[rig][col].setStyle("-fx-background-color: green; -fx-border-color: black;");}
-                    else if (ogg instanceof Eroe) { matriceDiLabel[rig][col].setStyle("-fx-background-color: purple; -fx-border-color: black;"); }
+                    lbl.setText(ogg.toString());
+
+                    if (ogg instanceof Guerriero) lbl.setStyle("-fx-background-color: red; -fx-border-color: black;");
+                    else if (ogg instanceof Mago) lbl.setStyle("-fx-background-color: blue; -fx-border-color: black;");
+                    else if (ogg instanceof Arma) lbl.setStyle("-fx-background-color: yellow; -fx-border-color: red;");
+                    else if (ogg instanceof Medikit) lbl.setStyle("-fx-background-color: green; -fx-border-color: black;");
+                    else if (ogg instanceof Eroe) lbl.setStyle("-fx-background-color: purple; -fx-border-color: black;");
                 }
+
+                this.ManagerGridPaneMatrice.add(lbl, col, rig);
             }
+
         this.scorriMatriceContaNemiciOggetti(matriceElementi);
     }
     /**Metodi set e get di tutti i componenti grafici!*/
@@ -193,9 +199,4 @@ public class MatriceView
         this.txtNumNemici.setText(""+contatoreNemici);
         this.txtNumOggetti.setText(""+contatoreOggetti);
     }
-//    public void rimuoviElemento(int riga,int colonna)
-//    {
-//        //this.matriceDiLabel[riga][colonna]=null;
-//        this.ManagerGridPaneMatrice.add(null, colonna, riga);
-//    }
 }

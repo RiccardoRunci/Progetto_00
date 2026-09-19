@@ -49,8 +49,7 @@ public class MatriceController
         int col = Integer.parseInt(colonna);
         if(this.managerSpostamentoEroe.spostaIlNostroEroe(new CellaMatrice(row,col)))
             //this.matriceView.rimuoviElemento(row,col);
-
-        this.matriceView.aggiorna(this.matriceModel.getMatriceElementi());
+            this.matriceView.aggiorna(this.matriceModel.getMatriceElementi());
     }
     public void cellaCliccata(int riga,int colonna)
     {
