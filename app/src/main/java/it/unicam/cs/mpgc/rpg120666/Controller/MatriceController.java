@@ -4,16 +4,30 @@ import it.unicam.cs.mpgc.rpg120666.Model.Eroe.Eroe;
 import it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco.CellaMatrice;
 import it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco.ManagerSpostamentoEroe;
 import it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco.MatriceGioco;
+import it.unicam.cs.mpgc.rpg120666.View.EroeView;
 import it.unicam.cs.mpgc.rpg120666.View.MatriceView;
+import it.unicam.cs.mpgc.rpg120666.View.SpostamentoEroeView;
 
 public class MatriceController
 {
     private MatriceView matriceView;
     private MatriceGioco matriceModel;
     private ManagerSpostamentoEroe managerSpostamentoEroe;
+
+    private SpostamentoEroeView  spostamentoEroeView;
+    private EroeView eroeView;
+
     private Eroe ilNostroEroe;
     public MatriceController(MatriceView matriceView, MatriceGioco matriceModel)
     {
+         /*ERRORE! DEVO PRENDERE gli oggetti spostamentoEroeView e eroeView
+         * che sono contenuti all'interno di matriceView!
+         * NON DEVO FARNE 2 NUOVI!
+         * NO ---> this.spostamentoEroeView = new SpostamentoEroeView();
+         * NO ---> this.eroeView = new EroeView(); */
+        this.spostamentoEroeView = matriceView.getSpostamentoEroeView(); //SI
+        this.eroeView = matriceView.getEroeView(); //SI
+
         this.matriceView = matriceView;
         this.matriceModel = matriceModel;
         this.ilNostroEroe = this.matriceModel.getIlNostroEroe();
@@ -23,7 +37,10 @@ public class MatriceController
         matriceView.getBtnIndietro().setOnAction(e -> tornaAllaSchermataPrecedente());
         matriceView.getTxtNumOggetti().setText(""+matriceModel.getNumeroOggetti());
         matriceView.getTxtNumNemici().setText(""+matriceModel.getNumeroNemici());
-        matriceView.getBtnMandaEroeAllaCasella().setOnAction(e ->spostaEroe(matriceView.getTxtRigaMatrice().getText(), matriceView.getTxtColonnaMatrice().getText()));
+        spostamentoEroeView.getBtnMandaEroeAllaCasella().setOnAction(
+           e ->spostaEroe(spostamentoEroeView.getTxtRigaMatrice().getText(), spostamentoEroeView.getTxtColonnaMatrice().getText())
+        );
+
         // @Author copilot REGISTRAZIONE EVENTO (per far funzionare il click alla label del view e non importare il controller nella view).
         matriceView.setCellaClickListener((riga, colonna) -> {
             cellaCliccata(riga, colonna);
@@ -34,8 +51,8 @@ public class MatriceController
     {
         matriceView.getTxtNumNemici().clear();
         matriceView.getTxtNumOggetti().clear();
-        matriceView.getTxtColonnaMatrice().clear();
-        matriceView.getTxtRigaMatrice().clear();
+        spostamentoEroeView.getTxtColonnaMatrice().clear();
+        spostamentoEroeView.getTxtRigaMatrice().clear();
     }
     private void tornaAllaSchermataPrecedente()
     {
@@ -43,13 +60,18 @@ public class MatriceController
     }
     private void spostaEroe(String riga,String colonna)
     {
+        this.eroeView.getTxtVitaEroe().setText(String.valueOf(ilNostroEroe.getPuntiVitaEroe()));
         System.out.println("VUOI SPOSTARE L'EROE ALLA\n"+
             "Riga: "+riga+"\n"+"Colonna: "+colonna+"\n");
         int row = Integer.parseInt(riga);
         int col = Integer.parseInt(colonna);
         if(this.managerSpostamentoEroe.spostaIlNostroEroe(new CellaMatrice(row,col)))
+        {
             //this.matriceView.rimuoviElemento(row,col);
             this.matriceView.aggiorna(this.matriceModel.getMatriceElementi());
+        }
+        /*Devo metterlo fuori dall'if. Perchè se no me lo aggiorna solo quando l'eroe si riesce a muovere!*/
+        this.eroeView.getTxtVitaEroe().setText(String.valueOf(ilNostroEroe.getPuntiVitaEroe()));
     }
     public void cellaCliccata(int riga,int colonna)
     {

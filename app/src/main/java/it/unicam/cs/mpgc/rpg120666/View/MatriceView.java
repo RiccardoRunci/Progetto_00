@@ -26,17 +26,17 @@ public class MatriceView
     private Button btnIndietro = new Button("<-INDIETRO");
     private Button btnReset = new Button("RESET");
     private int dimensioneMatrice; //Me la potevo risparmiare!?!?!
-    /**Componenti grafici per far muovere tra le celle il nostro eroe!*/
-    private HBox riga1 = new HBox(10);
-    private HBox riga2 = new HBox(10);
-    private HBox riga3 = new HBox(10);
-    private Label lblCoordinateRiga=new Label("Vai a RIGA:   ");
-    private TextField txtRigaMatrice= new TextField("");
-    private Label lblCoordinateColonna=new Label("Vai a COLONNA:");
-    private TextField txtColonnaMatrice= new TextField("");
-    private Button btnMandaEroeAllaCasella = new Button("VAI!");
+
     private Label[][] matriceDiLabel;
     private GridPane ManagerGridPaneMatrice;
+
+    /**Per 'snellire' il codice di questa classe, ho creato altre classi view che si 'appoggiano'  su di qusta.
+     * In modo tale di avere (ad esempio):
+     * la classe vistaEroe con solo i componenti grafici che servono a visualizzare la vita dell'Eroe.
+     * Oppure, ho creato, vistaSpostamentoEroe la quale ha solo i componenti (bottoni, label, ecc...).
+     * I quali servono per Muovere il nostro eroe all'interno della matrice!*/
+    private EroeView vistaEroe;
+    private SpostamentoEroeView vistaSpostamentoEroe;
 
 
     /**@Autor Copilot, creo una variabile di tipo interfaccia CellaClickListener,
@@ -47,7 +47,11 @@ public class MatriceView
     /**Metodo Costruttore:*/
     public MatriceView(int dimensioneMatrice)
     {
-        /*this.matriceController = matriceController; GRANDE ERROE!!!!*/
+        /**Le 2 classi 'snellenti'(vedi sopra) di gui per i vari pezzi di questa Finestra.
+         * Nel controller però bisogna prenderli con i metodi set da questa classe.*/
+        this.vistaEroe = new EroeView();
+        this.vistaSpostamentoEroe= new SpostamentoEroeView();
+
         this.ManagerLayoutTotale = new VBox(10);
         this.ManagerGridPaneMatrice = new GridPane();
 
@@ -58,24 +62,15 @@ public class MatriceView
             this.costruisciMatrice();
         }
 
-        //Componenti per far muovere il nostro eroe dentro 3 Hbox (riga1,riga2,riga3).
-        this.riga1.setAlignment(Pos.CENTER_LEFT);
-        this.riga1.getChildren().addAll(lblCoordinateRiga, txtRigaMatrice);
-        this.riga2.setAlignment(Pos.CENTER_LEFT);
-        this.riga2.getChildren().addAll(lblCoordinateColonna, txtColonnaMatrice);
-        this.riga3.setAlignment(Pos.CENTER_LEFT);
-        this.riga3.getChildren().add(btnMandaEroeAllaCasella);
-
-        //Aggiungo tutti i componenti al manager totale (ossia il Vbox)!
+          //Aggiungo tutti i componenti al manager totale (ossia il Vbox)!
           ManagerLayoutTotale.getChildren().addAll(
                 ManagerGridPaneMatrice,
                 lblNumNemici, txtNumNemici,
                 lblNumOggetti, txtNumOggetti,
                 btnReset,
                 btnIndietro,
-                  riga1,
-                  riga2,
-                  riga3
+                  this.vistaSpostamentoEroe.getLayoutTotale(), //la classe di componenti gui per spostare l'eroe.
+                  this.vistaEroe.getLayotVistaEroe() //la classe di componenti gui per vedere la vita dell'eroe.
        );
     }
     private void costruisciMatrice()
@@ -91,7 +86,7 @@ public class MatriceView
                 cella.setMinSize(20, 20);
                 cella.setMaxSize(20, 20);
                 cella.setStyle("-fx-border-color: black; -fx-alignment: center;");
-                /**@documented
+                /**@documented Metodo: 'cella.setOnMouseClicked'.
                  * @Author copilot: */
                 cella.setOnMouseClicked(e -> {
                     if (cellaClickListener != null) {
@@ -155,11 +150,11 @@ public class MatriceView
     public void setBtnReset(Button btnReset) { this.btnReset=btnReset; }
     public int getDimensioneMatrice() { return this.dimensioneMatrice; }
     public Label[][] getMatriceDiLabel() { return this.matriceDiLabel; }
-    public void setTxtRigaMatrice(TextField txtRigaMatrice) { this.txtRigaMatrice=txtRigaMatrice; }
-    public void setTxtColonnaMatrice(TextField txtColonnaMatrice) {this.txtColonnaMatrice=txtColonnaMatrice; }
-    public TextField getTxtRigaMatrice(){ return this.txtRigaMatrice;}
-    public TextField getTxtColonnaMatrice(){ return this.txtColonnaMatrice; }
-    public Button getBtnMandaEroeAllaCasella(){ return this.btnMandaEroeAllaCasella; }
+    public EroeView getEroeView() { return this.vistaEroe; }
+    public SpostamentoEroeView getSpostamentoEroeView () {return this.vistaSpostamentoEroe; }
+
+    //public void setTextVitaEroeInLayoutEroe(int txtVitaEroe){ this.vistaEroe.getTxtVitaEroe().setText(String.valueOf(txtVitaEroe)); }
+
     /**@autor copilot, metodo set dell'attributo cellaClickListener.*/
     public void setCellaClickListener(CellaClickListener listener)
     {
