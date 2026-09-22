@@ -3,6 +3,8 @@ import it.unicam.cs.mpgc.rpg120666.Model.Difficolta.Difficolta;
 import it.unicam.cs.mpgc.rpg120666.Model.Difficolta.EnumDifficolta;
 import it.unicam.cs.mpgc.rpg120666.Model.ElementiPerMatrice.ElementiPerMatrice;
 import it.unicam.cs.mpgc.rpg120666.Model.Eroe.Eroe;
+import it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco.Popolamento.PopolaMatriceEroe;
+import it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco.Popolamento.PopolaMatriceNemiciOggetti;
 
 import java.util.Random;
 public class MatriceGioco

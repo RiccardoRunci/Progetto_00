@@ -2,6 +2,8 @@ package it.unicam.cs.mpgc.rpg120666.Model.Eroe;
 import it.unicam.cs.mpgc.rpg120666.Model.ElementiPerMatrice.ElementiPerMatrice;
 import it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco.CellaMatrice;
 import it.unicam.cs.mpgc.rpg120666.Model.Nemico.Nemico;
+import it.unicam.cs.mpgc.rpg120666.Model.Oggetto.ElencoClassiEsteseOggetto.Arma;
+import it.unicam.cs.mpgc.rpg120666.Model.Oggetto.ElencoClassiEsteseOggetto.Medikit;
 import it.unicam.cs.mpgc.rpg120666.Model.Oggetto.Oggetto;
 import it.unicam.cs.mpgc.rpg120666.Model.Utility.ClasseUtility;
 import it.unicam.cs.mpgc.rpg120666.Model.Utility.EnumControlloCreazioneAggiornamento;
@@ -121,6 +123,19 @@ public class Eroe implements ElementiPerMatrice
         return (this.oggettiEroe.aggiungiOggettoNelloZaino(oggetto));
         //true se l'eroe ha preso l'oggetto, false se non l'ha preso!
     }
+  public boolean usaOggetto(Oggetto oggetto)
+  {
+      //Non credo sia necessario fare il controllo oggetto!=null perché viene fatto dallo zaino!
+      if(oggetto instanceof Arma a)
+      {
+          a.intensificaDanno(this);
+      }
+      else if (oggetto instanceof Medikit m)
+      {
+         return(m.usaMedikit(this));
+      }
+      return false; //in caso qualcosa è andato storto!
+   }
     /**Questo metodo fa la stessa cosa del metodo getCellaPosizioneEroe!
      * Lo lascio perché almeno posso usare l'annotazione @Deprecated!*/
     @Deprecated

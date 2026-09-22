@@ -7,16 +7,14 @@ import it.unicam.cs.mpgc.rpg120666.Model.Nemico.Nemico;
 import it.unicam.cs.mpgc.rpg120666.Model.Oggetto.ElencoClassiEsteseOggetto.Arma;
 import it.unicam.cs.mpgc.rpg120666.Model.Oggetto.ElencoClassiEsteseOggetto.Medikit;
 import it.unicam.cs.mpgc.rpg120666.Model.Oggetto.Oggetto;
-import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
-public class MatriceView
+public class InizioGiocoView
 {
     private VBox ManagerLayoutTotale;
     private Label lblNumNemici=new Label("NUMERO NEMICI:");
@@ -24,7 +22,7 @@ public class MatriceView
     private TextField txtNumNemici= new TextField();
     private TextField txtNumOggetti= new TextField();
     private Button btnIndietro = new Button("<-INDIETRO");
-    private Button btnReset = new Button("RESET");
+    private Button btnCancellaCampi = new Button("CANCELLA CAMPI");
     private int dimensioneMatrice; //Me la potevo risparmiare!?!?!
 
     private Label[][] matriceDiLabel;
@@ -45,7 +43,7 @@ public class MatriceView
     private CellaClickListener cellaClickListener;
 
     /**Metodo Costruttore:*/
-    public MatriceView(int dimensioneMatrice)
+    public InizioGiocoView(int dimensioneMatrice)
     {
         /**Le 2 classi 'snellenti'(vedi sopra) di gui per i vari pezzi di questa Finestra.
          * Nel controller però bisogna prenderli con i metodi set da questa classe.*/
@@ -67,7 +65,7 @@ public class MatriceView
                 ManagerGridPaneMatrice,
                 lblNumNemici, txtNumNemici,
                 lblNumOggetti, txtNumOggetti,
-                btnReset,
+                  btnCancellaCampi,
                 btnIndietro,
                   this.vistaSpostamentoEroe.getLayoutTotale(), //la classe di componenti gui per spostare l'eroe.
                   this.vistaEroe.getLayotVistaEroe() //la classe di componenti gui per vedere la vita dell'eroe.
@@ -146,8 +144,8 @@ public class MatriceView
     public void setTxtNumOggetti(TextField txtNumOggetti){ this.txtNumOggetti=txtNumOggetti; }
     public Button getBtnIndietro(){ return this.btnIndietro; }
     public void setBtnIndietro(Button btnIndietro) { this.btnIndietro=btnIndietro; }
-    public Button getBtnReset(){ return this.btnReset; }
-    public void setBtnReset(Button btnReset) { this.btnReset=btnReset; }
+    public Button getBtnCancellaCampi(){ return this.btnCancellaCampi; }
+    public void setBtnCancellaCampi(Button btnCancellaCampi) { this.btnCancellaCampi = btnCancellaCampi; }
     public int getDimensioneMatrice() { return this.dimensioneMatrice; }
     public Label[][] getMatriceDiLabel() { return this.matriceDiLabel; }
     public EroeView getEroeView() { return this.vistaEroe; }

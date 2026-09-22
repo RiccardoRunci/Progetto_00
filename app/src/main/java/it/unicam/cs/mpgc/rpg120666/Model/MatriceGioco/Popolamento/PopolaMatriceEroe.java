@@ -1,12 +1,14 @@
-package it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco;
+package it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco.Popolamento;
 
 import it.unicam.cs.mpgc.rpg120666.Model.Eroe.Eroe;
+import it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco.CellaMatrice;
+import it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco.MatriceGioco;
 
 public class PopolaMatriceEroe
 {
     private Eroe ilNostroEroe;
     private MatriceGioco matriceGioco;
-    private  CellaMatrice cellaStartEroe;
+    private CellaMatrice cellaStartEroe;
     //Costruttore Vuoto:
     public PopolaMatriceEroe() {}
     //Costruttore Pieno:

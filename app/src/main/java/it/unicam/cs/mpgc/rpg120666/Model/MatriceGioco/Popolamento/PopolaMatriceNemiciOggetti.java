@@ -1,6 +1,7 @@
-package it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco;
+package it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco.Popolamento;
 import it.unicam.cs.mpgc.rpg120666.Model.Difficolta.Difficolta;
 import it.unicam.cs.mpgc.rpg120666.Model.ElementiPerMatrice.ElementiPerMatrice;
+import it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco.MatriceGioco;
 import it.unicam.cs.mpgc.rpg120666.Model.Nemico.ElencoClassiEsteseNemico.Guerriero;
 import it.unicam.cs.mpgc.rpg120666.Model.Nemico.ElencoClassiEsteseNemico.Mago;
 import it.unicam.cs.mpgc.rpg120666.Model.Nemico.EnumListaNemiciGioco;

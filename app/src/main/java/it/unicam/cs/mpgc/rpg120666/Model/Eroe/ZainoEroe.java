@@ -68,6 +68,32 @@ public class ZainoEroe
         }
         else return false;
     }
+    public boolean usaOggettoDalloZaino(Oggetto oggetto)
+    {
+        //Controllo se l'oggetto passato è null:
+        if (oggetto==null) { throw new IllegalArgumentException("oggetto da usare == null"); }
+        //Controllo se l'oggetto passato NON è presente nello zaino:
+        else if(!(this.oggettiPosseduti.containsKey(oggetto)))
+        {
+            //todo: quando funziona, togli questo printf:
+            System.out.println("Oggetto: "+oggetto.toString()+"\n"+
+                    "Non è presente nello zaino");
+         return false;
+        }
+        else
+        {
+            //prendo la quantità dell'(oggetto) passato:
+            int quantitaOgg=this.oggettiPosseduti.get(oggetto); //la quantità sarebbe il valore della hashmap.
+            if(quantitaOgg>1) {
+                this.oggettiPosseduti.put(oggetto, quantitaOgg - 1);
+            }
+            else {
+                this.oggettiPosseduti.remove(oggetto); //Rimuovo l'oggetto dallo zaino con .remove(chiave):
+            }
+
+            return (this.eroeProprietarioDelloZaino.usaOggetto(oggetto));
+        }
+    }
     @Override
     public boolean equals(Object obj){
         if(this==obj) return true;

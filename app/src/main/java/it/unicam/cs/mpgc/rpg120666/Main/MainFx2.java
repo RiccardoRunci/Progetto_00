@@ -3,7 +3,7 @@ import it.unicam.cs.mpgc.rpg120666.Controller.MatriceController;
 import it.unicam.cs.mpgc.rpg120666.Model.Difficolta.EnumDifficolta;
 import it.unicam.cs.mpgc.rpg120666.Model.Eroe.Eroe;
 import it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco.MatriceGioco;
-import it.unicam.cs.mpgc.rpg120666.View.MatriceView;
+import it.unicam.cs.mpgc.rpg120666.View.InizioGiocoView;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -23,7 +23,7 @@ public class MainFx2 extends Application
         /*Prima avevo che view prendeva (dimensione, controller)!
         * solo che controller l'ho dichiarato sotto!
         * e non potevo passarlo quando inizializzavo view!*/
-        MatriceView view = new MatriceView(dimensione); //Allora ho risolto con view.setMatriceController! (4) E HO SBAGLIATO!!!!
+        InizioGiocoView view = new InizioGiocoView(dimensione); //Allora ho risolto con view.setMatriceController! (4) E HO SBAGLIATO!!!!
 
         // 3) CONTROLLER
         MatriceController controller = new MatriceController(view, model);

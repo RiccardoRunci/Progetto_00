@@ -1,4 +1,4 @@
-package it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco;
+package it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco.Manager;
 
 import it.unicam.cs.mpgc.rpg120666.Model.Eroe.Eroe;
 import it.unicam.cs.mpgc.rpg120666.Model.Nemico.ElencoClassiEsteseNemico.Guerriero;

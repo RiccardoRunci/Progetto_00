@@ -1,7 +1,9 @@
-package it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco;
+package it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco.Manager;
 
 import it.unicam.cs.mpgc.rpg120666.Model.ElementiPerMatrice.ElementiPerMatrice;
 import it.unicam.cs.mpgc.rpg120666.Model.Eroe.Eroe;
+import it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco.CellaMatrice;
+import it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco.MatriceGioco;
 import it.unicam.cs.mpgc.rpg120666.Model.Nemico.Nemico;
 import it.unicam.cs.mpgc.rpg120666.Model.Oggetto.Oggetto;
 

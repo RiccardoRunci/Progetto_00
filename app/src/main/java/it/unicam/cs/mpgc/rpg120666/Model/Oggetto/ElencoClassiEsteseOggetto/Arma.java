@@ -21,12 +21,15 @@ public class Arma extends Oggetto implements InterfacciaArma
     }
 
     @Override
-    public void intensificaDanno(Eroe e)
+    public boolean intensificaDanno(Eroe e)
     {
         if(e==null || e.controllaSeMorto())
             throw new IllegalArgumentException("Eroe Morto o ==null");
         else
-            e.setDannoCausato(e.getDannoCausato()+this.puntiDannoPiu);
+        {
+            e.setDannoCausato(e.getDannoCausato() + this.puntiDannoPiu);
+            return true;
+        }
     }
     @Override
     public String toString()

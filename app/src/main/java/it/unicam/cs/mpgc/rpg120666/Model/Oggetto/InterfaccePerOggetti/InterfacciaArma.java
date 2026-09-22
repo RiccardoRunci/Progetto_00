@@ -4,5 +4,5 @@ import it.unicam.cs.mpgc.rpg120666.Model.Eroe.Eroe;
 
 public interface InterfacciaArma
 {
-    public void intensificaDanno(Eroe e);
+    public boolean intensificaDanno(Eroe e);
 }
