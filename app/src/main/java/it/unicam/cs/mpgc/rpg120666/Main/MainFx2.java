@@ -30,7 +30,7 @@ public class MainFx2 extends Application
 
         // 4) COLLEGO IL CONTROLLER ALLA VIEW
         //view.setMatriceController(controller); PERCHE???? ERRORISSIMO!!!!
-        view.aggiorna(model.getMatriceElementi()); //questo fa comparire subito la matrice "colorata", senza bisogna prima cliccarci dentro.
+        view.getMatriceView().aggiorna(model.getMatriceElementi()); //questo fa comparire subito la matrice "colorata", senza bisogna prima cliccarci dentro.
 
         // 5) SCENA
         Scene scena = new Scene(view.getLayoutManagerTotaleView());
