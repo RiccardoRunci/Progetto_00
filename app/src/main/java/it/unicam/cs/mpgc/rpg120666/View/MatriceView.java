@@ -8,12 +8,16 @@ import it.unicam.cs.mpgc.rpg120666.Model.Oggetto.ElencoClassiEsteseOggetto.Medik
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 
 public class MatriceView
 {
     private int dimensioneMatrice; //Me la potevo risparmiare!?!?!
     private Label[][] matriceDiLabel;
     private GridPane ManagerGridPaneMatrice;
+    private final Label label = new Label("Matrice gioco");
+    private VBox LayoutTotale;
     /**@Autor Copilot, creo una variabile di tipo interfaccia CellaClickListener,
      * per far funzionare i click del mouse della matrice di Label,
      * senza passare il controller a questa classe view!*/
@@ -21,7 +25,13 @@ public class MatriceView
 
     public MatriceView(int dimensioneMatrice)
     {
+        /*Provo a mettere la label  "Matrice Gioco" dentro un VBox
+        * sopra alla matrice!*/
+        this.LayoutTotale = new VBox(0);
+        this.label.setFont(new Font("Arial", 20));
+        /*Questo è il grid pane che contiene la matrice di label:*/
         this.ManagerGridPaneMatrice = new GridPane();
+        this.LayoutTotale.getChildren().addAll(this.label,this.ManagerGridPaneMatrice);
 
         if (dimensioneMatrice > 0)
         {
@@ -103,6 +113,6 @@ public class MatriceView
             this.matriceDiLabel=matriceDiLabel;
     }
     public Node getLayoutTotale() {
-        return this.ManagerGridPaneMatrice;
+        return this.LayoutTotale;
     }
 }

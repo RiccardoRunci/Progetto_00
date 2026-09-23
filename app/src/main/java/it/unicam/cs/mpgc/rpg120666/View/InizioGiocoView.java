@@ -1,6 +1,7 @@
 package it.unicam.cs.mpgc.rpg120666.View;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 public class InizioGiocoView
@@ -20,6 +21,7 @@ public class InizioGiocoView
     private SpostamentoEroeView vistaSpostamentoEroe;
     private MatriceView vistaMatrice;
     private StatisticheView vistaStatistiche;
+    private ZainoView vistaZaino;
 
    /**Metodo Costruttore:*/
     public InizioGiocoView(int dimensioneMatrice)
@@ -30,11 +32,18 @@ public class InizioGiocoView
         this.vistaSpostamentoEroe= new SpostamentoEroeView();
         this.vistaMatrice = new MatriceView(dimensioneMatrice);
         this.vistaStatistiche = new StatisticheView();
+        this.vistaZaino=new ZainoView();
+        //Il Layout Manager totale di questa classe (quello che racchiude tutto):
         this.ManagerLayoutTotale = new VBox(10);
 
-          //Aggiungo tutti i componenti al manager totale (ossia il Vbox)!
+        /*Creo un nuovo Layout orizzontale per mettere la matrice affiancata allo zaino:*/
+        HBox layotVistaMatriceZaino = new HBox(10);
+        layotVistaMatriceZaino.getChildren().addAll( this.vistaMatrice.getLayoutTotale(),
+                this.vistaZaino.getLayoutTotale());
+
+        //Aggiungo tutti i componenti al manager totale (ossia il Vbox)!
           ManagerLayoutTotale.getChildren().addAll(
-                  this.vistaMatrice.getLayoutTotale(),
+                  layotVistaMatriceZaino,
                   this.vistaStatistiche.getLayoutTotale(),
                   this.vistaSpostamentoEroe.getLayoutTotale(), //la classe di componenti gui per spostare l'eroe.
                   this.vistaEroe.getLayotVistaEroe(), //la classe di componenti gui per vedere la vita dell'eroe.
