@@ -8,4 +8,4 @@ Anche per salvare il mio numero di commit già fatti.
 Così faccio pratica anche con i branch di git.
 
 Per riprendere questa versione del progetto dovrò digitare:
-git checkout HashDelCommit
+git checkout a912903fe6a94495b7dcaabca2dd8882a4c62ff6
