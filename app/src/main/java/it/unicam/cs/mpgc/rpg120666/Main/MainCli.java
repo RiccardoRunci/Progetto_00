@@ -1,5 +1,5 @@
 package it.unicam.cs.mpgc.rpg120666.Main;
-public class Main1
+public class MainCli
 {
     public String saluta() {return "Benvenuto nel gioco RPG!"; }
 
