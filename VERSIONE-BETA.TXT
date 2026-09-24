@@ -1,0 +1,11 @@
+Questa versione del progetto è la versione BETA, per lo più funzionante.
+Però abbandono lo sviluppo di questa versione perchè mi sono accorto di un non corretto utilizzo dei principi SOLID.
+All'interno del package Model/MatriceGioco/Manager/ ci sono diverse classi che usano "instace of".
+Questo fa si che, ogni volta che aggiungo un nuovo oggetto o un nuovo nemico, si devono modificare anche quelle classi.
+Quindi ho deciso (dato che ci ho passato molto tempo) di creare un nuovo branch su git e tenermi comunque tutto il codice.
+Anche per salvare il mio numero di commit già fatti.
+
+Così faccio pratica anche con i branch di git.
+
+Per riprendere questa versione del progetto dovrò digitare:
+git checkout HashDelCommit
