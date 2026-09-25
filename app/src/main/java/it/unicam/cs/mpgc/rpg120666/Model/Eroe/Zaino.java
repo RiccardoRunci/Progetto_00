@@ -60,6 +60,38 @@ public class Zaino
             }
         } else return false;
     }
+
+    public boolean controllaPresenzaOggetto(Oggetto o)
+    {
+        return (this.oggettiPosseduti.containsKey(o));
+    }
+    /**Si ma hashmap non ammette duplicati!*/
+    public boolean eliminaOggettoDalloZaino(Oggetto o)
+    {
+       //Il metodo containsKey(chiave) ritorna true se l'oggetto ∃ dentro HashMap:
+        if (this.oggettiPosseduti.containsKey(o))
+        {
+            int quantita;
+            //Il metodo HashMap.get(chiave), ritorna il valore (della hashmap <Chiave,Valore>).
+            quantita = this.oggettiPosseduti.get(o);
+            if(quantita==1) //se quantità è = 1, elimino l'oggetto con:
+                this.oggettiPosseduti.remove(o);
+            else //altrimenti con questo metodo scalo la sua quantità!
+                this.oggettiPosseduti.put(o, quantita-1);
+            return true;
+        }
+        else
+        {
+            //todo elimina i printf quando tutto funziona!
+            System.out.println("PER QUALCHE STRANO MOTIVO, L'oggetto non era presente nello zaino!");
+            return false; //per qualche strano motivo ha ritornato false!
+        }
+    }
+    @Override
+    public String toString()
+    {
+        return ""+this.elencaOggettiDelloZainoEroe()+"\n";
+    }
     private String elencaOggettiDelloZainoEroe()
     {
         StringBuilder s=new StringBuilder();
@@ -75,11 +107,6 @@ public class Zaino
             s.append("OGGETTO= "+chiave + " -> " +" QUANTITA'= "+ valore+"\n");
         }
         return s.toString();
-    }
-    @Override
-    public String toString()
-    {
-        return ""+this.elencaOggettiDelloZainoEroe()+"\n";
     }
     @Override
     public boolean equals(Object obj){

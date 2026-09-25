@@ -27,9 +27,10 @@ public abstract class VerificaParametri
             }
             case AGGIORNAMENTO ->
             {
-                if(interoPassato<=0)
+                if(interoPassato<=0 || interoPassato>0) //sempre vero???
                 {
-                    //puoi farlo perché se un personaggio viene colpito può abbassare la sua vita a <=0
+                    /* puoi farlo perché se un personaggio viene colpito può abbassare la sua vita a <=0
+                      Oppure se prende un medikit può aumentare la sua vita! */
                     return true;
                 }
             }

@@ -34,6 +34,23 @@ public class Eroe extends Personaggio
             throw new IllegalArgumentException("Parametro oggetto passato al metodo prendiOggetto della classe Eroe invalido");
         return (this.zainoEroe.aggiungiOggettoNelloZaino(oggetto));
     }
+    public boolean usaOggetto(Oggetto oggetto)
+    {
+        /*Controllo se l'oggetto passato è = null:*/
+        if(oggetto==null)
+            throw new IllegalArgumentException("Oggetto passato al metodo usaOggetto di Eroe = null!");
+        /*Controllo se l'oggetto passato è realmente presente nella collezione di zaino:*/
+        if(this.zainoEroe.controllaPresenzaOggetto(oggetto))
+        {
+            return oggetto.usaOggetto(this);
+        }
+        else
+        {
+            //todo elimina i printf quando stai a cavallo!
+            System.out.println("l'oggetto non presente nello zaino!");
+            return false;
+        }
+    }
     @Override
     public String toString()
     { return "CLASSE EROE!\n"+

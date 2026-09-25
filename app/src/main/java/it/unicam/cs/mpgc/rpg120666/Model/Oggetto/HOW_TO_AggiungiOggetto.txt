@@ -1,0 +1,38 @@
+PER AGGIUNGERE UN OGGETTO NEL GIOCO BISOGNA:
+
+1)Creare la classe dell'oggetto dentro il package Oggetto\ClassiEstese.
+Ad esempio, se vogliamo aggiungere la classe "Sigarette",
+Creiamo la classe Sigaretta dentro il package sopra.
+
+2)Una volta creata la classe dobbiamo creare l'interfaccia InterfacciaClasseAppenaCreataSopra.
+Ad esempio, se abbiamo creato la classe Sigaretta, dobbiamo creare un interfaccia "interfacciaSigaretta"
+dentro il package Oggetto\Interfacce.
+
+3)L'interfaccia sopra creata deve avere un metodo consono all'oggetto che sta interfacciando,
+con tipo boolean di ritorno!
+Ad esempio, l'interfaccia sigarette avrà:" public boolean fumaSigaretta(Eroe e);"
+
+4)La classe Sigaretta dovrà "extends Oggetto implements InterfacciaSigaretta", queste estenzione e implementazione
+avranno come "effetto" quello di passare i parametri alla super classe Oggetto, riscrivere il metodo "di Oggetto" (che
+in realtà è abstract ma preso dall'interfaccia UsaOggetto) "usaOggetto(Eroe e)".
+Poi si dovrà anche implementare i metodi dell'interfacciaSigaretta!
+
+Nel metodo implementato dall'interfacciaSigaretta si deve scrivere quello che effettivamente si vuole dal comportamento
+della sigaretta. Ad esempio:
+
+public class Sigaretta extends Oggetto implements InterfacciaSigaretta
+{
+    Il costruttore con super(nomeOggetto)....
+
+    @Override //Override da Oggetto!
+    public boolean usaOggetto(Eroe e)
+    {
+        this.faiUnTiro(e);
+    }
+    @Override //public perché se era private dovevo mettere il body sull'interfaccia!
+    public boolean faiUnTiro(Eroe e)
+    {
+
+    }
+...
+}

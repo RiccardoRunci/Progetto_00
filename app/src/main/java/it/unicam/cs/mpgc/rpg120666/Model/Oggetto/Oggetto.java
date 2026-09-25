@@ -1,8 +1,9 @@
 package it.unicam.cs.mpgc.rpg120666.Model.Oggetto;
 
+import it.unicam.cs.mpgc.rpg120666.Model.Eroe.Eroe;
 import it.unicam.cs.mpgc.rpg120666.Model.Utility.VerificaParametri;
 
-public abstract class Oggetto
+public abstract class Oggetto implements UsaOggetto
 {
     private final String nomeOggetto;
 
@@ -42,5 +43,9 @@ public abstract class Oggetto
     public int hashCode(){
         return java.util.Objects.hash(this.getNomeOggetto());
     }
-
+    /**Anche la super classe Oggetto implementa l'interfaccia UsaOggetto (che ha un solo metodo, UsaOggetto(eroe e).
+     * Però l'ho messo abstract, così che ogni sottoclasse che estende questo Oggetto può dare la sua implementazione di questo metodo!
+     * Così da permettere (ad esempio) alla sottoclasse Medikit di usare l'oggetto per ricaricare la vita!
+     * Oppure alla sottoclasse Arma di aumentare la potenza di attacco dell'Eroe!*/
+    public abstract boolean usaOggetto(Eroe e);
 }
