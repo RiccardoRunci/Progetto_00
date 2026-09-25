@@ -1,4 +1,5 @@
 package it.unicam.cs.mpgc.rpg120666.Model.Oggetto.ClassiEstese;
+import it.unicam.cs.mpgc.rpg120666.Model.ElementiPerMatrice.ElementiPerMatrice;
 import it.unicam.cs.mpgc.rpg120666.Model.Eroe.Eroe;
 import it.unicam.cs.mpgc.rpg120666.Model.Oggetto.Interfacce.InterfacciaMedikit;
 import it.unicam.cs.mpgc.rpg120666.Model.Oggetto.Oggetto;
@@ -6,7 +7,7 @@ import it.unicam.cs.mpgc.rpg120666.Model.Oggetto.UsaOggetto;
 import it.unicam.cs.mpgc.rpg120666.Model.Utility.VerificaParametri;
 import static it.unicam.cs.mpgc.rpg120666.Model.Utility.CreazioneAggiornamento.CREAZIONE;
 
-public class Medikit extends Oggetto implements InterfacciaMedikit
+public class Medikit extends Oggetto implements InterfacciaMedikit, ElementiPerMatrice
 {
     private final int puntiVitaRistabiliti;
 

@@ -4,7 +4,7 @@ import it.unicam.cs.mpgc.rpg120666.Model.Personaggio.Personaggio;
 import it.unicam.cs.mpgc.rpg120666.Model.Utility.VerificaParametri;
 import static it.unicam.cs.mpgc.rpg120666.Model.Utility.CreazioneAggiornamento.CREAZIONE;
 
-public abstract class Nemico extends Personaggio implements CombattiNemico
+public abstract class Nemico extends Personaggio implements combattiControEroe
 {
     private final int dannoCausato;
     /** Metodo costruttore:
@@ -43,6 +43,9 @@ public abstract class Nemico extends Personaggio implements CombattiNemico
             Nemico other = (Nemico)obj;
         return this.getDannoCausato()==(other.getDannoCausato());
     }
+    /**Metodo che deriva dall'interfaccia "combattiControEroe".
+     * Qui è abstract, così da permettere alle sottoclassi di Nemico di
+     * implementarlo diversamente!*/
     @Override
-    public abstract boolean combattiNemico(Eroe e);
+    public abstract boolean combattiControEroe(Eroe e);
 }

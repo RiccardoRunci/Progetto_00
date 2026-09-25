@@ -5,7 +5,11 @@ import it.unicam.cs.mpgc.rpg120666.Model.Difficolta.EnumDifficolta;
 import it.unicam.cs.mpgc.rpg120666.Model.ElementiPerMatrice.ElementiPerMatrice;
 import it.unicam.cs.mpgc.rpg120666.Model.Eroe.Eroe;
 import it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco.Popolamento.PopolaMatriceEroe;
+import it.unicam.cs.mpgc.rpg120666.Model.Nemico.ClassiEstese.Guerriero;
+import it.unicam.cs.mpgc.rpg120666.Model.Nemico.ClassiEstese.Mago;
 import it.unicam.cs.mpgc.rpg120666.Model.Nemico.Nemico;
+import it.unicam.cs.mpgc.rpg120666.Model.Oggetto.ClassiEstese.Arma;
+import it.unicam.cs.mpgc.rpg120666.Model.Oggetto.ClassiEstese.Medikit;
 import it.unicam.cs.mpgc.rpg120666.Model.Oggetto.Oggetto;
 
 import java.util.Random;
@@ -70,6 +74,7 @@ public class MatriceGioco
     {
         return this.matrice.length;
     }
+    public Difficolta getDifficoltaGioco(){ return this.diffGioco; }
     public int getNumeroNemici(){ return this.diffGioco.getNumNemici(); }
     public int getNumeroOggetti(){ return this.diffGioco.getNumOggetti(); }
     public Eroe getIlNostroEroe(){ return this.ilNostroEroe; }
@@ -131,12 +136,18 @@ public class MatriceGioco
                 }
                 else
                 {
-                    if(element instanceof Nemico)
+                    if(element instanceof Mago)
                         //System.out.print("[R:"+riga+"]"+"[C:"+colonna+"] = Nemico\t");
-                        System.out.print("N\t");
-                    else if(element instanceof Oggetto)
+                        System.out.print("M\t");
+                    if(element instanceof Guerriero)
+                        //System.out.print("[R:"+riga+"]"+"[C:"+colonna+"] = Nemico\t");
+                        System.out.print("G\t");
+                    else if(element instanceof Arma)
                         //System.out.print("[R:"+riga+"]"+"[C:"+colonna+"] = Oggetto\t");
-                        System.out.print("O\t");
+                        System.out.print("A\t");
+                    else if(element instanceof Medikit)
+                        //System.out.print("[R:"+riga+"]"+"[C:"+colonna+"] = Oggetto\t");
+                        System.out.print("+\t");
                     else if (element instanceof Eroe)
                         //System.out.print("[R:"+riga+"]"+"[C:"+colonna+"] = Eroe\t");
                         System.out.print("E\t");

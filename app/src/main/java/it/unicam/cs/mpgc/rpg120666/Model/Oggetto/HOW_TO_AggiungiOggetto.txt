@@ -12,15 +12,17 @@ dentro il package Oggetto\Interfacce.
 con tipo boolean di ritorno!
 Ad esempio, l'interfaccia sigarette avrà:" public boolean fumaSigaretta(Eroe e);"
 
-4)La classe Sigaretta dovrà "extends Oggetto implements InterfacciaSigaretta", queste estenzione e implementazione
+4)La classe Sigaretta dovrà "extends Oggetto implements InterfacciaSigaretta", queste estensione e implementazione
 avranno come "effetto" quello di passare i parametri alla super classe Oggetto, riscrivere il metodo "di Oggetto" (che
 in realtà è abstract ma preso dall'interfaccia UsaOggetto) "usaOggetto(Eroe e)".
 Poi si dovrà anche implementare i metodi dell'interfacciaSigaretta!
+La classe Sigaretta (come tutte le altre classi, sottoclassi di Oggetto) dovrà implementare anche "ElementiPerMatrice".
+ElementiPerMatrice è un interfaccia che serve per "mettere" gli oggetti di diverso tipo in matrice!
 
 Nel metodo implementato dall'interfacciaSigaretta si deve scrivere quello che effettivamente si vuole dal comportamento
 della sigaretta. Ad esempio:
 
-public class Sigaretta extends Oggetto implements InterfacciaSigaretta
+public class Sigaretta extends Oggetto implements InterfacciaSigaretta, ElementiPerMatrice
 {
     Il costruttore con super(nomeOggetto)....
 
@@ -36,3 +38,16 @@ public class Sigaretta extends Oggetto implements InterfacciaSigaretta
     }
 ...
 }
+
+5)Bisogna inserire anche il case nella classe Oggetto.ClassiEstese.FactoryOggetti.
+Ad esempio, per sigaretta diventerebbe:
+....
+ return switch(generatoreRandom.nextInt(3)) <---- ricordarsi di aumentare anche il numero che può uscire!!
+        {
+            case 0-> new Medikit("Medikit",generatoreRandom2.nextInt(100)+1);
+            case 1-> new Arma("Arma",generatoreRandom2.nextInt(200)+1);
+            case 2-> new Sigaretta("Sigaretta",generatoreRandom2.nextInt(50)+1); <---
+            default -> throw new IllegalArgumentException("Qualcosa non è andato bene " +
+                    "nella classe FactoryOggetti");
+        };
+
