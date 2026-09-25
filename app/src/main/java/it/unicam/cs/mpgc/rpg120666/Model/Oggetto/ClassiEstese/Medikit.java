@@ -31,6 +31,8 @@ public class Medikit extends Oggetto implements InterfacciaMedikit
                     "Oppure Eroe morto!\n");
         else
         {
+            /*Aggiungo oggetto nello zaino!*/
+            e.getZaino().aggiungiOggettoNelloZaino(this);
             //todo una volta corretto, elimina i printf!
             System.out.println("Prima la vita dell'eroe era: "+e.getPuntiVitaPersonaggio());
             return this.curaEroe(e);

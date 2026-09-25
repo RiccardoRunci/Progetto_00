@@ -1,6 +1,9 @@
 package it.unicam.cs.mpgc.rpg120666.Main;
 
+import it.unicam.cs.mpgc.rpg120666.Model.Difficolta.EnumDifficolta;
 import it.unicam.cs.mpgc.rpg120666.Model.Eroe.Eroe;
+import it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco.MatriceGioco;
+import it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco.Popolamento.PopolaMatriceEroe;
 import it.unicam.cs.mpgc.rpg120666.Model.Oggetto.ClassiEstese.Arma;
 import it.unicam.cs.mpgc.rpg120666.Model.Oggetto.ClassiEstese.Medikit;
 import it.unicam.cs.mpgc.rpg120666.Model.Oggetto.Oggetto;
@@ -11,7 +14,13 @@ public class MainCli
 
     public static void main(String[] args)
     {
+        //0 Creo l'EROE!
+        Eroe IlNostroEroe = new Eroe("RICCARDO",50);
+        // 1) MODEL
+        MatriceGioco model = new MatriceGioco(EnumDifficolta.MEDIA,IlNostroEroe);
 
+        PopolaMatriceEroe popEroeInMatrice = new PopolaMatriceEroe(model,IlNostroEroe);
+        model.stampaMatriceCLI();
 
     }
 }

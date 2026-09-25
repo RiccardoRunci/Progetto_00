@@ -1,4 +1,6 @@
 package it.unicam.cs.mpgc.rpg120666.Model.Eroe;
+import it.unicam.cs.mpgc.rpg120666.Model.ElementiPerMatrice.ElementiPerMatrice;
+import it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco.CellaMatrice;
 import it.unicam.cs.mpgc.rpg120666.Model.Oggetto.Oggetto;
 import it.unicam.cs.mpgc.rpg120666.Model.Personaggio.Personaggio;
 import it.unicam.cs.mpgc.rpg120666.Model.Utility.VerificaParametri;
@@ -6,10 +8,11 @@ import it.unicam.cs.mpgc.rpg120666.Model.Utility.VerificaParametri;
 import static it.unicam.cs.mpgc.rpg120666.Model.Utility.CreazioneAggiornamento.AGGIORNAMENTO;
 import static it.unicam.cs.mpgc.rpg120666.Model.Utility.CreazioneAggiornamento.CREAZIONE;
 
-public class Eroe extends Personaggio
+public class Eroe extends Personaggio implements ElementiPerMatrice
 {
     private final Zaino zainoEroe;
     private int dannoCausato = 10;
+    private CellaMatrice cellaPosizioneEroe;
 
     public Eroe(String nomePersonaggio, int puntiVitaPersonaggio)
     {
@@ -27,6 +30,13 @@ public class Eroe extends Personaggio
             this.dannoCausato=dannoCausato;
         else
             throw new IllegalArgumentException("Parametro dannoCausato al metodo setDannoCausato di Eroe invalido!");
+    }
+    public void setCellaPosizioneEroe(CellaMatrice cellaPosizioneEroe)
+    {
+        if(cellaPosizioneEroe!=null) //todo ClasseMatriceAstratta.controllaPosizioniOutOfBound(cellaPosizioneEroe)
+            this.cellaPosizioneEroe = cellaPosizioneEroe;
+        else
+            throw new NullPointerException("Cella passata alla classe Eroe nel metodo set == null");
     }
     public boolean prendiOggetto(Oggetto oggetto)
     {
@@ -72,6 +82,4 @@ public class Eroe extends Personaggio
         Eroe eroe = (Eroe) o;
         return this.zainoEroe.equals(eroe.zainoEroe);
     }
-
-
 }

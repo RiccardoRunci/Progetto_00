@@ -1,9 +1,10 @@
 package it.unicam.cs.mpgc.rpg120666.Model.Nemico;
+import it.unicam.cs.mpgc.rpg120666.Model.Eroe.Eroe;
 import it.unicam.cs.mpgc.rpg120666.Model.Personaggio.Personaggio;
 import it.unicam.cs.mpgc.rpg120666.Model.Utility.VerificaParametri;
 import static it.unicam.cs.mpgc.rpg120666.Model.Utility.CreazioneAggiornamento.CREAZIONE;
 
-public abstract class Nemico extends Personaggio
+public abstract class Nemico extends Personaggio implements CombattiNemico
 {
     private final int dannoCausato;
     /** Metodo costruttore:
@@ -42,4 +43,6 @@ public abstract class Nemico extends Personaggio
             Nemico other = (Nemico)obj;
         return this.getDannoCausato()==(other.getDannoCausato());
     }
+    @Override
+    public abstract boolean combattiNemico(Eroe e);
 }

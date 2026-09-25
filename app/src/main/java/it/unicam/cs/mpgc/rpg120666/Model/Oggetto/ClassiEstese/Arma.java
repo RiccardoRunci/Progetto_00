@@ -52,6 +52,8 @@ public class Arma extends Oggetto implements InterfacciaArma
                     "Oppure l'eroe è morto!\n");
         else
         {
+            /*Aggiungo oggetto nello zaino!*/
+            e.getZaino().aggiungiOggettoNelloZaino(this);
             //todo una volta corretto, elimina i printf!
             System.out.println("Prima i punti attacco di eroe erano: "+e.getDannoCausato()+"\n");
             return this.potenziaAttacco(e);
