@@ -1,11 +1,9 @@
 package it.unicam.cs.mpgc.rpg120666.Model.Oggetto.ClassiEstese;
-
 import it.unicam.cs.mpgc.rpg120666.Model.ElementiPerMatrice.ElementiPerMatrice;
 import it.unicam.cs.mpgc.rpg120666.Model.Eroe.Eroe;
 import it.unicam.cs.mpgc.rpg120666.Model.Oggetto.Interfacce.InterfacciaArma;
 import it.unicam.cs.mpgc.rpg120666.Model.Oggetto.Oggetto;
 import it.unicam.cs.mpgc.rpg120666.Model.Utility.VerificaParametri;
-
 import static it.unicam.cs.mpgc.rpg120666.Model.Utility.CreazioneAggiornamento.CREAZIONE;
 
 public class Arma extends Oggetto implements InterfacciaArma, ElementiPerMatrice
@@ -52,12 +50,9 @@ public class Arma extends Oggetto implements InterfacciaArma, ElementiPerMatrice
                     "Oppure l'eroe è morto!\n");
         else
         {
-            /*Aggiungo oggetto nello zaino!*/
-            e.getZaino().aggiungiOggettoNelloZaino(this);
             //todo una volta corretto, elimina i printf!
             System.out.println("Prima i punti attacco di eroe erano: "+e.getDannoCausato()+"\n");
             return this.potenziaAttacco(e);
-
         }
     }
     /**Questo è il metodo che viene dall' interfacciaArma!*/
