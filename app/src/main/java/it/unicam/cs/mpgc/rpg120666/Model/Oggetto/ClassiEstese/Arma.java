@@ -4,7 +4,6 @@ import it.unicam.cs.mpgc.rpg120666.Model.ElementiPerMatrice.ElementiPerMatrice;
 import it.unicam.cs.mpgc.rpg120666.Model.Eroe.Eroe;
 import it.unicam.cs.mpgc.rpg120666.Model.Oggetto.Interfacce.InterfacciaArma;
 import it.unicam.cs.mpgc.rpg120666.Model.Oggetto.Oggetto;
-import it.unicam.cs.mpgc.rpg120666.Model.Oggetto.UsaOggetto;
 import it.unicam.cs.mpgc.rpg120666.Model.Utility.VerificaParametri;
 
 import static it.unicam.cs.mpgc.rpg120666.Model.Utility.CreazioneAggiornamento.CREAZIONE;
@@ -48,7 +47,7 @@ public class Arma extends Oggetto implements InterfacciaArma, ElementiPerMatrice
     public boolean usaOggetto(Eroe e)
     {
         /*Se l'eroe è null, allora lancia eccezione!*/
-        if (e==null || e.controllaSeMorto())
+        if (e==null || !e.controllaSeVivo())
             throw new IllegalArgumentException("Eroe passato al metodo usaOggetto di Arma = null!\n" +
                     "Oppure l'eroe è morto!\n");
         else
@@ -65,7 +64,7 @@ public class Arma extends Oggetto implements InterfacciaArma, ElementiPerMatrice
     @Override
     public boolean potenziaAttacco(Eroe e)
     {
-        if(e==null || e.controllaSeMorto())
+        if(e==null || !e.controllaSeVivo())
         {
             throw new  IllegalArgumentException("Eroe non valido o morto!");
         }
@@ -78,5 +77,24 @@ public class Arma extends Oggetto implements InterfacciaArma, ElementiPerMatrice
             e.getZaino().eliminaOggettoDalloZaino(this);
             return true;
         }
+    }
+
+    @Override
+    public boolean calpestataDaEroe(Eroe e)
+    {
+        if ((e.controllaSeVivo()) && e!=null)
+        {
+            System.out.println("L'eroe:"+e.toString()+
+                    " ha raccolto l'oggetto: "+this.toString());
+            e.prendiOggetto(this);
+            return true;
+        }
+        else
+        {
+            System.out.println("Accaduto qualche problema, l'eroe non è riuscito a prendere l'oggetto!");
+            return false;
+        }
+        /*todo quando si è sicuri che funziona tutto sostituire
+           tutto il codice sopra con: "return e.prendiOggetto(this);"*/
     }
 }

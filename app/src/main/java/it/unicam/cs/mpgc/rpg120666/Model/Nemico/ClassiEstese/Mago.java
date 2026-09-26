@@ -38,4 +38,12 @@ public class Mago extends Nemico implements InterfacciaMago, ElementiPerMatrice
     {
         return false;
     }
+    @Override
+    public boolean calpestataDaEroe(Eroe e)
+    {
+        System.out.println("L'eroe è incappato in un mago!!!");
+        this.combattiControEroe(e);
+        System.out.println("DA IMPLEMENTARE!");
+        return false;
+    }
 }

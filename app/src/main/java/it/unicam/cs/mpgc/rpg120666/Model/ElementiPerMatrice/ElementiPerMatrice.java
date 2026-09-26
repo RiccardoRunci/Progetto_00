@@ -1,6 +1,8 @@
 package it.unicam.cs.mpgc.rpg120666.Model.ElementiPerMatrice;
 
- public interface ElementiPerMatrice
+import it.unicam.cs.mpgc.rpg120666.Model.Eroe.Eroe;
+
+public interface ElementiPerMatrice
     {
         /*Una bella interfaccia completamente vuota!
          * Mi serve per "segnare" gli "oggetti" (Personaggi, Oggetti, ecc...) Che comporranno la matrice di gioco.
@@ -10,6 +12,7 @@ package it.unicam.cs.mpgc.rpg120666.Model.ElementiPerMatrice;
 
         /*Il problema è che è vuota!
          * non so proprio cosa mettere dentro!*/
+        public boolean calpestataDaEroe(Eroe e);
     }
 
 

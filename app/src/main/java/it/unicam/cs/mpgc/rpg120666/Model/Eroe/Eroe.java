@@ -40,15 +40,17 @@ public class Eroe extends Personaggio implements ElementiPerMatrice
     }
     public boolean prendiOggetto(Oggetto oggetto)
     {
-        if (oggetto==null)
-            throw new IllegalArgumentException("Parametro oggetto passato al metodo prendiOggetto della classe Eroe invalido");
-        return (this.zainoEroe.aggiungiOggettoNelloZaino(oggetto));
+        if (oggetto==null || (!this.controllaSeVivo()))
+            throw new IllegalArgumentException("Parametro oggetto passato al metodo prendiOggetto della classe Eroe invalido" +
+                    "Oppure eroe morto, non può più fare nulla!");
+        else
+            return (this.zainoEroe.aggiungiOggettoNelloZaino(oggetto));
     }
     public boolean usaOggetto(Oggetto oggetto)
     {
         /*Controllo se l'oggetto passato è = null:*/
-        if(oggetto==null)
-            throw new IllegalArgumentException("Oggetto passato al metodo usaOggetto di Eroe = null!");
+        if(oggetto==null || (!(this.controllaSeVivo())))
+            throw new IllegalArgumentException("Oggetto passato al metodo usaOggetto di Eroe = null!\nOppure Eroe Morto!");
         /*Controllo se l'oggetto passato è realmente presente nella collezione di zaino:*/
         if(this.zainoEroe.controllaPresenzaOggetto(oggetto))
         {
@@ -57,7 +59,7 @@ public class Eroe extends Personaggio implements ElementiPerMatrice
         else
         {
             //todo elimina i printf quando stai a cavallo!
-            System.out.println("l'oggetto non presente nello zaino!");
+            System.out.println("l'oggetto non presente nello zaino!\n Oppure eroe morto, non potere fare + nulla!");
             return false;
         }
     }
@@ -67,11 +69,12 @@ public class Eroe extends Personaggio implements ElementiPerMatrice
             "NOME= "+super.getNomePersonaggio()+"\n"+
             "VITA= "+super.getPuntiVitaPersonaggio()+"\n"+
             "+ZAINO: "+this.zainoEroe.toString()+"\n";
+            //"CELLA: "+this.cellaPosizioneEroe.toString();
     }
     @Override
     public int hashCode()
     {
-        return java.util.Objects.hash(this.zainoEroe);
+        return java.util.Objects.hash(this.zainoEroe,this.cellaPosizioneEroe);
     }
     @Override
     public boolean equals(Object o)
@@ -80,6 +83,17 @@ public class Eroe extends Personaggio implements ElementiPerMatrice
         if(!(o instanceof Eroe)) return false;
         if(!super.equals(o)) return false; //riga in più se hai una classe che si estende da una super.
         Eroe eroe = (Eroe) o;
-        return this.zainoEroe.equals(eroe.zainoEroe);
+        return this.zainoEroe.equals(eroe.zainoEroe) &&
+                (this.cellaPosizioneEroe.equals(eroe.cellaPosizioneEroe));
+    }
+
+    /**Metodo dell'interfaccia ElementiPerMatrice.
+     * Qui ho dovuto ereditare il metodo su una classe che non lo doveva ereditare.
+     * Allora ho optato per un toString(). Una toppa.*/
+    @Override
+    public boolean calpestataDaEroe(Eroe e)
+    {
+        e.toString();
+        return true;
     }
 }

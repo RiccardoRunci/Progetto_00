@@ -3,7 +3,6 @@ import it.unicam.cs.mpgc.rpg120666.Model.ElementiPerMatrice.ElementiPerMatrice;
 import it.unicam.cs.mpgc.rpg120666.Model.Eroe.Eroe;
 import it.unicam.cs.mpgc.rpg120666.Model.Oggetto.Interfacce.InterfacciaMedikit;
 import it.unicam.cs.mpgc.rpg120666.Model.Oggetto.Oggetto;
-import it.unicam.cs.mpgc.rpg120666.Model.Oggetto.UsaOggetto;
 import it.unicam.cs.mpgc.rpg120666.Model.Utility.VerificaParametri;
 import static it.unicam.cs.mpgc.rpg120666.Model.Utility.CreazioneAggiornamento.CREAZIONE;
 
@@ -19,7 +18,7 @@ public class Medikit extends Oggetto implements InterfacciaMedikit, ElementiPerM
         this.puntiVitaRistabiliti = puntiVitaRistabiliti;
     }
     //Metodi get (set no perché puntiVitaRistabiliti è final):
-    public int getPuntiVita() { return this.puntiVitaRistabiliti; }
+    public int getPuntiVitaRistabiliti() { return this.puntiVitaRistabiliti; }
     /**Metodo esteso dalla super classe Oggetto, che a sua volta viene ereditato
      * (da Oggetto) dall' interfaccia UsaOggetto. Così da permettere a ogni sotto classe che estende Oggetto
      * di utilizzare l'oggetto con scopi diversi! Questo dovrebbe impedire la scrittura di 'instance of'
@@ -27,7 +26,7 @@ public class Medikit extends Oggetto implements InterfacciaMedikit, ElementiPerM
     @Override
     public boolean usaOggetto(Eroe e)
     {
-        if(e==null || e.controllaSeMorto())
+        if(e==null || !e.controllaSeVivo())
             throw new IllegalArgumentException("Eroe passato al metodo usaOggetto di Medikit == null.\n" +
                     "Oppure Eroe morto!\n");
         else
@@ -45,7 +44,7 @@ public class Medikit extends Oggetto implements InterfacciaMedikit, ElementiPerM
     @Override
     public boolean curaEroe(Eroe e)
     {
-        if(e==null || e.controllaSeMorto())
+        if(e==null || !e.controllaSeVivo())
         {
             throw new  IllegalArgumentException("Eroe non valido o morto!");
         }
@@ -69,7 +68,7 @@ public class Medikit extends Oggetto implements InterfacciaMedikit, ElementiPerM
     @Override
     public int hashCode()
     {
-        return java.util.Objects.hash(this.getPuntiVita());
+        return java.util.Objects.hash(this.puntiVitaRistabiliti);
     }
     @Override
     public boolean equals(Object obj)
@@ -77,8 +76,24 @@ public class Medikit extends Oggetto implements InterfacciaMedikit, ElementiPerM
         if(this==obj) return true;
         if(!(obj instanceof Medikit)) return false;
         Medikit other = (Medikit)obj;
-        return this.getPuntiVita()==other.getPuntiVita();
+        return this.getPuntiVitaRistabiliti()==other.getPuntiVitaRistabiliti();
     }
 
 
+    @Override
+    public boolean calpestataDaEroe(Eroe e)
+    {
+         if(e.prendiOggetto(this))
+         {
+             System.out.println("L'eroe: "+e.toString()+
+                     "ha raccolto l'oggetto: "+this.toString());
+             return true;
+         }
+         else
+         {
+             System.out.println("accaduto qualche problema nel raccogliere l'oggetto!");
+         }
+         return false;
+         //todo quando funzionerà tutto fai direttamente: return e.prendiOggetto(this);
+    }
 }

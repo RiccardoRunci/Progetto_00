@@ -46,7 +46,7 @@ public class Zaino
     // non si può fare perché  eroeProprietarioDelloZaino è final.
     public boolean aggiungiOggettoNelloZaino(Oggetto oggetto)
     {
-        if (oggetto != null) //Se l'oggetto è != null
+        if (oggetto != null || (!eroeProprietarioZaino.controllaSeVivo()))//Se l'oggetto è != null
         {
             if (this.oggettiPosseduti.containsKey(oggetto)) //se ho già l'oggetto
             {   //.get(oggetto) restituisce il valore associato a quella chiave "oggetto".
@@ -58,7 +58,8 @@ public class Zaino
                 this.oggettiPosseduti.put(oggetto, 1); //lo aggiungo con la quantità=1.
                 return true;
             }
-        } else return false;
+        }
+        else return false;
     }
 
     public boolean controllaPresenzaOggetto(Oggetto o)

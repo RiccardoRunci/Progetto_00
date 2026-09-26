@@ -30,4 +30,11 @@ public class Guerriero extends Nemico implements InterfacciaGuerriero, ElementiP
     {
         return false;
     }
+
+    @Override
+    public boolean calpestataDaEroe(Eroe e)
+    {
+        System.out.println("L'EROE è incappato in un guerriero!");
+        return false;
+    }
 }

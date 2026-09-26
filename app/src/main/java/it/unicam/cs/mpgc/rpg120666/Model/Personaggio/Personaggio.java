@@ -57,9 +57,9 @@ public abstract class Personaggio
     /**Metodo che:
      * @return true se il personaggio è ancora vivo!
      * ritorna false se il personaggio è morto*/
-    public boolean controllaSeMorto()
+    public boolean controllaSeVivo()
     {
-        if(this.getPuntiVitaPersonaggio()>0) return false;
-        else return true;
+        if(this.getPuntiVitaPersonaggio()>0) return true;
+        else return false;
     }
 }

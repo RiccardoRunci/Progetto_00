@@ -16,18 +16,35 @@ public class MainCli
 
     public static void main(String[] args)
     {
-        //0 Creo l'EROE!
-        Eroe IlNostroEroe = new Eroe("RICCARDO",50);
-        // 1) MODEL
-        MatriceGioco model = new MatriceGioco(EnumDifficolta.MEDIA,IlNostroEroe);
+//        //0 Creo l'EROE!
+//        Eroe IlNostroEroe = new Eroe("RICCARDO",50);
+//        // 1) MODEL
+//        MatriceGioco model = new MatriceGioco(EnumDifficolta.MEDIA,IlNostroEroe);
+//
+//        PopolaMatriceEroe popEroeInMatrice = new PopolaMatriceEroe(model,IlNostroEroe);
+//        model.stampaMatriceCLI();
+//        PopolaMatriceOggetti popolaOggettiInMatrice= new PopolaMatriceOggetti(model);
+//        PopolaMatriceNemici popolaNemiciInMatrice = new PopolaMatriceNemici(model);
+//
+//        System.out.println("LA MATRICE POPOLATA SARA':\n");
+//        model.stampaMatriceCLI();
 
-        PopolaMatriceEroe popEroeInMatrice = new PopolaMatriceEroe(model,IlNostroEroe);
-        model.stampaMatriceCLI();
-        PopolaMatriceOggetti popolaOggettiInMatrice= new PopolaMatriceOggetti(model);
-        PopolaMatriceNemici popolaNemiciInMatrice = new PopolaMatriceNemici(model);
+        Eroe eroe1 = new Eroe("Riccardo",100);
+        System.out.println("Eroe vivo: "+eroe1.controllaSeVivo());
+        Oggetto medikit1 = new Medikit("PFZIER",100);
+        System.out.println("Alllora??? "+medikit1);
+        //System.out.println("Alllora??? "+medikit1 == null);
+        eroe1.prendiOggetto(medikit1);
+        System.out.println("Ora si dovrebbe vedere che in zaino si trova un medikit:\n");
+        System.out.println(eroe1.getZaino().toString());
+        medikit1.usaOggetto(eroe1);
+        System.out.println("Ora si dovrebbe vedere che in zaino NON C'E' + Il medikit:\n");
+        System.out.println(eroe1.getZaino().toString());
 
-        System.out.println("LA MATRICE POPOLATA SARA':\n");
-        model.stampaMatriceCLI();
+
+        Oggetto arma1 = new Arma("Spada",800);
+        eroe1.prendiOggetto(arma1);
+        eroe1.usaOggetto(arma1);
 
     }
 }
