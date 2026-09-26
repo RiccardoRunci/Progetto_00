@@ -48,4 +48,6 @@ public abstract class Nemico extends Personaggio implements combattiControEroe
      * implementarlo diversamente!*/
     @Override
     public abstract boolean combattiControEroe(Eroe e);
+
+
 }

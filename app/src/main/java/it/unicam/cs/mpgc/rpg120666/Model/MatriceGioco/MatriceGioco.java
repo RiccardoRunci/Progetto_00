@@ -4,21 +4,25 @@ import it.unicam.cs.mpgc.rpg120666.Model.Difficolta.Difficolta;
 import it.unicam.cs.mpgc.rpg120666.Model.Difficolta.EnumDifficolta;
 import it.unicam.cs.mpgc.rpg120666.Model.ElementiPerMatrice.ElementiPerMatrice;
 import it.unicam.cs.mpgc.rpg120666.Model.Eroe.Eroe;
+import it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco.ContaElementiRimanenti.MatriceContaElementi;
 import it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco.Popolamento.PopolaMatriceEroe;
+import it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco.Popolamento.PopolaMatriceNemici;
+import it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco.Popolamento.PopolaMatriceOggetti;
 import it.unicam.cs.mpgc.rpg120666.Model.Nemico.ClassiEstese.Guerriero;
 import it.unicam.cs.mpgc.rpg120666.Model.Nemico.ClassiEstese.Mago;
-import it.unicam.cs.mpgc.rpg120666.Model.Nemico.Nemico;
 import it.unicam.cs.mpgc.rpg120666.Model.Oggetto.ClassiEstese.Arma;
 import it.unicam.cs.mpgc.rpg120666.Model.Oggetto.ClassiEstese.Medikit;
-import it.unicam.cs.mpgc.rpg120666.Model.Oggetto.Oggetto;
 
 import java.util.Random;
 public class MatriceGioco
 {
     private Difficolta diffGioco;
     private Random generatoreRandom;
-    //todo private PopolaMatriceNemiciOggetti popolaNemiciOggetti;
-    private PopolaMatriceEroe popolaMatriceEroe; //todo
+
+    private PopolaMatriceNemici popolaMatriceNemici;
+    private PopolaMatriceOggetti popolaMatriceOggetti;
+    private PopolaMatriceEroe popolaMatriceEroe;
+    private final MatriceContaElementi matriceContaElementi; /*Classe che serve per contare gli elementi rimanenti in matrice.*/
     private Eroe ilNostroEroe;
     private static final int CELLE_MATRICE_FACILE = 8; // 16
     private static final int CELLE_MATRICE_MEDIA = 16; //32
@@ -31,10 +35,15 @@ public class MatriceGioco
         this.generatoreRandom = new Random();
         this.matrice = creaMatriceInBaseAllaDifficolta(difficolta); //Crea la dimensione della matrice!
         this.diffGioco=new Difficolta(difficolta); //Crea il numero di nemici e oggetti nella matrice!
-        //todo this.popolaNemiciOggetti = new PopolaMatriceNemiciOggetti(this,this.diffGioco);
+
+
         this.ilNostroEroe=IlNostroEroe;
         this.popolaMatriceEroe = new PopolaMatriceEroe(this,this.ilNostroEroe); //todo
+        this.popolaMatriceNemici = new PopolaMatriceNemici(this);
+        this.popolaMatriceOggetti = new PopolaMatriceOggetti(this);
 
+        /*Creo un oggetto che serve per contare gli elementi rimanenti in matrice (Oggetti, Nemici, ecc..)*/
+        this.matriceContaElementi =new MatriceContaElementi(this.matrice);
     }
     /**Crea la matrice in base alla difficoltà.*/
     private ElementiPerMatrice[][] creaMatriceInBaseAllaDifficolta(EnumDifficolta difficolta)
@@ -69,14 +78,15 @@ public class MatriceGioco
             throw new ArrayIndexOutOfBoundsException("Errore del metodo get della classe MatriceGioco\nStai fuori dalla matrice!\n");
         }
     }
+    public MatriceContaElementi getMatriceContaElementi() {return this.matriceContaElementi;}
     //Metodo get:
     public int getDimensione()
     {
         return this.matrice.length;
     }
     public Difficolta getDifficoltaGioco(){ return this.diffGioco; }
-    public int getNumeroNemici(){ return this.diffGioco.getNumNemici(); }
-    public int getNumeroOggetti(){ return this.diffGioco.getNumOggetti(); }
+    public int getNumeroNemiciIniziali(){ return this.diffGioco.getNumNemici(); }
+    public int getNumeroOggettiIniziali(){ return this.diffGioco.getNumOggetti(); }
     public Eroe getIlNostroEroe(){ return this.ilNostroEroe; }
     public ElementiPerMatrice[][] getMatriceElementi() { return this.matrice; }
 
@@ -156,4 +166,5 @@ public class MatriceGioco
             System.out.print("\n");
         }
     }
+
 }

@@ -92,4 +92,13 @@ public class Arma extends Oggetto implements InterfacciaArma, ElementiPerMatrice
         /*todo quando si è sicuri che funziona tutto sostituire
            tutto il codice sopra con: "return e.prendiOggetto(this);"*/
     }
+    /**Metodo che viene preso dall'interfaccia ElementiPerMatrice.
+     * Serve per evitare i wildcards in MatriceGioco.
+     * Quando scorro la matrice, per capire se ci sono ancora Oggetti, Armi, Eroe, ecc...
+     * Ogni volta che si estende il codice devo mettere questo metodo su una nuova classe che creo.
+     * Ne parlo meglio nella classe MatriceContaElementi. L'ho fatto solo per non darla vinta all' IA.*/
+    @Override
+    public String restituisciTipoOggetto() {
+        return "Arma";
+    }
 }

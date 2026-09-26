@@ -18,6 +18,9 @@ in realtà è abstract ma preso dall'interfaccia UsaOggetto) "usaOggetto(Eroe e)
 Poi si dovrà anche implementare i metodi dell'interfacciaSigaretta!
 La classe Sigaretta (come tutte le altre classi, sottoclassi di Oggetto) dovrà implementare anche "ElementiPerMatrice".
 ElementiPerMatrice è un interfaccia che serve per "mettere" gli oggetti di diverso tipo in matrice!
+Ha anche un metodo che ritorna una stringa. Questa Stringa deve rappresentare il tipo della nuova classe.
+Ho messo questo metodo nell'interfaccia "ElementiPerMatrice" per evitare i wildcard, facendo tutto questo lavoro dovrei
+aver violato il principio solid open/close. Ne parlo meglio nella classe MatriceContaElementi.
 
 Nel metodo implementato dall'interfacciaSigaretta si deve scrivere quello che effettivamente si vuole dal comportamento
 della sigaretta. Ad esempio:

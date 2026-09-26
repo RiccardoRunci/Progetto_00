@@ -48,4 +48,5 @@ public abstract class Oggetto implements UsaOggetto
      * Così da permettere (ad esempio) alla sottoclasse Medikit di usare l'oggetto per ricaricare la vita!
      * Oppure alla sottoclasse Arma di aumentare la potenza di attacco dell'Eroe!*/
     public abstract boolean usaOggetto(Eroe e);
+
 }
