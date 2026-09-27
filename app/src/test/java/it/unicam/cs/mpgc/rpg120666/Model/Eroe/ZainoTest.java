@@ -1,6 +1,4 @@
-package it.unicam.cs.mpgc.rpg120666.Main.Eroe;
-
-import it.unicam.cs.mpgc.rpg120666.Model.Eroe.Eroe;
+package it.unicam.cs.mpgc.rpg120666.Model.Eroe;
 import it.unicam.cs.mpgc.rpg120666.Model.Oggetto.ClassiEstese.Arma;
 import it.unicam.cs.mpgc.rpg120666.Model.Oggetto.ClassiEstese.Medikit;
 import it.unicam.cs.mpgc.rpg120666.Model.Oggetto.Oggetto;
@@ -8,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
 
 public class ZainoTest
 {

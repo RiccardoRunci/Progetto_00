@@ -15,8 +15,13 @@ public interface ElementiPerMatrice
          * Bisognerà ricordarsi (qual'ora si vuole mettere una nuova categoria di ElementiPerMatrice) di inserirla anche
          * nell'enumerazione EnumOggNem.
          * Parlo più dettagliatamente di questa "operazione" nella classe MatriceContaElementi.*/
-        String restituisciTipoOggetto(); //Soluzione "casareccia".
+        public String restituisciTipoOggetto(); //Soluzione "casareccia".
 
+        /**Metodo che viene richiamato nella classe Manager.ManagerIncontroNemiciOggetti.
+         * @Note Serve per evitare gli istanceof in quella classe.
+         * Ne parlo meglio nei commenti di ManagerIncontroNemiciOggetti.
+         * @Note questo metodo purtroppo mi dà origine anche a una violazione solid ISP nella Classe Eroe.
+         * Perchè anche Eroe è una classe che implementa questa interfaccia.*/
         public boolean calpestataDaEroe(Eroe e);
 }
 

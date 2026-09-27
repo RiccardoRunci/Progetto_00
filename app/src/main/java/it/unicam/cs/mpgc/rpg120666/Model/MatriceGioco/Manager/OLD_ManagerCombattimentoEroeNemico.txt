@@ -1,0 +1,61 @@
+Questo è il vecchio codice del metodo combattimento() della classe ManagerCombattimentoEroeNemico.
+Come si vede sotto, ho utilizzato gli istanceof per differenziare tra i vari Personaggi che si attaccavano a vicenda.
+Questo dava vita a una violazione Open/Close solid. Rendeva il codice non estendibile nel momento in cui andavo ad
+aggiungere un nuovo nemico (esempio Drago, dovevo aggiungere istanceof Drago).
+Invece, quando vado ad aggiungere un nuovo personaggio, ora basta che al nuovo personaggio faccio implementare
+l'interfaccia Personaggio.InterfacciaPersonaggi. Dove compare il metodo eseguiAttacco(Personaggio p), che sostituirà
+l'utilizzo degli istanceof qui sotto.
+
+    /**Questo metodo ritorna true se il nostro eroe ha vinto lo scontro!
+      *Quindi può spostarsi nella nuova cella di destinazione!*/
+    public boolean combattimento()
+    {
+       /**@Documented purtroppo mi sono reso conto che qui il mio codice non è estendibile.
+         * Perchè nel momento in cui vado a creare un nuovo Nemico, oltre che a fare
+         * la sua classe concreta (che estende Nemico), devo anche mettere un altro blocco
+         * if(this.Nemico instance of NuovaClasseConcreata) {}.*/
+
+        //Finché almeno uno dei due combattenti è in vita:
+       /* while(!(this.ilNostroEroe.controllaSeVivo()) && this.ilNemico.controllaSeVivo())
+        {
+            if (this.ilNemico instanceof Guerriero g)
+            {
+                g.eseguiAttaccoFisico(ilNostroEroe);
+                System.out.println("Il guerriero ha attaccato il nostro eroe!\n");
+                if (ilNostroEroe.controllaSeVivo())
+                {
+                    System.out.println("Il Nostro eroe e' morto!\n");
+                    return false;
+                }
+                ilNostroEroe.attaccaFisicamente(g);
+                System.out.println("Il nostro eroe ha attaccato il guerriero!\n");
+                if (!g.controllaSeVivo())
+                {
+                    System.out.println("Il Nostro eroe ha vinto contro il guerriero!\n");
+                    g=null; //Funzionerà????
+                    return true;
+                }
+            }
+            else if (this.ilNemico instanceof Mago m)
+            {
+                m.eseguiAttaccoMagico(ilNostroEroe);
+                System.out.println("Il mago ha attaccato il nostro eroe!\n");
+                if (ilNostroEroe.controllaSeVivo())
+                {
+                    System.out.println("Il nostro eroe è morto!\n");
+                    return false;
+                }
+                ilNostroEroe.controllaSeVivo()(m);
+                System.out.println("Il nostro eroe ha attaccato il mago!\n");
+                if (!m.controllaSeVivo())
+                {
+                    System.out.println("Il nostro eroe ha vinto la battaglia contro il mago!\n");
+                    m=null; //Funzionerà?
+                    return true;
+                }
+                m.eseguiAutoCuraMagica(); //il mago si può ricaricare la vita!
+                System.out.println("Il mago ha usato una magia per ricaricarsi la vita!\n");
+            }
+        }*/
+        return false; //se succede un imprevisto!
+    }

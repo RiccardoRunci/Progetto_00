@@ -1,9 +1,10 @@
 package it.unicam.cs.mpgc.rpg120666.Model.Personaggio;
 import it.unicam.cs.mpgc.rpg120666.Model.Utility.VerificaParametri;
+import it.unicam.cs.mpgc.rpg120666.Model.Personaggio.InterfacciaPerPersonaggi;
 import static it.unicam.cs.mpgc.rpg120666.Model.Utility.CreazioneAggiornamento.AGGIORNAMENTO;
 import static it.unicam.cs.mpgc.rpg120666.Model.Utility.CreazioneAggiornamento.CREAZIONE;
 
-public abstract class Personaggio
+public abstract class Personaggio implements InterfacciaPerPersonaggi
 {
     private final String nomePersonaggio;
     private int puntiVitaPersonaggio;
@@ -62,4 +63,10 @@ public abstract class Personaggio
         if(this.getPuntiVitaPersonaggio()>0) return true;
         else return false;
     }
+    /**Metodo che deriva dall'interfaccia Personaggio.InterfacciaPerPersonaggi. Lo metto abstract,
+     * così da farlo implementare nelle sottoclassi di Personaggio.
+     * Personaggio è una classe astratta, non si istanzia.
+     * Questo metodo tornerà utili per eliminare gli istance of nella classe ManagerCombattimentoEroeNemico*/
+    @Override
+    public abstract boolean eseguiAttacco(Personaggio e);
 }

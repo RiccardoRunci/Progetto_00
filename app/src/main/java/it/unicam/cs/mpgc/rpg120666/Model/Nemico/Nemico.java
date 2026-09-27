@@ -1,10 +1,10 @@
 package it.unicam.cs.mpgc.rpg120666.Model.Nemico;
-import it.unicam.cs.mpgc.rpg120666.Model.Eroe.Eroe;
+import it.unicam.cs.mpgc.rpg120666.Model.Personaggio.InterfacciaPerPersonaggi;
 import it.unicam.cs.mpgc.rpg120666.Model.Personaggio.Personaggio;
 import it.unicam.cs.mpgc.rpg120666.Model.Utility.VerificaParametri;
 import static it.unicam.cs.mpgc.rpg120666.Model.Utility.CreazioneAggiornamento.CREAZIONE;
 
-public abstract class Nemico extends Personaggio implements combattiControEroe
+public abstract class Nemico extends Personaggio implements InterfacciaPerPersonaggi
 {
     private final int dannoCausato;
     /** Metodo costruttore:
@@ -43,11 +43,10 @@ public abstract class Nemico extends Personaggio implements combattiControEroe
             Nemico other = (Nemico)obj;
         return this.getDannoCausato()==(other.getDannoCausato());
     }
-    /**Metodo che deriva dall'interfaccia "combattiControEroe".
-     * Qui è abstract, così da permettere alle sottoclassi di Nemico di
-     * implementarlo diversamente!*/
+    /**Metodo che deriva dall'interfaccia Personaggio.InterfacciaPerPersonaggi. Lo metto abstract,
+     * così da farlo implementare nelle sottoclassi di Nemico (come ho fatto per Personaggio).
+     * Nemico è una classe astratta, non si istanzia.
+     * Questo metodo tornerà utili per eliminare gli istance of nella classe ManagerCombattimentoEroeNemico*/
     @Override
-    public abstract boolean combattiControEroe(Eroe e);
-
-
+    public abstract boolean eseguiAttacco(Personaggio e);
 }

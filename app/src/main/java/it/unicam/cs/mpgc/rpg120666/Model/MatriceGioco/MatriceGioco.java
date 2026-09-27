@@ -131,7 +131,6 @@ public class MatriceGioco
     @Deprecated
     public void stampaMatriceCLI()
     {
-
         ElementiPerMatrice element;
 
         for(int riga=0; riga<this.matrice.length; riga++)
