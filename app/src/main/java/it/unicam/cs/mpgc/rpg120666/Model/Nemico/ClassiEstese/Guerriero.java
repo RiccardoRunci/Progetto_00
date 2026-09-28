@@ -59,8 +59,10 @@ public class Guerriero extends Nemico implements InterfacciaPerPersonaggi, Eleme
             /*Se il guerriero è ancora vivo, allora può attaccare l'eroe!*/
             if(this.controllaSeVivo())
             {
+                //System.out.println("PRIMA IL L'eroe HA VITA: "+e.getPuntiVitaPersonaggio());
                 //Attacca l'eroe:
                 e.setPuntiVitaPersonaggio(e.getPuntiVitaPersonaggio() - this.getDannoCausato());
+                //System.out.println("DOPO IL L'eroe HA VITA: "+e.getPuntiVitaPersonaggio());
                 return true; //L'attacco del Guerriero (ai danni dell'eroe) Ha avuto successo!
             }
             else

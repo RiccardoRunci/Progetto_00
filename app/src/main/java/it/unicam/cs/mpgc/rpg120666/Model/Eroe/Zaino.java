@@ -91,7 +91,7 @@ public class Zaino
     @Override
     public String toString()
     {
-        return ""+this.elencaOggettiDelloZainoEroe()+"\n";
+        return "ELEMENTI DELLO ZAINO: \n"+this.elencaOggettiDelloZainoEroe()+"\n";
     }
     private String elencaOggettiDelloZainoEroe()
     {

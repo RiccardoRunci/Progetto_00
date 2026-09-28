@@ -120,7 +120,9 @@ public class Eroe extends Personaggio implements InterfacciaPerPersonaggi, Eleme
             /*Se l'eroe è ancora in vita, può sferrare l'attacco ai danni del nemico!*/
             if(this.controllaSeVivo())
             {
+               //System.out.println("PRIMA IL NEMICO HA VITA: "+nem.getPuntiVitaPersonaggio());
                 nem.setPuntiVitaPersonaggio(nem.getPuntiVitaPersonaggio()-this.getDannoCausato());
+               //System.out.println("DOPO IL NEMICO HA VITA: "+nem.getPuntiVitaPersonaggio());
                 /*L'eroe è riuscito a sferrare l'attacco ai danni del nemico e ritorna true!*/
                 return true;
             }

@@ -1,8 +1,6 @@
 package it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco.Manager;
 import it.unicam.cs.mpgc.rpg120666.Model.Eroe.Eroe;
 import it.unicam.cs.mpgc.rpg120666.Model.Nemico.Nemico;
-import it.unicam.cs.mpgc.rpg120666.Model.Personaggio.Personaggio;
-
 public class ManagerCombattimentoEroeNemico
 {
     private Eroe ilNostroEroe;
@@ -21,13 +19,11 @@ public class ManagerCombattimentoEroeNemico
     public boolean combattimento()
     {
         //Finché almeno uno dei due combattenti è in vita:
-        while (!(this.ilNostroEroe.controllaSeVivo()) && this.ilNemico.controllaSeVivo())
+        while (this.ilNostroEroe.controllaSeVivo() && this.ilNemico.controllaSeVivo())
         {
             //Il nemico attacca per primo l'eroe:
-            System.out.println("il nemico attacca l'eroe!");
             this.ilNemico.eseguiAttacco(this.ilNostroEroe);
             //L'eroe risponde sferrando l'attacco al nemico:
-            System.out.println("l'eroe attacca il nemico!");
             this.ilNostroEroe.eseguiAttacco(this.ilNemico);
             //Se il nemico o l'eroe è deceduto,interrompo il while!
             if(!(this.ilNemico.controllaSeVivo()) || !(this.ilNostroEroe.controllaSeVivo()) )

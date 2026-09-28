@@ -1,13 +1,9 @@
 package it.unicam.cs.mpgc.rpg120666.Main;
-
 import it.unicam.cs.mpgc.rpg120666.Model.Difficolta.EnumDifficolta;
 import it.unicam.cs.mpgc.rpg120666.Model.Eroe.Eroe;
 import it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco.CellaMatrice;
 import it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco.Manager.ManagerSpostamentoEroe;
 import it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco.MatriceGioco;
-
-import it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco.ContaElementiRimanenti.EnumOggNem;
-
 public class MainCli
 {
     public String saluta() {return "Benvenuto nel gioco RPG!"; }
@@ -46,7 +42,7 @@ public class MainCli
         System.out.println("");
         managerSpostamentoEroe.spostaIlNostroEroe(new CellaMatrice(0,4));
         System.out.println("");
-        
+
 
         /*ManagerSpostamentoEroe crea al suo interno una istanza di ManagareIncontroNemiciOggetti.
         * ManagerIncontroNemiciOggetti rimanda, grazie al metodo ..calpestataDaEroe(Eroe),

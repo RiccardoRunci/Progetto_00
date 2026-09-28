@@ -96,14 +96,14 @@ public class Arma extends Oggetto implements InterfacciaArma, ElementiPerMatrice
         System.out.println("L'EROE HA TROVATO UN ARMA!");
         if ((e.controllaSeVivo()) && e!=null)
         {
-            System.out.println("L'eroe:"+e.toString()+
-                    " ha raccolto l'oggetto: "+this.toString());
+            //System.out.println("L'eroe:"+e.toString()+" ha raccolto l'oggetto: "+this.toString());
             e.prendiOggetto(this);
+            //System.out.println("CONTENUTO ZAINO EROE:\n"+e.getZaino().toString());
             return true;
         }
         else
         {
-            System.out.println("Accaduto qualche problema, l'eroe non è riuscito a prendere l'oggetto!");
+            System.out.println("Accaduto qualche problema, l'eroe non è riuscito a prendere l'oggetto:\n"+this.toString());
             return false;
         }
         /*todo quando si è sicuri che funziona tutto sostituire

@@ -66,8 +66,10 @@ public class Mago extends Nemico implements InterfacciaPerPersonaggi, ElementiPe
             /*se il mago è ancora vivo e ha le magie, allora il mago può attaccare l'eroe!*/
             if(this.numeroMagie>0 && this.controllaSeVivo())
             {
+            //System.out.println("PRIMA L'eroe HA VITA: "+e.getPuntiVitaPersonaggio());
                //Attacca l'eroe:
             e.setPuntiVitaPersonaggio(e.getPuntiVitaPersonaggio() - this.getDannoCausato());
+            //System.out.println("DOPO L'eroe HA VITA: "+e.getPuntiVitaPersonaggio());
             //è un mago e si auto-cura!
             this.eseguiCuraMagica();
             return true; //L'attacco del mago (ai danni dell'eroe) Ha avuto successo!

@@ -95,16 +95,15 @@ public class Medikit extends Oggetto implements InterfacciaMedikit, ElementiPerM
     @Override
     public boolean calpestataDaEroe(Eroe e)
     {
-        System.out.println("L'EROE HA TROVATO UN MEDIKIT!");
+        //System.out.println("L'EROE HA TROVATO UN MEDIKIT!");
         if(e.prendiOggetto(this))
         {
-            System.out.println("L'eroe: "+e.toString()+
-                    "ha raccolto l'oggetto: "+this.toString());
+            //System.out.println("L'eroe: "+e.toString()+"ha raccolto l'oggetto: "+this.toString());
             return true;
         }
         else
         {
-            System.out.println("accaduto qualche problema nel raccogliere l'oggetto!");
+            System.out.println("accaduto qualche problema nel raccogliere l'oggetto:\n"+this.toString());
         }
         return false;
         //todo quando funzionerà tutto fai direttamente: return e.prendiOggetto(this);

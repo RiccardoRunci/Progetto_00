@@ -14,12 +14,12 @@ public class FactoryNemici
         return switch(generatoreRandom.nextInt(2))
         {
             case 0-> new Mago("Mago",
-                    generatoreRandom2.nextInt(100)+1,
-                    generatoreRandom2.nextInt(5)+1,
-                    generatoreRandom2.nextInt(15)+1);
+                    generatoreRandom2.nextInt(30)+1,
+                    generatoreRandom2.nextInt(7)+1,
+                    generatoreRandom2.nextInt(5)+1);
             case 1-> new Guerriero("Guerriero",
-                    generatoreRandom2.nextInt(200)+1,
-                    generatoreRandom2.nextInt(15)+1);
+                    generatoreRandom2.nextInt(50)+1,
+                    generatoreRandom2.nextInt(8)+1);
             default -> throw new IllegalArgumentException("Qualcosa non è andato bene " +
                     "nella classe FactoryOggetti");
         };
