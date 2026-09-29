@@ -6,7 +6,6 @@
  * @author copilot.*/
 package it.unicam.cs.mpgc.rpg120666.Model.Oggetto.ClassiEstese;
 import it.unicam.cs.mpgc.rpg120666.Model.ElementiPerMatrice.ElementiPerMatrice;
-
 import java.util.Random;
 public class FactoryOggetti
 {

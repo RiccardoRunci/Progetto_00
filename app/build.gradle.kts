@@ -31,7 +31,7 @@ java {
     }
 }
 //CLASSE MAIN:
-application { mainClass = "it.unicam.cs.mpgc.rpg120666.Main.MainCli" }
+application { mainClass = "it.unicam.cs.mpgc.rpg120666.Main.MainFx2" }
 tasks.test { // Obbligatorio per eseguire i test con JUnit
     useJUnitPlatform()
     /*Ti fa vedere test per test se passato, skippato o fallito!*/
