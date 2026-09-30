@@ -5,10 +5,7 @@ import it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco.CellaMatrice;
 import it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco.ContaElementiRimanenti.EnumOggNem;
 import it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco.Manager.ManagerSpostamentoEroe;
 import it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco.MatriceGioco;
-import it.unicam.cs.mpgc.rpg120666.View.EroeView;
-import it.unicam.cs.mpgc.rpg120666.View.InizioGiocoView;
-import it.unicam.cs.mpgc.rpg120666.View.MatriceView;
-import it.unicam.cs.mpgc.rpg120666.View.SpostamentoEroeView;
+import it.unicam.cs.mpgc.rpg120666.View.*;
 
 public class MatriceController
 {
@@ -18,7 +15,6 @@ public class MatriceController
     private MatriceGioco matriceModel;
     /*Classe per spostare l'eroe*/
     private ManagerSpostamentoEroe managerSpostamentoEroe;
-
     /*La view dello spostamento dell'eroe:*/
     private SpostamentoEroeView  spostamentoEroeView;
     /*La view dell'eroe:*/
@@ -27,6 +23,10 @@ public class MatriceController
     private MatriceView matriceView;
     /*La classe dell'Eroe:*/
     private Eroe ilNostroEroe;
+    //Il controller e la vista della TableView Zaino:
+    private ZainoController controllerZaino;
+    private ZainoView zainoView;
+
     public MatriceController(InizioGiocoView inizioGiocoView, MatriceGioco matriceModel)
     {
          /*ERRORE! DEVO PRENDERE gli oggetti spostamentoEroeView e eroeView
@@ -44,6 +44,11 @@ public class MatriceController
         this.ilNostroEroe = this.matriceModel.getIlNostroEroe();
         this.managerSpostamentoEroe=new ManagerSpostamentoEroe(this.matriceModel,this.ilNostroEroe);
 
+        //Da una view principale (InizioGiocoView), mi prendo la view dello zaino:
+        this.zainoView = this.inizioGiocoView.getZainoView(); // la view dello zaino
+        //Inizializzo il controller dello zaino:
+        this.controllerZaino=new ZainoController(this.ilNostroEroe,this.zainoView);
+
         inizioGiocoView.getBtnCancellaCampi().setOnAction(e -> pulisciTxtDellaView());
         inizioGiocoView.getBtnIndietro().setOnAction(e -> tornaAllaSchermataPrecedente());
         inizioGiocoView.getStatisticheView().getTxtNumArmi().setText(""+matriceModel.getMatriceContaElementi().calcolaNumOggettiNemiciRimanenti(EnumOggNem.ARMA));
@@ -58,6 +63,21 @@ public class MatriceController
         inizioGiocoView.getMatriceView().setCellaClickListener((riga, colonna) -> {
             cellaCliccata(riga, colonna);
         });
+    }
+    public void cellaCliccata(int riga,int colonna)
+    {
+        System.out.println("Hai cliccato la cella: " + riga + "," +colonna);
+        ElementiPerMatrice ogg = this.matriceModel.getOggettoDellaMatrice(new CellaMatrice(riga, colonna));
+        if (ogg == null) { System.out.println("Cella vuota."); }
+        else { System.out.println("Contenuto della cella: \n" + ogg.toString()); }
+        /**Passo la matrice di elementi (dati grezzi) alla view della matrice, così può aggiornare */
+        this.inizioGiocoView.getMatriceView().aggiorna(this.matriceModel.getMatriceElementi());
+        /**Aggiorno le statistiche (oggetti e nemici rimanenti)!*/
+        this.inizioGiocoView.getStatisticheView().aggiornaStatistiche(
+                matriceModel.getMatriceContaElementi().calcolaNumOggettiNemiciRimanenti(EnumOggNem.ARMA),
+                matriceModel.getMatriceContaElementi().calcolaNumOggettiNemiciRimanenti(EnumOggNem.MEDIKIT),
+                matriceModel.getMatriceContaElementi().calcolaNumOggettiNemiciRimanenti(EnumOggNem.MAGO),
+                matriceModel.getMatriceContaElementi().calcolaNumOggettiNemiciRimanenti(EnumOggNem.GUERRIERO));
     }
 
     private void pulisciTxtDellaView()
@@ -91,23 +111,11 @@ public class MatriceController
                     matriceModel.getMatriceContaElementi().calcolaNumOggettiNemiciRimanenti(EnumOggNem.MEDIKIT),
                     matriceModel.getMatriceContaElementi().calcolaNumOggettiNemiciRimanenti(EnumOggNem.MAGO),
                     matriceModel.getMatriceContaElementi().calcolaNumOggettiNemiciRimanenti(EnumOggNem.GUERRIERO));
+            /*Aggiorno anche zainoView*, tramite il suo controller:*/
+            this.controllerZaino.aggiornaComponentiZaino();
         }
         /*Devo metterlo fuori dall'if. Perchè se no me lo aggiorna solo quando l'eroe si riesce a muovere!*/
         this.eroeView.getTxtVitaEroe().setText(String.valueOf(ilNostroEroe.getPuntiVitaPersonaggio()));
     }
-    public void cellaCliccata(int riga,int colonna)
-    {
-        System.out.println("Hai cliccato la cella: " + riga + "," +colonna);
-        ElementiPerMatrice ogg = this.matriceModel.getOggettoDellaMatrice(new CellaMatrice(riga, colonna));
-        if (ogg == null) { System.out.println("Cella vuota."); }
-        else { System.out.println("Contenuto della cella: \n" + ogg.toString()); }
-        /**Passo la matrice di elementi (dati grezzi) alla view della matrice, così può aggiornare */
-        this.inizioGiocoView.getMatriceView().aggiorna(this.matriceModel.getMatriceElementi());
-        /**Aggiorno le statistiche (oggetti e nemici rimanenti)!*/
-        this.inizioGiocoView.getStatisticheView().aggiornaStatistiche(
-                matriceModel.getMatriceContaElementi().calcolaNumOggettiNemiciRimanenti(EnumOggNem.ARMA),
-                matriceModel.getMatriceContaElementi().calcolaNumOggettiNemiciRimanenti(EnumOggNem.MEDIKIT),
-                matriceModel.getMatriceContaElementi().calcolaNumOggettiNemiciRimanenti(EnumOggNem.MAGO),
-                matriceModel.getMatriceContaElementi().calcolaNumOggettiNemiciRimanenti(EnumOggNem.GUERRIERO));
-    }
+
 }
