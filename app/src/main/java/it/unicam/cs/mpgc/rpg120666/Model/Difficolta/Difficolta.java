@@ -41,7 +41,7 @@ public class Difficolta
     @Override
     public String toString()
     {
-        return "LIVELLO DIFFICOLTA'= "+this.getDifficolta()+"\n"+
+        return "\nLIVELLO DIFFICOLTA'= "+this.getDifficolta()+"\n"+
                 "NUMERO NEMICI= "+this.getNumNemici()+"\n"+
                 "NUMERO OGGETTI= "+this.getNumOggetti()+"\n";
     }

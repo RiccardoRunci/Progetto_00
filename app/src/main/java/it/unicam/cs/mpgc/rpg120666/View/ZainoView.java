@@ -24,6 +24,7 @@ public class ZainoView
     private final TableColumn<Map.Entry<Oggetto,Integer>, Integer> intestazione2Colonna = new TableColumn<>("Chiave:");
 
     private final Label label = new Label("Zaino eroe");
+
     private final VBox layoutTotZainoView;
     //Metodo costruttore:
     public ZainoView()
@@ -53,6 +54,7 @@ public class ZainoView
                 ).asObject()
         );
     }
+
     /*Anche il metodo get deve ritornare la TableView tipata con riga della Map (vedere classe ZainoController):*/
     public TableView<Map.Entry<Oggetto,Integer>> getTabellaZaino() {return this.tabellaZaino;}
     public Node getLayoutTotale() {

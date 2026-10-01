@@ -16,7 +16,7 @@ public class MainFx2 extends Application
         //0 Creo l'EROE!
         Eroe IlNostroEroe = new Eroe("RICCARDO",50);
         // 1) MODEL
-        MatriceGioco model = new MatriceGioco(EnumDifficolta.MEDIA,IlNostroEroe);
+        MatriceGioco model = new MatriceGioco(EnumDifficolta.DIFFICILE,IlNostroEroe);
 
         // 2) VIEW
         int dimensione = model.getDimensione();

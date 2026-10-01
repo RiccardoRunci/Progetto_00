@@ -10,16 +10,14 @@ import java.util.Random;
 public class FactoryOggetti
 {
     private Random generatoreRandom;
-    private Random generatoreRandom2;
     public ElementiPerMatrice restituisciOggettoRandom()
     {
         this.generatoreRandom=new Random();
-        this.generatoreRandom2=new Random();
 
         return switch(generatoreRandom.nextInt(2))
         {
-            case 0-> new Medikit("Medikit",generatoreRandom2.nextInt(100)+1);
-            case 1-> new Arma("Arma",generatoreRandom2.nextInt(200)+1);
+            case 0-> new Medikit("Medikit",30);
+            case 1-> new Arma("Arma",20);
             default -> throw new IllegalArgumentException("Qualcosa non è andato bene " +
                     "nella classe FactoryOggetti");
         };

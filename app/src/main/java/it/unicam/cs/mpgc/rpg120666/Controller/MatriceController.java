@@ -6,10 +6,13 @@ import it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco.ContaElementiRimanenti.Enu
 import it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco.Manager.ManagerSpostamentoEroe;
 import it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco.MatriceGioco;
 import it.unicam.cs.mpgc.rpg120666.View.*;
+import javafx.scene.control.Alert;
 
 public class MatriceController
 {
-    /*La view principale:*/
+    /*La view principale, dai cui posso recuperare tutte le altre view (o gli oggetti delle varie classi view che
+     * si poggiano sopra a essa, le altre classi view sono posizionate nel layout di InizioGiocoView). Vedere nel
+     * costruttore: */
     private InizioGiocoView inizioGiocoView;
     /*IL MODEL:*/
     private MatriceGioco matriceModel;
@@ -23,7 +26,7 @@ public class MatriceController
     private MatriceView matriceView;
     /*La classe dell'Eroe:*/
     private Eroe ilNostroEroe;
-    //Il controller e la vista della TableView Zaino:
+    //Il controller e la vista della "TableView" Zaino:
     private ZainoController controllerZaino;
     private ZainoView zainoView;
 
@@ -47,7 +50,7 @@ public class MatriceController
         //Da una view principale (InizioGiocoView), mi prendo la view dello zaino:
         this.zainoView = this.inizioGiocoView.getZainoView(); // la view dello zaino
         //Inizializzo il controller dello zaino:
-        this.controllerZaino=new ZainoController(this.ilNostroEroe,this.zainoView);
+        this.controllerZaino=new ZainoController(this.ilNostroEroe,this.zainoView,this.eroeView);
 
         inizioGiocoView.getBtnCancellaCampi().setOnAction(e -> pulisciTxtDellaView());
         inizioGiocoView.getBtnIndietro().setOnAction(e -> tornaAllaSchermataPrecedente());
@@ -66,11 +69,29 @@ public class MatriceController
     }
     public void cellaCliccata(int riga,int colonna)
     {
-        System.out.println("Hai cliccato la cella: " + riga + "," +colonna);
+        //System.out.println("\nHAI CLICCATO LA CELLA: " + riga + "," +colonna);
         ElementiPerMatrice ogg = this.matriceModel.getOggettoDellaMatrice(new CellaMatrice(riga, colonna));
-        if (ogg == null) { System.out.println("Cella vuota."); }
-        else { System.out.println("Contenuto della cella: \n" + ogg.toString()); }
-        /**Passo la matrice di elementi (dati grezzi) alla view della matrice, così può aggiornare */
+
+        if (ogg == null)
+        {
+            Alert messaggio = new Alert(Alert.AlertType.INFORMATION,"HAI CLICCATO LA CELLA: " + riga + "," +colonna+"\n"+
+                    "CELLA VUOTA!\n"); //crea un nuovo oggetto Alert (sarebbero i nuovi JOptionPane di swing).
+            messaggio.setTitle("Dettagli Cella"); //Il titolo nella barra del titolo.
+            messaggio.setHeaderText(null); //rimuove la scritta "Messaggio" sotto al titolo.
+            messaggio.showAndWait(); //la fà comparire.
+            //System.out.println("CELLA VUOTA.");
+        }
+        else
+        {
+            Alert messaggio = new Alert(Alert.AlertType.INFORMATION,"HAI CLICCATO LA CELLA: " + riga + "," +colonna+"\n"+
+                    "CONTIENE: \n"+ ogg.toString());
+            messaggio.setTitle("Dettagli Cella");
+            messaggio.setHeaderText(null);
+            messaggio.showAndWait();
+           //System.out.println("CONTENUTO CELLA: \n" + ogg.toString());
+        }
+
+       /**Passo la matrice di elementi (dati grezzi) alla view della matrice, così può aggiornare */
         this.inizioGiocoView.getMatriceView().aggiorna(this.matriceModel.getMatriceElementi());
         /**Aggiorno le statistiche (oggetti e nemici rimanenti)!*/
         this.inizioGiocoView.getStatisticheView().aggiornaStatistiche(
@@ -82,13 +103,16 @@ public class MatriceController
 
     private void pulisciTxtDellaView()
     {
-        inizioGiocoView.getStatisticheView().getTxtNumArmi().clear();
-        inizioGiocoView.getStatisticheView().getTxtNumMedikit().clear();
-        inizioGiocoView.getStatisticheView().getTxtNumGuerrieri().clear();
-        inizioGiocoView.getStatisticheView().getTxtNumMaghi().clear();
+        this.inizioGiocoView.getStatisticheView().getTxtNumArmi().clear();
+        this.inizioGiocoView.getStatisticheView().getTxtNumMedikit().clear();
+        this.inizioGiocoView.getStatisticheView().getTxtNumGuerrieri().clear();
+        this.inizioGiocoView.getStatisticheView().getTxtNumMaghi().clear();
 
-        spostamentoEroeView.getTxtColonnaMatrice().clear();
-        spostamentoEroeView.getTxtRigaMatrice().clear();
+        this.spostamentoEroeView.getTxtColonnaMatrice().clear();
+        this.spostamentoEroeView.getTxtRigaMatrice().clear();
+
+        this.eroeView.getTxtVitaEroe().clear();
+        this.eroeView.getTxtPuntiAttaccoEroe().clear();
     }
     private void tornaAllaSchermataPrecedente()
     {
@@ -96,7 +120,10 @@ public class MatriceController
     }
     private void spostaEroe(String riga,String colonna)
     {
+        /*Aggiorno le componenti JavaFx della view Eroe:*/
         this.eroeView.getTxtVitaEroe().setText(String.valueOf(ilNostroEroe.getPuntiVitaPersonaggio()));
+        this.eroeView.getTxtPuntiAttaccoEroe().setText(String.valueOf(ilNostroEroe.getDannoCausato()));
+
         System.out.println("VUOI SPOSTARE L'EROE ALLA\n"+
             "Riga: "+riga+"\n"+"Colonna: "+colonna+"\n");
         int row = Integer.parseInt(riga);
@@ -112,10 +139,11 @@ public class MatriceController
                     matriceModel.getMatriceContaElementi().calcolaNumOggettiNemiciRimanenti(EnumOggNem.MAGO),
                     matriceModel.getMatriceContaElementi().calcolaNumOggettiNemiciRimanenti(EnumOggNem.GUERRIERO));
             /*Aggiorno anche zainoView*, tramite il suo controller:*/
-            this.controllerZaino.aggiornaComponentiZaino();
+            this.controllerZaino.aggiornaComponentiZainoeEroe();
         }
         /*Devo metterlo fuori dall'if. Perchè se no me lo aggiorna solo quando l'eroe si riesce a muovere!*/
         this.eroeView.getTxtVitaEroe().setText(String.valueOf(ilNostroEroe.getPuntiVitaPersonaggio()));
+        this.eroeView.getTxtPuntiAttaccoEroe().setText(String.valueOf(ilNostroEroe.getDannoCausato()));
     }
 
 }
