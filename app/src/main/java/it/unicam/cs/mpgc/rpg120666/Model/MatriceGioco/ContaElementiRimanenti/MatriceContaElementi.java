@@ -37,26 +37,26 @@ public class MatriceContaElementi
         switch(oggNem)
         {
             case EROE -> {
-                somma=this.calcolaNumNemiciOggetti("Eroe"); // mi segnala errore qui in (Oggetto.class)
+                somma=this.calcola("Eroe");
             }
             case MAGO ->{
-                somma=this.calcolaNumNemiciOggetti("Mago"); // mi segnala errore qui in (Nemico.class)
+                somma=this.calcola("Mago");
             }
             case GUERRIERO ->{
-                somma=this.calcolaNumNemiciOggetti("Guerriero"); // mi segnala errore qui in (Nemico.class)
+                somma=this.calcola("Guerriero");
             }
             case MEDIKIT ->{
-                somma=this.calcolaNumNemiciOggetti("Medikit"); // mi segnala errore qui in (Nemico.class)
+                somma=this.calcola("Medikit");
             }
             case ARMA ->{
-                somma=this.calcolaNumNemiciOggetti("Arma"); // mi segnala errore qui in (Nemico.class)
+                somma=this.calcola("Arma");
             }
             default -> throw new IllegalArgumentException("Il valore non valido");
         }
-        System.out.println("Num trovato di: "+oggNem+" = "+somma);
+        //System.out.println("Num trovato di: "+oggNem+" = "+somma);
         return somma;
     }
-    private int calcolaNumNemiciOggetti(String s) //Gli errori sopra, mi dice che sono riconducibili a (ElementiPerMatrice e)
+    private int calcola(String s) //Gli errori sopra, mi dice che sono riconducibili a (ElementiPerMatrice e)
     {
         int somma=0;
         for (int riga=0; riga<this.matrice.length; riga++)
