@@ -13,5 +13,6 @@ public enum EnumOggNem
     MAGO,
     ARMA,
     MEDIKIT,
-    EROE
+    EROE,
+    NEMICO
 }

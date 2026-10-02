@@ -1,10 +1,11 @@
 package it.unicam.cs.mpgc.rpg120666.Model.Nemico;
+import it.unicam.cs.mpgc.rpg120666.Model.ElementiPerMatrice.ElementiPerMatrice;
 import it.unicam.cs.mpgc.rpg120666.Model.Personaggio.InterfacciaPerPersonaggi;
 import it.unicam.cs.mpgc.rpg120666.Model.Personaggio.Personaggio;
 import it.unicam.cs.mpgc.rpg120666.Model.Utility.VerificaParametri;
 import static it.unicam.cs.mpgc.rpg120666.Model.Utility.CreazioneAggiornamento.CREAZIONE;
 
-public abstract class Nemico extends Personaggio implements InterfacciaPerPersonaggi
+public abstract class Nemico extends Personaggio implements InterfacciaPerPersonaggi, ElementiPerMatrice
 {
     private final int dannoCausato;
     /** Metodo costruttore:
@@ -49,4 +50,18 @@ public abstract class Nemico extends Personaggio implements InterfacciaPerPerson
      * Questo metodo tornerà utili per eliminare gli istance of nella classe ManagerCombattimentoEroeNemico*/
     @Override
     public abstract boolean eseguiAttacco(Personaggio e);
+    /**Metodo final, significa che è scritto nella super classe
+     * e le sotto classi lo prendono così come è senza che possono
+     * modificarlo.
+     * Mi fà molto comodo in MatriceFineGioco, dove io scansiono la
+     * matrice in cerca di Nemici. Dato che le sottoclassi di Nemico
+     * sono anche loro nemici, evito di dover scrivere (nella classe ManagerFineGioco)
+     * @code if (elemento==MAGO || elemento==GUERRIERO || elemento==NUOVO_NEMICO_CHE_METTERO'_IN_FUTURO)*
+     *          then numNemici++;
+     * In questo senso mi rende il codice estendibile. Quando andrò a inserire un nuovo nemico nel gioco (farò ereditare
+     * la classe Nemico e avrò in automatico questo metodo che mi ritorna "Nemico"!*/
+    public final String veroVolto()
+    {
+        return "Nemico";
+    }
 }

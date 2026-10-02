@@ -97,6 +97,17 @@ public class Eroe extends Personaggio implements InterfacciaPerPersonaggi, Eleme
     public String restituisciTipoOggetto() {
         return "Eroe";
     }
+
+    /**@Note Qui ha poso senso. Credo di star violando ISP (principio di segregazione di interfacce).
+     * Questo è un metodo dell'interfaccia ElementiPerMatrice, il quale mi tornava utili nella classe
+     * ManagerFineGioco. Perchè restituendo "Oggetto" in un metodo final che sovrascriveva questo metodo qui
+     * (della realtiva classe Oggeto, non questa di Eroe) avrei potuto avere la somma degli Oggetti (anche se
+     * nella matrice avevo le loro classi estese).*/
+    @Override
+    public String veroVolto() {
+        return this.restituisciTipoOggetto();
+    }
+
     /**Metodo dell'interfaccia ElementiPerMatrice.
      * Qui ho dovuto ereditare il metodo su una classe che non lo doveva ereditare.
      * Allora ho optato per un toString(). Una toppa.

@@ -3,6 +3,7 @@ import it.unicam.cs.mpgc.rpg120666.Model.ElementiPerMatrice.ElementiPerMatrice;
 import it.unicam.cs.mpgc.rpg120666.Model.Eroe.Eroe;
 import it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco.CellaMatrice;
 import it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco.ContaElementiRimanenti.EnumOggNem;
+import it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco.Manager.ManagerFineGioco;
 import it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco.Manager.ManagerSpostamentoEroe;
 import it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco.MatriceGioco;
 import it.unicam.cs.mpgc.rpg120666.View.*;
@@ -29,6 +30,8 @@ public class MatriceController
     //Il controller e la vista della "TableView" Zaino:
     private ZainoController controllerZaino;
     private ZainoView zainoView;
+    //la classe per vedere se hai finito la partita o no!
+    private ManagerFineGioco managerFineGioco;
 
     public MatriceController(InizioGiocoView inizioGiocoView, MatriceGioco matriceModel)
     {
@@ -51,6 +54,9 @@ public class MatriceController
         this.zainoView = this.inizioGiocoView.getZainoView(); // la view dello zaino
         //Inizializzo il controller dello zaino:
         this.controllerZaino=new ZainoController(this.ilNostroEroe,this.zainoView,this.eroeView);
+        //inizializzo la classe per vedere se il gioco è finito o no!
+        this.managerFineGioco=new ManagerFineGioco(this.matriceModel.getMatriceElementi(),this.ilNostroEroe);
+
 
         inizioGiocoView.getBtnCancellaCampi().setOnAction(e -> pulisciTxtDellaView());
         inizioGiocoView.getBtnIndietro().setOnAction(e -> tornaAllaSchermataPrecedente());
@@ -118,18 +124,16 @@ public class MatriceController
     {
 
     }
-    private void spostaEroe(String riga,String colonna)
-    {
+    private void spostaEroe(String riga,String colonna) {
         /*Aggiorno le componenti JavaFx della view Eroe:*/
         this.eroeView.getTxtVitaEroe().setText(String.valueOf(ilNostroEroe.getPuntiVitaPersonaggio()));
         this.eroeView.getTxtPuntiAttaccoEroe().setText(String.valueOf(ilNostroEroe.getDannoCausato()));
 
-        System.out.println("VUOI SPOSTARE L'EROE ALLA\n"+
-            "Riga: "+riga+"\n"+"Colonna: "+colonna+"\n");
+        System.out.println("VUOI SPOSTARE L'EROE ALLA\n" +
+                "Riga: " + riga + "\n" + "Colonna: " + colonna + "\n");
         int row = Integer.parseInt(riga);
         int col = Integer.parseInt(colonna);
-        if(this.managerSpostamentoEroe.spostaIlNostroEroe(new CellaMatrice(row,col)))
-        {
+        if (this.managerSpostamentoEroe.spostaIlNostroEroe(new CellaMatrice(row, col))) {
             /**Passo la matrice di elementi (dati grezzi) alla view della matrice, così può aggiornare */
             this.inizioGiocoView.getMatriceView().aggiorna(this.matriceModel.getMatriceElementi());
             /**Aggiorno le statistiche (oggetti e nemici rimanenti)!*/
@@ -144,6 +148,11 @@ public class MatriceController
         /*Devo metterlo fuori dall'if. Perchè se no me lo aggiorna solo quando l'eroe si riesce a muovere!*/
         this.eroeView.getTxtVitaEroe().setText(String.valueOf(ilNostroEroe.getPuntiVitaPersonaggio()));
         this.eroeView.getTxtPuntiAttaccoEroe().setText(String.valueOf(ilNostroEroe.getDannoCausato()));
+        if (this.managerFineGioco.giocoFinito())
+        {
+            this.eroeView.getTxtVitaEroe().setText("GIOCO FINITO!");
+            this.eroeView.getTxtPuntiAttaccoEroe().setText("GIOCO FINITO!");
+        }
     }
 
 }

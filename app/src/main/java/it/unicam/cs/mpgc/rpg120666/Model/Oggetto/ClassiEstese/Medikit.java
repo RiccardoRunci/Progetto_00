@@ -86,6 +86,20 @@ public class Medikit extends Oggetto implements InterfacciaMedikit, ElementiPerM
     public String restituisciTipoOggetto() {
         return "Medikit";
     }
+
+    /**@Note avrei dovuto implementare l'interfaccia ElementiPerMatrice in Oggetto e non nelle
+     * sue sottoclassi. Questo metodo mi serviva (non in questa classe ma in Nemico) per contare il
+     * numero di Nemici generali ancora in vita dentro la matrice.
+     * Può essere utile anche per contare gli oggetti, ma oramai l'ho messo qui e quando aggiungo
+     * (in futuro) un nuovo Oggetto, dovrò sovrascrivere anche questo metodo scrivendoci "Oggetto".
+     * Non era qui che era meglio metterlo, ma anche qui (per la conta degli oggetti quando scansiono la matrice)
+     * dovrebbe andare bene.
+     * Ne parlo meglio dentro l'interfaccia ElementiPerMatrice e dentro la classe ManagerFineGioco.*/
+    @Override
+    public String veroVolto() {
+        return "Oggetto";
+    }
+
     /**Metodo che viene preso dall'interfaccia ElementiPerMatrice.
      * Serve per evitare i vari istanceof dentro la classe ManagerIncontroNemiciOggetti.
      * Perchè la matriceGioco passata al metodo ManagerIncontroNemiciOggetti è di tipo interfaccia ElementiPerMatrice.

@@ -51,6 +51,9 @@ public class MatriceContaElementi
             case ARMA ->{
                 somma=this.calcola("Arma");
             }
+            case NEMICO->{
+                somma=this.trovaNemici("Nemico");
+            }
             default -> throw new IllegalArgumentException("Il valore non valido");
         }
         //System.out.println("Num trovato di: "+oggNem+" = "+somma);
@@ -68,6 +71,26 @@ public class MatriceContaElementi
                     somma++;
             }
         }
+        return somma;
+    }
+    private int trovaNemici(String s)
+    {
+        ElementiPerMatrice forseNemico;
+        int somma=0;
+
+        for (int riga=0; riga<this.matrice.length; riga++)
+        {
+            for (int colonna=0;colonna < this.matrice.length; colonna++)
+            {
+                if(this.matrice[riga][colonna]!=null)
+                {
+                    forseNemico=this.matrice[riga][colonna];
+                    forseNemico.veroVolto().equals("Nemico");
+                    somma++;
+                }
+            }
+        }
+        System.out.println("La quantità di nemici trovati è: "+somma);
         return somma;
     }
 }
