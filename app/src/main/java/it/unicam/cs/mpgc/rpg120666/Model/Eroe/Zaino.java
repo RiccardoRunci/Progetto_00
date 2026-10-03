@@ -1,3 +1,5 @@
+/**Questa classe è una sorta di sosia della classe Libretto
+ * vista in classe.*/
 package it.unicam.cs.mpgc.rpg120666.Model.Eroe;
 import it.unicam.cs.mpgc.rpg120666.Model.Oggetto.Oggetto;
 import java.util.HashMap;
