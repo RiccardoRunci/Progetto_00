@@ -1,3 +1,13 @@
+/**Classe PopolaMatriceOggetti:
+ * Questa classe serve per riempire la matriceGioco di Oggetti (generati dalla classe FactoryOgetti).
+ * @note ci sono 2 metodi sotto, uno è deprecato perché non era espandibile. Infatti se in futuro vado ad aggiungere
+ *        una nuova categoria di Nemici, dovrò (tra le altre cose) aggiungere delle righe di codice per inserire anche
+ *        quel nuovo tipo di nemico.
+ * Mentre invece (nel metodo collacaOggettiInMatriceConFactory) non ho questo problema perché basterà inserire
+ * la nuova tipologia di Nemico direttamente nella classe FactoryNemici.
+ * @see it.unicam.cs.mpgc.rpg120666.Model.Nemico.ClassiEstese.FactoryNemici
+ * @author Runci Riccardo, copilot per la parte delle classe Factory.
+ * @since versione 1.0.*/
 package it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco.Popolamento;
 import it.unicam.cs.mpgc.rpg120666.Model.Difficolta.Difficolta;
 import it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco.MatriceGioco;
@@ -9,6 +19,8 @@ public class PopolaMatriceOggetti
 {
     private MatriceGioco matriceGioco;
     private Difficolta diffGioco;
+    /**Metodo Costruttore:
+     * @param matriceGioco = la matrice di gioco, da cui ricavo anche la difficoltà di gioco.*/
     public PopolaMatriceOggetti(MatriceGioco matriceGioco)
     {
         this.matriceGioco=matriceGioco;
@@ -34,7 +46,10 @@ public class PopolaMatriceOggetti
                 this.matriceGioco.setOggettoNellaMatrice(new Arma("Arma",100),this.matriceGioco.trovaCellaVuota());
         }
     }
-    /**In questo metodo stò utilizzando la classe Factory fatta da Copilot.*/
+    /**Metodo collacaOggettiInMatriceConFactory:
+     * In questo metodo stò utilizzando la classe Factory fatta da Copilot.
+     * @author Runci Riccardo & Copilot.
+     * @since versione 1.0.*/
     private void collacaOggettiInMatriceConFactory()
     {
         FactoryOggetti genOggetti = new FactoryOggetti();

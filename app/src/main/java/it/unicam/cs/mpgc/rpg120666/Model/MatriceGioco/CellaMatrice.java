@@ -21,10 +21,15 @@ public class CellaMatrice
         this.riga = riga;
         this.colonna = colonna;
     }
-
+    /**Metodo getRiga:
+     * @return this.riga (int) ritorna la riga di questa cella.*/
     public int getRiga() { return this.riga; }
+    /**Metodo getColonna:
+     * @return this.colonna (int) ritorna la colonna di questa cella.*/
     public int getColonna() { return this.colonna; }
-
+    /**Metodo equals:
+     * @Override del metodo equals della classe Object.
+     * @return true se le 2 celle confrontate sono uguali.*/
     @Override
     public boolean equals(Object o)
     {
@@ -33,13 +38,17 @@ public class CellaMatrice
         CellaMatrice cella = (CellaMatrice) o;
         return this.getRiga() == cella.getRiga() && this.getColonna() == cella.getColonna();
     }
-
+    /**Metodo hashCode:
+     * @Override del metodo hashCode di Object.
+     * @return (int) indica il bucket dove verrà salvato l'oggetto cella!*/
     @Override
     public int hashCode()
     {
         return java.util.Objects.hash(this.getRiga(), this.getColonna());
     }
-
+    /**Metodo toString:
+     * @Override del metodo toString di Object.
+     * @return (String) una descrizione di questa cella [riga, colonna].*/
     @Override
     public String toString()
     {

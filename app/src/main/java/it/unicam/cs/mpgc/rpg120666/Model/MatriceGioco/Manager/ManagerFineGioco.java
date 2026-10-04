@@ -48,7 +48,7 @@ public class ManagerFineGioco
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Partita Terminata");
             alert.setHeaderText(null);
-            Label messaggio = new Label("❌ HAI PERSO! ❌\n EROE MORTO!");
+            Label messaggio = new Label("HAI PERSO!\n EROE MORTO!");
             messaggio.setStyle(
                     "-fx-text-fill: red;" +
                             "-fx-font-size: 24px;" +
