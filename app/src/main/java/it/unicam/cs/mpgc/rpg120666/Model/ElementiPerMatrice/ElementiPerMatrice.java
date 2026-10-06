@@ -9,7 +9,7 @@ import it.unicam.cs.mpgc.rpg120666.Model.Eroe.Eroe;
 
 public interface ElementiPerMatrice
 {
-        /**Metodo che serve per evitare i wild cards,
+        /**Metodo che serve per evitare i wild cards (nella classe MaticeContaElementi),
          * tutte le classi che estendono questa interfaccia devono avere questo metodo che ritorna
          * una stringa che indica il tipo dell'oggetto.
          * Bisognerà ricordarsi (qual'ora si vuole mettere una nuova categoria di ElementiPerMatrice) di inserirla anche
@@ -30,7 +30,7 @@ public interface ElementiPerMatrice
         * e i vari Oggetti nuovi ritorneranno sempre "Oggetto" (anche se saranno cose varie).
         * Questo metodo mi serve per la classe ManagerFineGioco, per rendere il codice estendibile,
         * senza dover creare un nuovo if elemento==Drago || elemento==Orco || elemento==ecc... */
-        public String veroVolto();
+        public String veroVolto(); //sempre nella classe MatriceContaElementi!
 
         /**Metodo che viene richiamato nella classe Manager.ManagerIncontroNemiciOggetti.
          * @Note Serve per evitare gli istanceof in quella classe.

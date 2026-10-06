@@ -1,21 +1,24 @@
-/**@implNote Questa classe utilizza gli elementi della matrice.
- * Nel senso che guarda un metodo di quegli elementi che viene firmato
- * nell'interfaccia ElementiPerMatrice.
- * Il senso pratico è questo:
- * Gli elementi che implementano quell'interfaccia avevano già un metodo che si chiamava
- *"", ma questo restituiva il nome dell'oggetto particolare, non il nome dell'oggetto "generico".
- * Esempio: Arma restituiva Arma, non Oggetto!
- * Allora ho creato una nuova firma nell'interfaccia (chiamandola "veroVolto", perchè ero proprio a corto di idee),
- * e lho sovrascritta con final dentro le super classi (esempio in Nemico).
- * Il problema più grosso è stato che nella classe Eroe ho violato ISP (come la volta precedente con l'altro metodo
- * che ad eroe non serviva, e l'ho attoppato con un toString).
- * L'altro problema è stato che la classe Oggetto non ha la stessa struttura della classe Nemico
- * Questo non dovrebbe pregiudicare il funzionamento, ma non è elegante come in Nemico*/
+/**Classe ManagerFineGioco:
+ * Serve per controllare se il gioco è terminato o meno.
+ * Il gioco termina se l'Eroe è morto oppure se tutti i nemici sono stati sconfitti.
+ *
+ * Questa classe utilizza il metodo della classe: matriceContaElementi.calcolaNumOggettiNemiciRimanenti(EnumOggNem.NEMICO)
+ * @see it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco.ContaElementiRimanenti.MatriceContaElementi
+ * la quale prende il tipo di Oggetto (o Nemico, in questa situazione) tramite un enumerazione e lo passa a dei suoi metodi
+ * privati che ritornano il numero di oggetti o nemici rimanti.
+ * C'è una distinzione tra Nemici (quindi tra Nemici generici) & Arma, Mago, Eroe, Guerriero, Medikit, ecc... (quindi tra cose e nemici specifici).
+ * La differenza consiste nel fatto che, quando viene passata a quella classe l'enumerazione Nemico,
+ * essa ricerca all'interno della matrice utilizzando il metodo veroVolto(), definito nell'interfaccia ElementiPerMatrice.
+ * Quando passo Arma, Medikit, Eroe, ecc... Lei lo cerca tramite il metodo restituisciTipoOggetto (sempre definito nell'interfaccia ElementiPerMatrice).
+ *
+ * @author Runci Riccardo
+ * @since versione 1.0.*/
 package it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco.Manager;
 import it.unicam.cs.mpgc.rpg120666.Model.ElementiPerMatrice.ElementiPerMatrice;
 import it.unicam.cs.mpgc.rpg120666.Model.Eroe.Eroe;
 import it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco.ContaElementiRimanenti.EnumOggNem;
 import it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco.ContaElementiRimanenti.MatriceContaElementi;
+import it.unicam.cs.mpgc.rpg120666.Model.Utility.MieAnnotazioni;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 
@@ -24,7 +27,17 @@ public class ManagerFineGioco
     private final ElementiPerMatrice[][] matrice;
     private Eroe ilNostroEroe;
     private MatriceContaElementi matriceContaElementi;
-
+    /**Metodo costruttore:
+     * @param matrice = la griglia che contiene Eroe, i Nemici e gli Oggetti che si possono incontrare durante il gioco.
+     *                  La matrice è di tipo ElementiPerMatrice (interfaccia):
+     *                  @see ElementiPerMatrice
+     *@param ilNostroEroe = è l'Eroe del gioco.
+     *@throws IllegalArgumentException se i parametri sopra passati sono = null!
+     * In questo costruttore c'è anche la creazione di un oggetto di tipo MatriceContaElementi.
+     * @see MatriceContaElementi
+     * È una classe che si occupa di restituire il numero di nemici e oggetti ancora presenti in gioco.
+     *@author Runci Riccardo
+     *@since versione 1.0.*/
     public  ManagerFineGioco(ElementiPerMatrice[][] matrice, Eroe ilNostroEroe)
     {
         if (matrice==null || ilNostroEroe==null)
@@ -36,10 +49,18 @@ public class ManagerFineGioco
             this.matriceContaElementi=new MatriceContaElementi(this.matrice);
         }
     }
-    /**Metodo che torna true se il gioco è terminato!
-     * Può terminare in 2 modi: o l'eroe muore, oppure tutti
-     * i nemici sono stati sconfitti.
-     * Non fa niente se non sono stati presi tutti gli oggetti-*/
+    /**Metodo giocoFinito:
+     * @return true se il gioco è terminato!
+     * Può terminare in 2 modi: o l'eroe muore, oppure tutti i nemici sono stati sconfitti.
+     * Non fa niente se non sono stati presi tutti gli oggetti.
+     * @author Runci Riccardo
+     * @since versione 1.0.*/
+    @MieAnnotazioni(
+            domanda="Se faccio un programma java, la sua interfaccia grafica può essere " +
+                    "sviluppata con altri linguaggi di programmazione? SI! ho commesso un errore mettendo degli Alert qui!",
+            osservazione="In questa classe ho utilizzato degli oggetti Alert di Javafx sapendo che stavo commettendo un errore." +
+                    "L'ho fatto perché, arrivando in fondo al progetto, non mi ero reso conto che non avevo fatto niente per controllare" +
+                    "la fine del gioco.")
     public boolean giocoFinito()
     {
         //eroe morto ritorno true, gioco finito!
@@ -58,6 +79,7 @@ public class ManagerFineGioco
             alert.showAndWait();
             return true;
         }
+
         else /*quindi eroe vivo*/
         {
             if (this.matriceContaElementi.calcolaNumOggettiNemiciRimanenti(EnumOggNem.NEMICO) == 0)

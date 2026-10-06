@@ -105,7 +105,7 @@ public class Medikit extends Oggetto implements InterfacciaMedikit, ElementiPerM
     public boolean equals(Object obj)
     {
         if(this==obj) return true;
-        if(!(obj instanceof Arma)) return false;
+        if(!(obj instanceof Medikit)) return false;
         if(!super.equals(obj)) return false; //riga da aggiungere in un equals di una sottoclasse!
         Medikit other = (Medikit)obj;
         return this.puntiVitaRistabiliti==other.puntiVitaRistabiliti;

@@ -5,7 +5,9 @@
  * Ma per non darla vinta all' AI che mi aveva proposto di copiare e incollare i wilds cards, ho optato per questa
  * soluzione più macchinosa.
  * Così dovrei violare l'open/close principle (il 2° principio solid) perché devo modificare questa enumerazione e
- * la classe MatriceContaElementi.*/
+ * la classe MatriceContaElementi.
+ * @author Runci Riccardo
+ * @since versione 1.0.*/
 package it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco.ContaElementiRimanenti;
 public enum EnumOggNem
 {

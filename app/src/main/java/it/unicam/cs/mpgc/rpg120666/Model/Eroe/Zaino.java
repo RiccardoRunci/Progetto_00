@@ -1,5 +1,14 @@
-/**Questa classe è una sorta di sosia della classe Libretto
- * vista in classe.*/
+/**Classe Zaino:
+ * Questa classe è una sorta di sosia della classe Libretto (dello studente) vista a lezione.
+ *
+ * Rappresenta lo zaino che si porta appresso l'eroe.
+ * Ho usato una struttura dati hashMap<chiave=Oggetto, valore= quantità>.
+ *
+ * L'oggetto appena viene calpestato dall'Eroe va a finire nel suo zaino.
+ * Poi (solo in seguito) viene usato.
+ *
+ * @since versione 1.0.
+ * @author Runci Riccardo.*/
 package it.unicam.cs.mpgc.rpg120666.Model.Eroe;
 import it.unicam.cs.mpgc.rpg120666.Model.Oggetto.Oggetto;
 import java.util.HashMap;
@@ -10,7 +19,12 @@ public class Zaino
 {
     private final Eroe eroeProprietarioZaino;
     private Map<Oggetto,Integer> oggettiPosseduti;
-
+    /**Metodo costruttore:
+     * @param eroeProprietarioZaino l'eroe che possiede lo zaino!
+     * @throws IllegalArgumentException se l'eroe passato è = null.
+     * Questo metodo crea anche la struttura dati dello zaino!
+     * @since versione 1.0.
+     * @author Runci Riccardo.*/
     public Zaino(Eroe eroeProprietarioZaino)
     {
         if (eroeProprietarioZaino!=null)
@@ -21,13 +35,25 @@ public class Zaino
         else
             throw new IllegalArgumentException("Eroe passato al costruttore di Zaino non valido!");
     }
-    //Metodi Set e get
+    /**Metodo getOggettiPosseduti:
+     * @return oggettiPosseduti il riferimento alla hashmap dello zaino.
+     * @throws IllegalArgumentException lo la Map non è stata creta con HashMap.
+     * Metodo che ritorna tutto lo zaino (zaino inteso come zaino, non oggetto).
+     * @since versione 1.0.
+     * @author Runci Riccardo.*/
     public Map<Oggetto,Integer> getOggettiPosseduti()
     {
         if(this.oggettiPosseduti==null)
-            throw new NullPointerException("il campo Map<Oggetti,Integer> della classe Zaino è  ancora == null");
+            throw new IllegalArgumentException("il campo Map<Oggetti,Integer> della classe Zaino è  ancora == null");
         else return this.oggettiPosseduti;
     }
+    /**Metodo setOggettiPosseduti:
+     * @param oggetti gli oggetti che compongono lo zaino!
+     * @throws IllegalArgumentException se lo zaino passato è = null.
+     * Metodo che permette il passaggio come parametro di una Map zaino e la implementa con una hashMap
+     * Per farla diventare lo zaino dell'eroe (utile in caso di de-serializzazione)!
+     * @since versione 1.0.
+     * @author Runci Riccardo.*/
     public void setOggettiPosseduti(Map<Oggetto, Integer> oggetti)
     {
         if (oggetti != null)
@@ -35,17 +61,27 @@ public class Zaino
             this.oggettiPosseduti = new HashMap<>(oggetti); // copia difensiva
         }
         else
-            throw new NullPointerException("La Map passata al metodo set come parametro è == null!");
+            throw new IllegalArgumentException("La Map passata al metodo set come parametro è == null!");
     }
+    /**Metodo getEroeProprietarioDelloZaino:
+     * @throws IllegalArgumentException se l'eroe proprietario dello zaino è null).
+     * @return eroeProprietarioZaino!
+     * @since versione 1.0.
+     * @author Runci Riccardo.*/
     public Eroe getEroeProprietarioDelloZaino()
     {
         if(this.eroeProprietarioZaino==null)
-            throw new NullPointerException("il campo Eroe della classe Zaino è  ancora == null");
+            throw new IllegalArgumentException("il campo Eroe della classe Zaino è  ancora == null");
         else
             return this.eroeProprietarioZaino;
     }
     // public void setEroeProprietarioDelloZaino(Eroe eroeProprietarioDelloZaino),
     // non si può fare perché  eroeProprietarioDelloZaino è final.
+    /**Metodo aggiungiOggettoNelloZaino:
+     * @return true se l'oggetto è stato inserito correttamente nello zaino, false altrimenti!
+     * @param oggetto è l'oggetto da inserire nell' hashmap dello zaino.
+     * @since versione 1.0.
+     * @author Runci Riccardo.*/
     public boolean aggiungiOggettoNelloZaino(Oggetto oggetto)
     {
         if (oggetto != null || (!eroeProprietarioZaino.controllaSeVivo()))//Se l'oggetto è != null
@@ -63,12 +99,21 @@ public class Zaino
         }
         else return false;
     }
-
+    /**Metodo controllaPresenzaOggetto:
+     * @return true se l'oggetto è presente nello zaino!
+     * @param o è l'oggetto da cercare all'interno dello zaino.
+     * @since versione 1.0.
+     * @author Runci Riccardo.*/
     public boolean controllaPresenzaOggetto(Oggetto o)
     {
         return (this.oggettiPosseduti.containsKey(o));
     }
     /**Si ma hashmap non ammette duplicati!*/
+    /**Metodo eliminaOggettoDalloZaino:
+     * @return true se l'oggetto è stati eliminato dallo zaino, false altrimeti!
+     * @param o è l'oggetto da eliminare dall'interno dello zaino.
+     * @since versione 1.0.
+     * @author Runci Riccardo.*/
     public boolean eliminaOggettoDalloZaino(Oggetto o)
     {
        //Il metodo containsKey(chiave) ritorna true se l'oggetto ∃ dentro HashMap:
@@ -90,11 +135,21 @@ public class Zaino
             return false; //per qualche strano motivo ha ritornato false!
         }
     }
+    /**Metodo toString:
+     * @return Una stringa contenente la descrizione di tutti gli elementi contenuti nell'hashmap zaino
+     *          Perchè richiama anche il metodo sotto!
+     * @since versione 1.0.
+     * @author Runci Riccardo.*/
     @Override
     public String toString()
     {
         return "ELEMENTI DELLO ZAINO: \n"+this.elencaOggettiDelloZainoEroe()+"\n";
     }
+    /**Metodo elencaOggettiDelloZainoEroe:
+     * @return Una stringa contenente la descrizione di tutti gli elementi contenuti nell'hashmap zaino.
+     *         e la passa al metodo sopra toString.
+     * @since versione 1.0.
+     * @author Runci Riccardo.*/
     private String elencaOggettiDelloZainoEroe()
     {
         StringBuilder s=new StringBuilder();
@@ -111,6 +166,11 @@ public class Zaino
         }
         return s.toString();
     }
+    /**Metodo equals:
+     * @return true se 2 istanze di Zaino sono uguali, false altrimenti
+     * @param obj è lo zaino passato per fare il controllo con l'istanza di questa classe.
+     * @since versione 1.0.
+     * @author Runci Riccardo.*/
     @Override
     public boolean equals(Object obj){
         if(this==obj) return true;
@@ -120,7 +180,9 @@ public class Zaino
                 (this.getOggettiPosseduti().equals(other.getOggettiPosseduti()));
     }
     /**Metodo hashCode:
-     *@return (int) che specifica in quale bucket andrà a cacciarsi l'oggetto.*/
+     *@return (int) che specifica in quale bucket andrà a cacciarsi l'oggetto.
+     *@since versione 1.0.
+     *@author Runci Riccardo.*/
     @Override
     public int hashCode(){
         return java.util.Objects.hash(this.getOggettiPosseduti(),this.getEroeProprietarioDelloZaino());

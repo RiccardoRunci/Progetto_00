@@ -1,3 +1,7 @@
+/**Classe Eroe:
+ * rappresenta L'Eroe del gioco.
+ * @since versione 1.0.
+ * @author Runci Riccardo*/
 package it.unicam.cs.mpgc.rpg120666.Model.Eroe;
 import it.unicam.cs.mpgc.rpg120666.Model.ElementiPerMatrice.ElementiPerMatrice;
 import it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco.CellaMatrice;
@@ -14,7 +18,14 @@ public class Eroe extends Personaggio implements InterfacciaPerPersonaggi, Eleme
     private final Zaino zainoEroe;
     private int dannoCausato = 10;
     private CellaMatrice cellaPosizioneEroe;
-
+    /**Metodo costruttore:
+     * @param nomePersonaggio
+     * @param puntiVitaPersonaggio
+     * @throws IllegalArgumentException se i 2 parametri sopra non superano i controlli della classe VerificaParametri.
+     * @see VerificaParametri
+     * Se tutto va bene crea un istanza di Zaino associata a questo Eroe.
+     *@since versione 1.0.
+     *@author Runci Riccardo*/
     public Eroe(String nomePersonaggio, int puntiVitaPersonaggio)
     {
         if(!VerificaParametri.verificaStringhe(nomePersonaggio) || !VerificaParametri.verificaInteri(puntiVitaPersonaggio,CREAZIONE))
@@ -23,8 +34,21 @@ public class Eroe extends Personaggio implements InterfacciaPerPersonaggi, Eleme
         super(nomePersonaggio, puntiVitaPersonaggio);
         this.zainoEroe=new Zaino(this); //creo lo zaino passando il riferimento all'oggetto Eroe padrone dello zaino.
     }
+    /**Metodo getZaino:
+     * @return  this.zainoEroe = il riferimento all'oggetto zaino dell'eroe
+     * @since versione 1.0.
+     * @author Runci Riccardo */
     public Zaino getZaino(){ return this.zainoEroe; }
+    /**Metodo getDannoCausato:
+     * @return il danno che fa l'eroe quando sferra un singolo attacco.
+     * @since versione 1.0.
+     * @author Runci Riccardo*/
     public int getDannoCausato() { return this.dannoCausato; }
+    /**Metodo setDannoCausato:
+     * @param dannoCausato
+     * @throws IllegalArgumentException se il parametro sopra non passa i controlli della classe VerificaParametri
+     * @since versione 1.0.
+     * @author Runci Riccardo*/
     public void setDannoCausato(int dannoCausato)
     {
         if(VerificaParametri.verificaInteri(dannoCausato,AGGIORNAMENTO))
@@ -32,14 +56,30 @@ public class Eroe extends Personaggio implements InterfacciaPerPersonaggi, Eleme
         else
             throw new IllegalArgumentException("Parametro dannoCausato al metodo setDannoCausato di Eroe invalido!");
     }
+    /**Metodo setCellaPosizioneEroe:
+     * @param cellaPosizioneEroe è la nuova cella da mettere dentro lo stato di Eroe
+     * @throws IllegalArgumentException
+     * @since versione 1.0.
+     * @author Runci Riccardo*/
     public void setCellaPosizioneEroe(CellaMatrice cellaPosizioneEroe)
     {
         if(cellaPosizioneEroe!=null) //todo ClasseMatriceAstratta.controllaPosizioniOutOfBound(cellaPosizioneEroe)
             this.cellaPosizioneEroe = cellaPosizioneEroe;
         else
-            throw new NullPointerException("Cella passata alla classe Eroe nel metodo set == null");
+            throw new IllegalArgumentException("Cella passata alla classe Eroe nel metodo set == null");
     }
+    /**Metodo getCellaPosizioneEroe:
+     * @return this.cellaPosizioneEroe
+     * Metodo che prende la cella dove è posizionato l'eroe!
+     * @since versione 1.0.
+     * @author Runci Riccardo*/
     public CellaMatrice getCellaPosizioneEroe(){ return this.cellaPosizioneEroe; }
+    /**Metodo prendiOggetto:
+     * @param oggetto è l'oggetto da raccogliere!
+     * @return true se l'eroe è riuscito a prendere l'oggetto dalla casella!
+     * @throws IllegalArgumentException se l'eroe è morto o l'oggetto passato è null!
+     * @since versione 1.0.
+     * @author Runci Riccardo*/
     public boolean prendiOggetto(Oggetto oggetto)
     {
         if (oggetto==null || (!this.controllaSeVivo()))
@@ -48,6 +88,12 @@ public class Eroe extends Personaggio implements InterfacciaPerPersonaggi, Eleme
         else
             return (this.zainoEroe.aggiungiOggettoNelloZaino(oggetto));
     }
+    /**Metodo usaOggetto:
+     * @param oggetto l'oggetto presente nello zaino da utilizzare!
+     * @return true se l'eroe è riuscito a usare l'oggetto!
+     * @throws IllegalArgumentException se l'oggetto passato al metodo è null o se l'eroe è morto!
+     * @since versione 1.0.
+     * @author Runci Riccardo*/
     public boolean usaOggetto(Oggetto oggetto)
     {
         /*Controllo se l'oggetto passato è = null:*/
@@ -65,6 +111,10 @@ public class Eroe extends Personaggio implements InterfacciaPerPersonaggi, Eleme
             return false;
         }
     }
+    /**Metodo toString:
+     * @return String una descrizione di una istanza di questa classe!
+     * @since versione 1.0.
+     * @author Runci Riccardo*/
     @Override
     public String toString()
     { return "CLASSE EROE!\n"+
@@ -73,11 +123,21 @@ public class Eroe extends Personaggio implements InterfacciaPerPersonaggi, Eleme
             "+ZAINO: "+this.zainoEroe.toString()+"\n";
             //"CELLA: "+this.cellaPosizioneEroe.toString();
     }
+    /**Metodo hashCode:
+     * @return int l'identificativo del basket dove andrà memorizzato l'oggetto!
+     * @since versione 1.0.
+     * @author Runci Riccardo*/
     @Override
     public int hashCode()
     {
         return java.util.Objects.hash(this.zainoEroe,this.cellaPosizioneEroe);
     }
+    /**Metodo equals:
+     * @param o = l'altro oggetto con il quale fare il confronto!
+     * @return true se i due oggetti sono uguali!
+     * @override del metodo equals di Personaggio
+     * @since versione 1.0.
+     * @author Runci Riccardo*/
     @Override
     public boolean equals(Object o)
     {
@@ -92,7 +152,10 @@ public class Eroe extends Personaggio implements InterfacciaPerPersonaggi, Eleme
      * Serve per evitare i wildcards in MatriceGioco.
      * Quando scorro la matrice, per capire se ci sono ancora Oggetti, Armi, Eroe, ecc...
      * Ogni volta che si estende il codice devo mettere questo metodo su una nuova classe che creo.
-     * Ne parlo meglio nella classe MatriceContaElementi. L'ho fatto solo per non darla vinta all' IA.*/
+     * Ne parlo meglio nella classe MatriceContaElementi. L'ho fatto solo per non darla vinta all' IA.
+     * @return stringa "Eroe"!
+     * @since versione 1.0.
+     * @author Runci Riccardo*/
     @Override
     public String restituisciTipoOggetto() {
         return "Eroe";
@@ -102,7 +165,10 @@ public class Eroe extends Personaggio implements InterfacciaPerPersonaggi, Eleme
      * Questo è un metodo dell'interfaccia ElementiPerMatrice, il quale mi tornava utili nella classe
      * ManagerFineGioco. Perchè restituendo "Oggetto" in un metodo final che sovrascriveva questo metodo qui
      * (della realtiva classe Oggeto, non questa di Eroe) avrei potuto avere la somma degli Oggetti (anche se
-     * nella matrice avevo le loro classi estese).*/
+     * nella matrice avevo le loro classi estese).
+     * @return l'output del metodo sopra!
+     * @since versione 1.0.
+     * @author Runci Riccardo*/
     @Override
     public String veroVolto() {
         return this.restituisciTipoOggetto();
@@ -112,7 +178,12 @@ public class Eroe extends Personaggio implements InterfacciaPerPersonaggi, Eleme
      * Qui ho dovuto ereditare il metodo su una classe che non lo doveva ereditare.
      * Allora ho optato per un toString(). Una toppa.
      * @Note In realtà ho violato in principio ISP (segregazione delle interfacce).
-     * Ne parlo meglio nei commenti della classe ManagerIncontroNemiciOggetti*/
+     * Ne parlo meglio nei commenti della classe ManagerIncontroNemiciOggetti
+     * @param e l'eroe che calpesta la cella dell'eroe (anche se non è possibile).
+     *          Perchè esiste un solo eroe!
+     * @return true
+     * @since versione 1.0.
+     * @author Runci Riccardo*/
     @Override
     public boolean calpestataDaEroe(Eroe e)
     {
@@ -123,7 +194,9 @@ public class Eroe extends Personaggio implements InterfacciaPerPersonaggi, Eleme
      * @param nem = Nemico a cui sferrare l'attacco.
      * @return true = se ha effettuato con successo l'attacco a eroe!
      * @return false = se non è riuscito ad attaccare l'eroe!
-     * @throws IllegalArgumentException (se e ==null).*/
+     * @throws IllegalArgumentException (se e ==null).
+     * @since versione 1.0.
+     * @author Runci Riccardo*/
     @Override
     public boolean eseguiAttacco(Personaggio nem)
     {
