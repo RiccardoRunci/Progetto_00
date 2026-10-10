@@ -11,12 +11,16 @@
  * @author Runci Riccardo.*/
 package it.unicam.cs.mpgc.rpg120666.Model.Eroe;
 import it.unicam.cs.mpgc.rpg120666.Model.Oggetto.Oggetto;
+
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-public class Zaino
+public class Zaino implements Serializable
 {
+    private static final long serialVersionUID = 1L;
+
     private final Eroe eroeProprietarioZaino;
     private Map<Oggetto,Integer> oggettiPosseduti;
     /**Metodo costruttore:

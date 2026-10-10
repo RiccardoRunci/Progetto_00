@@ -10,9 +10,11 @@
 package it.unicam.cs.mpgc.rpg120666.Model.Oggetto;
 import it.unicam.cs.mpgc.rpg120666.Model.Eroe.Eroe;
 import it.unicam.cs.mpgc.rpg120666.Model.Utility.VerificaParametri;
+import java.io.Serializable;
 
-public abstract class Oggetto implements UsaOggetto
+public abstract class Oggetto implements Serializable, UsaOggetto
 {
+    private static final long serialVersionUID = 1L;
     private final String nomeOggetto;
     /**Metodo costruttore:
      * @param nomeOggetto (Stringa) = indica il nome dell'Oggetto.

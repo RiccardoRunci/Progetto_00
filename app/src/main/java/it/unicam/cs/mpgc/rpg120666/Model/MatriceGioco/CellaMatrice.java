@@ -3,8 +3,12 @@
  * @since versione 1.0.*/
 package it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco;
 
-public class CellaMatrice
+import java.io.Serializable;
+
+public class CellaMatrice implements Serializable
 {
+    private static final long serialVersionUID = 1L;
+
     private final int riga;
     private final int colonna;
 

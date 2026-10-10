@@ -1,12 +1,14 @@
 /**Classe SerializzaEroe:
  * Classe che serve per serializzare l'eroe, tramite Stream di caratteri.
- * Fatta solo per a di ripasso della serializzazione (e magari di completezza per mostrare altri argomenti
- * svolti a lezione).
+ * Non serve ai fini del progetto, l'ho fatta solo per ripasso.
  * In questa classe utilizzo la serializzazione solo tramite Streaming di CARATTERI (non byte).
+ * Utilizzando la serializzazione di caratteri con buffer e senza Buffer. Volevo anche dimostrare tramite
+ * test che quella con i buffer è più veloce, ma non sono riuscito a trovare la quantità di dati da salvare
+ * giusta per far scattare il miglioramento...
  * L'eroe viene passato al costruttore.
  * @since Versione 2.0.
  * @author Runci Riccardo.*/
-package it.unicam.cs.mpgc.rpg120666.Model.Serializzazione;
+package it.unicam.cs.mpgc.rpg120666.Model.Serializzazione.Ser_Des_STREAM_CARATTERI;
 import it.unicam.cs.mpgc.rpg120666.Model.Eroe.Eroe;
 import java.io.FileWriter;
 import java.io.BufferedWriter;
@@ -124,7 +126,9 @@ public class SerializzaEroe_StreamCaratteri
     /**Metodo getTempoFinale:
      * NON Ritorna IL TEMPO TRASCORSO dall'inizio alla fine!
      * Ma ritorna il tempo totale impiegato.
-     * La mia idea è quella di fare un test: assertTrue(TempoImpiegatoBuffer<TempoImpiegatoNoBuffer).
+     * La mia idea è quella di fare un test: assertTrue(TempoImpiegatoBuffer<TempoImpiegatoNoBuffer)
+     * Che non ho fatto perchè la quantità di informazioni che serializzavo era troppo poca, anche provando
+     * ad aumentarla non sono riuscito a dimostrarlo, ma è vero!.
      * @return tempoEndNanoSec
      * @since Versione 2.0.
      * @author Runci Riccardo. */
@@ -132,6 +136,10 @@ public class SerializzaEroe_StreamCaratteri
     {
         return this.tempoEndMilliSec;
     }
+    /**Metodo setTempoFinale:
+     * @param tempoFinale il tempo finale da inserire nel campo della classe.
+     * @since Versione 2.0.
+     * @author Runci Riccardo. */
     public void setTempoFinale(Double tempoFinale)
     {
         this.tempoEndMilliSec = tempoFinale;

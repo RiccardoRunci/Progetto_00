@@ -1,4 +1,4 @@
-package it.unicam.cs.mpgc.rpg120666.Model.Serializzazione;
+package it.unicam.cs.mpgc.rpg120666.Model.Serializzazione.Ser_Des_STREAM_CARATTERI;
 import it.unicam.cs.mpgc.rpg120666.Model.Eroe.Eroe;
 import it.unicam.cs.mpgc.rpg120666.Model.Oggetto.ClassiEstese.Arma;
 import it.unicam.cs.mpgc.rpg120666.Model.Oggetto.ClassiEstese.Medikit;

@@ -15,6 +15,7 @@ package it.unicam.cs.mpgc.rpg120666.Model.Personaggio;
 import it.unicam.cs.mpgc.rpg120666.Model.Utility.CreazioneAggiornamento;
 import it.unicam.cs.mpgc.rpg120666.Model.Utility.MieAnnotazioni;
 import it.unicam.cs.mpgc.rpg120666.Model.Utility.VerificaParametri;
+import java.io.Serializable;
 import java.util.Objects; //Per l'hashCode
 
  /*NOTE Degli import statici per l'enumerazione CreazioneAggiornamento:
@@ -26,10 +27,11 @@ import static it.unicam.cs.mpgc.rpg120666.Model.Utility.CreazioneAggiornamento.C
 @MieAnnotazioni( domanda = "non so se è un errore fare gli import statici.",
                 osservazione = "Non si usano le annotazioni negli import... ")
 
-public abstract class Personaggio implements InterfacciaPerPersonaggi
+public abstract class Personaggio implements InterfacciaPerPersonaggi, Serializable
 {
     private final String nomePersonaggio;
     private int puntiVitaPersonaggio;
+    private static final long serialVersionUID = 1L;
     /**Metodo costruttore:
      * @param nomePersonaggio (Stringa) = indica il nome del personaggio.
      * @param puntiVitaPersonaggio (int) = indica i punti vita del personaggio.
