@@ -1,0 +1,68 @@
+[
+{
+"nomePersonaggio": "Kenshiro",
+"puntiVitaPersonaggio": 90,
+"dannoCausato": 9
+},
+{
+"nomePersonaggio": "Spartaco",
+"puntiVitaPersonaggio": 80,
+"dannoCausato": 8
+},
+{
+"nomePersonaggio": "Hercules",
+"puntiVitaPersonaggio": 70,
+"dannoCausato": 7
+},
+  {
+    "nomePersonaggio": "Conan",
+    "puntiVitaPersonaggio": 65,
+    "dannoCausato": 6
+  },
+  {
+    "nomePersonaggio": "Achille",
+    "puntiVitaPersonaggio": 60,
+    "dannoCausato": 6
+  },
+  {
+    "nomePersonaggio": "Ettore",
+    "puntiVitaPersonaggio": 55,
+    "dannoCausato": 5
+  },
+  {
+    "nomePersonaggio": "Leonida",
+    "puntiVitaPersonaggio": 70,
+    "dannoCausato": 7
+  },
+  {
+    "nomePersonaggio": "Mulan",
+    "puntiVitaPersonaggio": 80,
+    "dannoCausato": 8
+  },
+  {
+    "nomePersonaggio": "Xena",
+    "puntiVitaPersonaggio": 7,
+    "dannoCausato": 7
+  },
+  {
+    "nomePersonaggio": "Ryu",
+    "puntiVitaPersonaggio": 50,
+    "dannoCausato": 5
+  },
+  {
+    "nomePersonaggio": "Ken",
+    "puntiVitaPersonaggio": 50,
+    "dannoCausato": 5
+  },
+  {
+    "nomePersonaggio": "Kratos",
+    "puntiVitaPersonaggio": 100,
+    "dannoCausato": 15
+  },
+  {
+    "nomePersonaggio": "Thor",
+    "puntiVitaPersonaggio": 70,
+    "dannoCausato": 7
+  }
+]
+

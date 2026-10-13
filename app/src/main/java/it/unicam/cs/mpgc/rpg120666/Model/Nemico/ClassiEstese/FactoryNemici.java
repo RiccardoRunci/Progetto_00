@@ -17,6 +17,9 @@
  * @since versione 1.0.*/
 package it.unicam.cs.mpgc.rpg120666.Model.Nemico.ClassiEstese;
 import it.unicam.cs.mpgc.rpg120666.Model.ElementiPerMatrice.ElementiPerMatrice;
+import it.unicam.cs.mpgc.rpg120666.Model.Serializzazione.Persistenza.LeggiJsonGuerrieri;
+
+import java.util.ArrayList;
 import java.util.Random;
 public class FactoryNemici
 {
@@ -27,6 +30,18 @@ public class FactoryNemici
      * @throws IllegalArgumentException ma in teoria non ci dovrebbe arrivare mai.*/
     public ElementiPerMatrice restituisciNemicoRandom()
     {
+        //Creo un oggetto della classe LeggiJsonGuerrieri!
+        LeggiJsonGuerrieri nomiGuerrieri=new LeggiJsonGuerrieri();
+        //Creo un arrayList che mi conterrà il set restituito dalla classe LeggiJsonGuerrieri!
+        ArrayList<Guerriero> arrayGuerr = new ArrayList<>();
+        //Inserisco dentro l' ArrayList tutto il Set con addAll!
+        //Così posso avere l'indicizzazione (dentro l'array)!
+        arrayGuerr.addAll(nomiGuerrieri.getInsiemeGuerrieri());
+        //creo un nuovo generatore random per prendere un numero da caso dall'ArrayList Guerrieri
+        Random genRandomGuerr=new Random();
+        int numG = genRandomGuerr.nextInt(arrayGuerr.size()-1);
+
+
         this.generatoreRandom=new Random();
 
         return switch(generatoreRandom.nextInt(2))
@@ -35,9 +50,9 @@ public class FactoryNemici
                     40,
                     5,
                     15);
-            case 1-> new Guerriero("Guerriero",
-                    50,
-                    10);
+            case 1-> new Guerriero(arrayGuerr.get(numG).getNomePersonaggio(),
+                    arrayGuerr.get(numG).getPuntiVitaPersonaggio(),
+                    arrayGuerr.get(numG).getDannoCausato());
            default -> throw new IllegalArgumentException("Qualcosa non è andato bene " +
                     "nella classe FactoryOggetti");
 
