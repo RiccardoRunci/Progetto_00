@@ -1,7 +1,9 @@
 # 📌 Nome del Progetto
 
-Breve descrizione del progetto (2-3 righe):  
-Spiega cosa fa il programma e a cosa serve.
+Progetto molto didattico di un gioco rpg.
+Devi muoverti in una matrice di gioco infestata di Nemici e Oggetti.
+Il tuo obbiettivo è quello di eliminare tutti i Nemici.
+Per farlo dovrai per forza raccogliere almeno qualche Oggetto!
 
 ---
 
@@ -14,8 +16,8 @@ Spiega cosa fa il programma e a cosa serve.
 ### Istruzioni
 
 ```bash
-git clone <url-del-repository>
-cd <nome-cartella>
+git clone https://github.com/RiccardoRunci/Progetto_00.git
+cd Progetto_00
 ```
 
 ### Build del progetto
@@ -47,8 +49,6 @@ gradlew.bat run
 
 ## 🤖 Uso di strumenti di AI
 
-Indicare **se e come** sono stati utilizzati strumenti di AI (es. ChatGPT, Copilot, ecc.).
-Descrivere in modo chiaro **per quali attività** e **con quale livello di intervento personale**.
 
 È importante dimostrare che:
 * il codice è stato **compreso**
@@ -82,12 +82,6 @@ Oppure:
 - Non sono stati utilizzati strumenti di AI
 
 ---
-
-
-## ⚠️ Nota
-
-Questo è un template: **modificare e adattare tutte le parti necessarie** in base al proprio progetto
-
 
 
 

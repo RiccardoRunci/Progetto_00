@@ -17,4 +17,4 @@ NOME= Pistola Acqua
 
 TEMPO SPESO PER SERIALIZZARE L'EROE
 CON STREAM DI CARATTERI, CON BUFFER:
-9.014272 (in Millisecondi).
+3.045 (in Millisecondi).
