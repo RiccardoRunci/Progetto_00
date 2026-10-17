@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Questa è la 1° versione, non è che sia proprio il massimo...-->
+<!DOCTYPE maghi [
+<!ELEMENT maghi (mago+)>
+<!ELEMENT mago EMPTY>
+<!ATTLIST mago
+        nomePersonaggio CDATA #REQUIRED
+        puntiVitaPersonaggio CDATA #REQUIRED
+        dannoCausato CDATA #REQUIRED
+        numeroMagie CDATA #REQUIRED>
+        ]>
+<maghi>
+    <mago nomePersonaggio="Merlino"
+          puntiVitaPersonaggio="50"
+          dannoCausato="5"
+          numeroMagie="10"/>
+    <!-- COMMENTO: -->
+    <mago nomePersonaggio="Gandalf"
+          puntiVitaPersonaggio="40"
+          dannoCausato="7"
+          numeroMagie="6"/>
+    <!-- COMMENTO: -->
+    <mago nomePersonaggio="Circe"
+          puntiVitaPersonaggio="50"
+          dannoCausato="5"
+          numeroMagie="10"/>
+    <!-- COMMENTO: -->
+    <mago nomePersonaggio="Otelma"
+          puntiVitaPersonaggio="50"
+          dannoCausato="5"
+          numeroMagie="10"/>
+    <!-- COMMENTO: -->
+    <mago nomePersonaggio="Udini"
+          puntiVitaPersonaggio="50"
+          dannoCausato="5"
+          numeroMagie="10"/>
+    <!-- COMMENTO: -->
+    <mago nomePersonaggio="Morgana"
+          puntiVitaPersonaggio="50"
+          dannoCausato="5"
+          numeroMagie="10"/>
+    <!-- COMMENTO: -->
+    <mago nomePersonaggio="Donacimiento"
+          puntiVitaPersonaggio="50"
+          dannoCausato="5"
+          numeroMagie="10"/>
+    <!-- COMMENTO: -->
+    <mago nomePersonaggio="BabaYaga"
+          puntiVitaPersonaggio="50"
+          dannoCausato="5"
+          numeroMagie="10"/>
+    <!-- COMMENTO: -->
+    <mago nomePersonaggio="Forest"
+          puntiVitaPersonaggio="50"
+          dannoCausato="5"
+          numeroMagie="10"/>
+    <!-- COMMENTO: -->
+    <mago nomePersonaggio="Silvan"
+          puntiVitaPersonaggio="50"
+          dannoCausato="5"
+          numeroMagie="10"/>
+    <!-- COMMENTO: -->
+</maghi><!-- Questo è un commento -->

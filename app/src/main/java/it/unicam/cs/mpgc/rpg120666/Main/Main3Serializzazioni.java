@@ -6,11 +6,19 @@ import it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco.MatriceGioco;
 import it.unicam.cs.mpgc.rpg120666.Model.Oggetto.ClassiEstese.Arma;
 import it.unicam.cs.mpgc.rpg120666.Model.Oggetto.ClassiEstese.Medikit;
 import it.unicam.cs.mpgc.rpg120666.Model.Serializzazione.Persistenza.LeggiJsonGuerrieri;
+import it.unicam.cs.mpgc.rpg120666.Model.Serializzazione.Persistenza.LeggiXmlMaghi;
 import it.unicam.cs.mpgc.rpg120666.Model.Serializzazione.Persistenza.PersistenzaMatrice;
 import it.unicam.cs.mpgc.rpg120666.Model.Serializzazione.Ser_Des_STREAM_BYTE.DeserializzaEroe_StreamByte;
 import it.unicam.cs.mpgc.rpg120666.Model.Serializzazione.Ser_Des_STREAM_BYTE.SerializzaEroe_StreamByte;
 import it.unicam.cs.mpgc.rpg120666.Model.Serializzazione.Ser_Des_STREAM_CARATTERI.DeserializzaEroe_StreamCaratteri;
 import it.unicam.cs.mpgc.rpg120666.Model.Serializzazione.Ser_Des_STREAM_CARATTERI.SerializzaEroe_StreamCaratteri;
+import org.xml.sax.SAXException;
+
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+import java.io.IOException;
+import java.io.InputStream;
 
 public class Main3Serializzazioni
 {
@@ -31,6 +39,11 @@ public class Main3Serializzazioni
         //PersistenzaMatrice.deserializzaMatrice();
 
         //LeggiJsonGuerrieri leggi=new LeggiJsonGuerrieri();
+
+        LeggiXmlMaghi vai = new LeggiXmlMaghi();
+
+
+
 
     }
 }

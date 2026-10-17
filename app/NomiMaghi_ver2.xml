@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Versione 2, molto meglio della 1°
+    File xml con validatore DTD che elenca alcuni maghi,
+    da usare nella classe FactoryNemici!
+    Per i Maghi ho optato per un file xml,
+    perchè già avevo usato dei file json per i Guerrieri.-->
+<!DOCTYPE ListaMaghi [
+<!ELEMENT ListaMaghi (Mago+)>
+<!ELEMENT Mago (nomePersonaggio, puntiVitaPersonaggio, dannoCausato, numeroMagie)>
+<!ELEMENT nomePersonaggio (#PCDATA)>
+<!ELEMENT puntiVitaPersonaggio (#PCDATA)>
+<!ELEMENT dannoCausato (#PCDATA)>
+<!ELEMENT numeroMagie (#PCDATA)>
+<!ATTLIST Mago numMago CDATA #REQUIRED>
+        ]>
+<ListaMaghi>
+    <Mago numMago="1">
+        <nomePersonaggio>Merlino</nomePersonaggio>
+        <puntiVitaPersonaggio>50</puntiVitaPersonaggio>
+        <dannoCausato>5</dannoCausato>
+        <numeroMagie>10</numeroMagie>
+    </Mago>
+    <Mago numMago="2">
+        <nomePersonaggio>Gandalf</nomePersonaggio>
+        <puntiVitaPersonaggio>40</puntiVitaPersonaggio>
+        <dannoCausato>7</dannoCausato>
+        <numeroMagie>6</numeroMagie>
+    </Mago>
+    <Mago numMago="3">
+        <nomePersonaggio>Circe</nomePersonaggio>
+        <puntiVitaPersonaggio>40</puntiVitaPersonaggio>
+        <dannoCausato>7</dannoCausato>
+        <numeroMagie>6</numeroMagie>
+    </Mago>
+    <Mago numMago="4">
+        <nomePersonaggio>Otelma</nomePersonaggio>
+        <puntiVitaPersonaggio>40</puntiVitaPersonaggio>
+        <dannoCausato>7</dannoCausato>
+        <numeroMagie>6</numeroMagie>
+    </Mago>
+    <Mago numMago="5">
+        <nomePersonaggio>Silvan</nomePersonaggio>
+        <puntiVitaPersonaggio>40</puntiVitaPersonaggio>
+        <dannoCausato>7</dannoCausato>
+        <numeroMagie>6</numeroMagie>
+    </Mago>
+    <Mago numMago="6">
+        <nomePersonaggio>Forest</nomePersonaggio>
+        <puntiVitaPersonaggio>40</puntiVitaPersonaggio>
+        <dannoCausato>7</dannoCausato>
+        <numeroMagie>6</numeroMagie>
+    </Mago>
+    <Mago numMago="7">
+        <nomePersonaggio>Donacimento</nomePersonaggio>
+        <puntiVitaPersonaggio>40</puntiVitaPersonaggio>
+        <dannoCausato>7</dannoCausato>
+        <numeroMagie>6</numeroMagie>
+    </Mago>
+    <Mago numMago="8">
+        <nomePersonaggio>Udini</nomePersonaggio>
+        <puntiVitaPersonaggio>40</puntiVitaPersonaggio>
+        <dannoCausato>7</dannoCausato>
+        <numeroMagie>6</numeroMagie>
+    </Mago>
+    <Mago numMago="9">
+        <nomePersonaggio>Morgana</nomePersonaggio>
+        <puntiVitaPersonaggio>40</puntiVitaPersonaggio>
+        <dannoCausato>7</dannoCausato>
+        <numeroMagie>6</numeroMagie>
+    </Mago>
+    <Mago numMago="10">
+        <nomePersonaggio>Copperfield</nomePersonaggio>
+        <puntiVitaPersonaggio>40</puntiVitaPersonaggio>
+        <dannoCausato>7</dannoCausato>
+        <numeroMagie>6</numeroMagie>
+    </Mago>
+</ListaMaghi>

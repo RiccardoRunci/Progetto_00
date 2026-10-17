@@ -1,6 +1,0 @@
-<!-- Questo è un commento -->
-<!ELEMENT maghi (nomePersonaggio, puntiVitaPersonaggio, dannoCausato, numeroMagie)>
-        <!ELEMENT nomePersonaggio (#PCDATA)>
-        <!ELEMENT puntiVitaPersonaggio (#PCDATA)>
-        <!ELEMENT dannoCausato (#PCDATA)>
-        <!ELEMENT numeroMagie (#PCDATA)>
