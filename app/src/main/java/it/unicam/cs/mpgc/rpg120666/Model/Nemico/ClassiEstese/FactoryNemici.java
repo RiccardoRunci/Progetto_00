@@ -13,11 +13,20 @@
  * "calpestatoDaEroe(Eroe)" viene utilizzato nella classe Manager.ManagerIncontroNemiciOggetti.
  * L'interfaccia ElementiPerMatrice ha il metodo restituisciTipoOggetto che restituisce "Arma,Medikit,ecc...".
  * L'interfaccia ElementiPerMatrice ha il metodo veroVolto che restituisce "Oggetto, Nemico".
+ *
+ * Questa classe prende Guerrieri e Maghi (da ritornare) da 2 classi che utilizzano la persistenza.
+ * Ho optato per 2 classi di persistenza diverse per poter mettere più argomenti visti in classe.
+ * Per la classe dei Maghi ho usato un file xml parsato tramite SAX:
+ * @see it.unicam.cs.mpgc.rpg120666.Model.Serializzazione.Persistenza.LeggiXmlMaghi
+ * Per la classe dei Guerrieri ho utilizzato un file json parsato tramite GSON:
+ * @see it.unicam.cs.mpgc.rpg120666.Model.Serializzazione.Persistenza.LeggiJsonGuerrieri
+ *
  * @Author Runci Riccardo (Ricopiata da quella generata da copilot precedentemente).
  * @since versione 1.0.*/
 package it.unicam.cs.mpgc.rpg120666.Model.Nemico.ClassiEstese;
 import it.unicam.cs.mpgc.rpg120666.Model.ElementiPerMatrice.ElementiPerMatrice;
 import it.unicam.cs.mpgc.rpg120666.Model.Serializzazione.Persistenza.LeggiJsonGuerrieri;
+import it.unicam.cs.mpgc.rpg120666.Model.Serializzazione.Persistenza.LeggiXmlMaghi;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -30,6 +39,7 @@ public class FactoryNemici
      * @throws IllegalArgumentException ma in teoria non ci dovrebbe arrivare mai.*/
     public ElementiPerMatrice restituisciNemicoRandom()
     {
+        //-------------------------------------------------- PRENDO I GUERRIERI DAL FILE: Guerrieri.json (di resource).
         //Creo un oggetto della classe LeggiJsonGuerrieri!
         LeggiJsonGuerrieri nomiGuerrieri=new LeggiJsonGuerrieri();
         //Creo un arrayList che mi conterrà il set restituito dalla classe LeggiJsonGuerrieri!
@@ -40,19 +50,30 @@ public class FactoryNemici
         //creo un nuovo generatore random per prendere un numero da caso dall'ArrayList Guerrieri
         Random genRandomGuerr=new Random();
         int numG = genRandomGuerr.nextInt(arrayGuerr.size()-1);
+        //-------------------------------------------------- ORA PRENDO I MAGHI DAL FILE: Maghi_ver2.xml (di resource).
+        LeggiXmlMaghi leggiMaghi=new LeggiXmlMaghi();
+        ArrayList<Mago>  arrayMaghi = new ArrayList<>();
+        arrayMaghi= leggiMaghi.vaiConIlSAX();
+        Random genRandomMaghi=new Random();
+        int numM = genRandomMaghi.nextInt(arrayMaghi.size()-1);
+        //---------------------------------------------------
 
-
-        this.generatoreRandom=new Random();
+        this.generatoreRandom=new Random();// serve per lo switch (seleziona o maghi o guerrieri).
 
         return switch(generatoreRandom.nextInt(2))
         {
-            case 0-> new Mago("Mago",
-                    40,
-                    5,
-                    15);
+            //QUI USO L'ARRAY RITORNATO DALLA CLASSE CHE FA IL PARSING DEL FILE XML dei maghi CON SAX:
+            case 0-> new Mago(arrayMaghi.get(numM).getNomePersonaggio(),
+                    arrayMaghi.get(numM).getPuntiVitaPersonaggio(),
+                    arrayMaghi.get(numM).getDannoCausato(),
+                    arrayMaghi.get(numM).getNumeroMagie());
+
+            //QUI USO GSON CHE PARSA UN FILE JSON PIENO DI GUERRIERI:
             case 1-> new Guerriero(arrayGuerr.get(numG).getNomePersonaggio(),
                     arrayGuerr.get(numG).getPuntiVitaPersonaggio(),
                     arrayGuerr.get(numG).getDannoCausato());
+
+            //QUI NIENTE!
            default -> throw new IllegalArgumentException("Qualcosa non è andato bene " +
                     "nella classe FactoryOggetti");
 
