@@ -1,0 +1,1 @@
+https://github.com/lorenzorossiunicam/mdp_mgc_2026/blob/main/app/build.gradle.kts

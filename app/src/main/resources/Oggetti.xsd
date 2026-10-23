@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--File xsd che valida tutti gli Oggetti(Armi e Medikit) contenuti dentro il file Oggetti.xml.
+	Differentemente da come ho fatto con Maghi.xml (che conteneva solo i Maghi, senza Guerrieri)
+	I Guerrieri stavano in un altro file .json!
+	Dato che DTD lo ho usato per Maghi.xml, Qui vorrei utilizzare gli XSD per validare questo file Oggetti.xml.-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="Oggetti">
+        <xs:complexType>
+            <xs:choice minOccurs="1" maxOccurs="unbounded">
+                <!--Se uso choice, devo togliere il sequence che stava qui!-->
+                <xs:element name="Arma" minOccurs="1" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="nomeOggetto" type="xs:string"/>
+                            <xs:element name="puntiDannoPiu" type="xs:positiveInteger"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="Medikit" minOccurs="1" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="nomeOggetto" type="xs:string"/>
+                            <xs:element name="puntiVitaRistabiliti" type="xs:positiveInteger"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <!--qui c'era la chiusura del sequence che ho tolto, perchè ho messo choice!-->
+            </xs:choice> <!-- Con xs:choice 1<x>max posso fare come ((Arma|Medikit)+) -->
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

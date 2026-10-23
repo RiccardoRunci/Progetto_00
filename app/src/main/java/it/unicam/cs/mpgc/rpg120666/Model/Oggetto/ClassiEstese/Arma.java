@@ -37,6 +37,16 @@ public class Arma extends Oggetto implements InterfacciaArma, ElementiPerMatrice
         super(nomeOggetto);
         this.puntiDannoPiu = puntiDannoPiu;
     }
+    /**Metodo getPuntiDannoPiu:
+     *@return this.puntiDannoPiu restituisce il danno che fa l'arma!
+     *@author Runci Riccardo.
+     *@since versione 2.0.
+     * Mi ero dimenticato di metterlo, viene usato in FactoryOggetti
+     * @see FactoryOggetti*/
+    public int getPuntiDannoPiu()
+    {
+        return this.puntiDannoPiu;
+    }
 
     /**Metodo toString:
      * override del metodo toString di Oggetto.

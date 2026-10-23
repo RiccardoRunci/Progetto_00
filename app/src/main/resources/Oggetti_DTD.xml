@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--File xml che contiente tutti Oggetti(Armi e Medikit).  Uso un validatore DTD
+	NON HO USATO QUESTO FILE nel progetto. Nel progetto ho usato il suo relativo validato con XSD (Oggetti_XSD).
+	Questo l'ho fatto solo per non perdere la mano! -->
+<!DOCTYPE Oggetti [
+<!ELEMENT Oggetti ((Arma | Medikit)+)>
+<!ELEMENT Arma (nomeOggetto,puntiDannoPiu)>
+<!ELEMENT nomeOggetto (#PCDATA)>
+<!ELEMENT puntiDannoPiu (#PCDATA)>
+<!ELEMENT Medikit (nomeOggetto,puntiVitaRistabiliti)>
+<!ELEMENT puntiVitaRistabiliti (#PCDATA)>
+
+<!ATTLIST Arma NumArma CDATA #REQUIRED>
+<!ATTLIST Medikit NumMedikit CDATA #REQUIRED>
+]>
+<!-- Posso fare un miscuglio! Posso mettere: prima armi, poi medikit!
+     Oppure fare: medikit, armi, Medikit, armi, armi ,medikit,ecc...
+     ((Arma | Medikit)+).
+     Con XSD questo si ottiene con xs:choice minOccurs="1" maxOccurs="unbounded" -->
+<Oggetti>
+<Arma NumArma="1">
+	<nomeOggetto> è valido anche se qui non inserisco nulla??</nomeOggetto>
+	<puntiDannoPiu> </puntiDannoPiu>
+</Arma>
+<Medikit NumMedikit="2">
+	<nomeOggetto> </nomeOggetto>
+	<puntiVitaRistabiliti></puntiVitaRistabiliti>
+</Medikit>
+</Oggetti>

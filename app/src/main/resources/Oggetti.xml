@@ -1,0 +1,97 @@
+<!--File xml che contiene una lista di Medikit e Armi.
+    Questo file ha il suo validatore xsd (sempre dentro la cartella Resource, Oggetti.xsd).-->
+<Oggetti  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		  xsi:noNamespaceSchemaLocation="Oggetti.xsd">
+
+<Medikit>
+	<nomeOggetto>Paracetamolo generico</nomeOggetto>
+	<puntiVitaRistabiliti>50</puntiVitaRistabiliti>
+</Medikit>
+<Medikit>
+	<nomeOggetto>Bayer</nomeOggetto>
+	<puntiVitaRistabiliti>50</puntiVitaRistabiliti>
+</Medikit>
+<Medikit>
+	<nomeOggetto>Pfizer</nomeOggetto>
+	<puntiVitaRistabiliti>50</puntiVitaRistabiliti>
+</Medikit>
+<Medikit>
+	<nomeOggetto>Moderna</nomeOggetto>
+	<puntiVitaRistabiliti>50</puntiVitaRistabiliti>
+</Medikit>
+<Medikit>
+	<nomeOggetto>Angelini</nomeOggetto>
+	<puntiVitaRistabiliti>50</puntiVitaRistabiliti>
+</Medikit>
+<Medikit>
+	<nomeOggetto>Roche</nomeOggetto>
+	<puntiVitaRistabiliti>50</puntiVitaRistabiliti>
+</Medikit>
+<Medikit>
+	<nomeOggetto>Sanofi</nomeOggetto>
+	<puntiVitaRistabiliti>50</puntiVitaRistabiliti>
+</Medikit>
+<Medikit>
+	<nomeOggetto>AstraZeneca</nomeOggetto>
+	<puntiVitaRistabiliti>50</puntiVitaRistabiliti>
+</Medikit>
+<Medikit>
+	<nomeOggetto>Ibuprofene Generico</nomeOggetto>
+	<puntiVitaRistabiliti>50</puntiVitaRistabiliti>
+</Medikit>
+<Medikit>
+	<nomeOggetto>Imodium</nomeOggetto>
+	<puntiVitaRistabiliti>50</puntiVitaRistabiliti>
+</Medikit>
+<Medikit>
+	<nomeOggetto>Enterogermina</nomeOggetto>
+	<puntiVitaRistabiliti>50</puntiVitaRistabiliti>
+</Medikit>
+
+
+<Arma>
+	<nomeOggetto>CANNONE</nomeOggetto>
+	<puntiDannoPiu>100</puntiDannoPiu>
+</Arma>
+<Arma>
+	<nomeOggetto>Beretta</nomeOggetto>
+	<puntiDannoPiu>60</puntiDannoPiu>
+</Arma>
+<Arma>
+	<nomeOggetto>Glock</nomeOggetto>
+	<puntiDannoPiu>60</puntiDannoPiu>
+</Arma>
+<Arma>
+	<nomeOggetto>SmithWesson</nomeOggetto>
+	<puntiDannoPiu>80</puntiDannoPiu>
+</Arma>
+<Arma>
+	<nomeOggetto>Colt</nomeOggetto>
+	<puntiDannoPiu>90</puntiDannoPiu>
+</Arma>
+<Arma>
+	<nomeOggetto>Balestra</nomeOggetto>
+	<puntiDannoPiu>45</puntiDannoPiu>
+</Arma>
+<Arma>
+	<nomeOggetto>Coltello</nomeOggetto>
+	<puntiDannoPiu>30</puntiDannoPiu>
+</Arma>
+
+<Arma>
+	<nomeOggetto>Fionda</nomeOggetto>
+	<puntiDannoPiu>15</puntiDannoPiu>
+</Arma>
+<Arma>
+	<nomeOggetto>Bazzuka</nomeOggetto>
+	<puntiDannoPiu>500</puntiDannoPiu>
+</Arma>
+<Arma>
+	<nomeOggetto>BFG90000</nomeOggetto>
+	<puntiDannoPiu>9000</puntiDannoPiu>
+</Arma>
+<Arma>
+	<nomeOggetto>Doppietta</nomeOggetto>
+	<puntiDannoPiu>95</puntiDannoPiu>
+</Arma>
+</Oggetti>

@@ -28,7 +28,7 @@ import java.util.ArrayList;
 * 1)void startElement(String uri,String localName, String qName, Attributes attributes) throws SAXException;
 * 2)void characters(char ch[], int start, int length) throws SAXException;
 * 3)void endElement(String uri, String localName, String qName) throws SAXException. */
-public class LeggiXmlMaghi extends DefaultHandler
+public class LeggiXmlMaghi_SAX extends DefaultHandler
 {
     private InputStream is; //serve per la cartella Resource.
     private StringBuilder infoLette=null;
@@ -40,7 +40,7 @@ public class LeggiXmlMaghi extends DefaultHandler
      * Come prima cosa tiro fuori il file xml dalla cartella resource.
      * Lo tiro fuori usando gli InputStream perché è l'unico modo che si può usare.
      * @throws FileNotFoundException se il file non viene trovato!*/
-    public LeggiXmlMaghi()
+    public LeggiXmlMaghi_SAX()
     {
         try
         {

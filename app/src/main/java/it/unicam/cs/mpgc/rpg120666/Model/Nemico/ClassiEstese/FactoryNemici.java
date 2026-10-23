@@ -17,7 +17,7 @@
  * Questa classe prende Guerrieri e Maghi (da ritornare) da 2 classi che utilizzano la persistenza.
  * Ho optato per 2 classi di persistenza diverse per poter mettere più argomenti visti in classe.
  * Per la classe dei Maghi ho usato un file xml parsato tramite SAX:
- * @see it.unicam.cs.mpgc.rpg120666.Model.Serializzazione.Persistenza.LeggiXmlMaghi
+ * @see it.unicam.cs.mpgc.rpg120666.Model.Serializzazione.Persistenza.LeggiXmlMaghi_SAX
  * Per la classe dei Guerrieri ho utilizzato un file json parsato tramite GSON:
  * @see it.unicam.cs.mpgc.rpg120666.Model.Serializzazione.Persistenza.LeggiJsonGuerrieri
  *
@@ -26,7 +26,7 @@
 package it.unicam.cs.mpgc.rpg120666.Model.Nemico.ClassiEstese;
 import it.unicam.cs.mpgc.rpg120666.Model.ElementiPerMatrice.ElementiPerMatrice;
 import it.unicam.cs.mpgc.rpg120666.Model.Serializzazione.Persistenza.LeggiJsonGuerrieri;
-import it.unicam.cs.mpgc.rpg120666.Model.Serializzazione.Persistenza.LeggiXmlMaghi;
+import it.unicam.cs.mpgc.rpg120666.Model.Serializzazione.Persistenza.LeggiXmlMaghi_SAX;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -51,7 +51,7 @@ public class FactoryNemici
         Random genRandomGuerr=new Random();
         int numG = genRandomGuerr.nextInt(arrayGuerr.size()-1);
         //-------------------------------------------------- ORA PRENDO I MAGHI DAL FILE: Maghi_ver2.xml (di resource).
-        LeggiXmlMaghi leggiMaghi=new LeggiXmlMaghi();
+        LeggiXmlMaghi_SAX leggiMaghi=new LeggiXmlMaghi_SAX();
         ArrayList<Mago>  arrayMaghi = new ArrayList<>();
         arrayMaghi= leggiMaghi.vaiConIlSAX();
         Random genRandomMaghi=new Random();
