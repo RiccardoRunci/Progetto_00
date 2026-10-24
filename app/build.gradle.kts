@@ -7,8 +7,25 @@ plugins {
 repositories { mavenCentral() }
 
 dependencies {
+    // Ultima versione stabile di Hibernate Core:
+    implementation("org.hibernate.orm:hibernate-core:6.6.59.Final")
+    //Per le JPA java persistent api(per usare le annotation (tipo @Enetity, ecc...)
+    implementation("jakarta.persistence:jakarta.persistence-api:3.1.0")
+    /* NOTA: È obbligatorio includere anche il driver del database che usi, ad esempio
+       PostgreSQL o MySQL. Runtime perchè serve solo a tempo di esecuzione, non viene
+       compilato nulla.*/
+    runtimeOnly("org.postgresql:postgresql:42.7.5")
+
+    /*Libreria per il database in memoria:
+    * Vedere il file "src/main/resources/META-INF/persistence.xml"
+    * per i dettagli della connessione al DB!
+    * NOTA: È nella cartella statica, non confondersi con la sua copia
+    * dopo aver fatto gradle build!*/
+    implementation("com.h2database:h2:2.2.224")
+
     //GSon json:
     implementation ("com.google.code.gson:gson:2.14.0")
+
     //JAVAFX(25):
     implementation("org.openjfx:javafx-controls:25") // 25 numero di versione
     implementation("org.openjfx:javafx-fxml:25") // 25 numero di versione
@@ -31,7 +48,7 @@ java {
     }
 }
 //CLASSE MAIN:
-application { mainClass = "it.unicam.cs.mpgc.rpg120666.Main.MainFx2" }
+application { mainClass = "it.unicam.cs.mpgc.rpg120666.Main.Main3Serializzazioni" }
 tasks.test { // Obbligatorio per eseguire i test con JUnit
     useJUnitPlatform()
     /*Ti fa vedere test per test se passato, skippato o fallito!*/
