@@ -7,7 +7,8 @@ import javafx.scene.layout.VBox;
 public class InizioGiocoView
 {
     private VBox ManagerLayoutTotale;
-    private Button btnIndietro = new Button("<-INDIETRO");
+    private Button btnPunteggi = new Button("Vedi Punteggi");
+    private Button btnCancellaTuttiPunteggi = new Button("Cancella tutti i punteggi");
     private Button btnCancellaCampi = new Button("CANCELLA CAMPI");
 
     /**Per 'snellire' il codice di questa classe, ho creato altre classi view che si 'appoggiano'  su di qusta.
@@ -51,13 +52,16 @@ public class InizioGiocoView
                   this.vistaSpostamentoEroe.getLayoutTotale(), //la classe di componenti gui per spostare l'eroe.
                   this.vistaEroe.getLayotVistaEroe(), //la classe di componenti gui per vedere la vita dell'eroe.
                   btnCancellaCampi,
-                  btnIndietro
+                  btnPunteggi,
+                  btnCancellaTuttiPunteggi
           );
     }
    /**Metodi set e get di tutti i componenti grafici!*/
-    public Button getBtnIndietro(){ return this.btnIndietro; }
+    public Button getBtnPunteggi(){ return this.btnPunteggi; }
+    public Button getBtnCancellaTuttiPunteggi(){ return this.btnCancellaTuttiPunteggi; }
     public Button getBtnCancellaCampi(){ return this.btnCancellaCampi; }
-    public void setBtnIndietro(Button btnIndietro) { this.btnIndietro=btnIndietro; }
+    public void setBtnPunteggi(Button btnPunteggi) { this.btnPunteggi = btnPunteggi; }
+    public void setBtnCancellaTuttiPunteggi(Button btnCancellaTuttiPunteggi) { this.btnCancellaTuttiPunteggi = btnCancellaTuttiPunteggi; }
     public void setBtnCancellaCampi(Button btnCancellaCampi) { this.btnCancellaCampi = btnCancellaCampi; }
     /**Metodo get di tutte le view "incastonate" dentro questa classe
      * (messe dentro il layout totale di questa classe view).

@@ -6,8 +6,13 @@ import it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco.ContaElementiRimanenti.Enu
 import it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco.Manager.ManagerFineGioco;
 import it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco.Manager.ManagerSpostamentoEroe;
 import it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco.MatriceGioco;
+import it.unicam.cs.mpgc.rpg120666.Model.Serializzazione.Persistenza.Hybernate.Punteggi;
+import it.unicam.cs.mpgc.rpg120666.Model.Serializzazione.Persistenza.Hybernate.UsaPunteggi;
 import it.unicam.cs.mpgc.rpg120666.View.*;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
+
+import java.util.ArrayList;
 
 public class MatriceController
 {
@@ -59,7 +64,8 @@ public class MatriceController
 
 
         inizioGiocoView.getBtnCancellaCampi().setOnAction(e -> pulisciTxtDellaView());
-        inizioGiocoView.getBtnIndietro().setOnAction(e -> tornaAllaSchermataPrecedente());
+        inizioGiocoView.getBtnPunteggi().setOnAction(e -> vediPunteggi());
+        inizioGiocoView.getBtnCancellaTuttiPunteggi().setOnAction(e -> cancellaPunteggi());
         inizioGiocoView.getStatisticheView().getTxtNumArmi().setText(""+matriceModel.getMatriceContaElementi().calcolaNumOggettiNemiciRimanenti(EnumOggNem.ARMA));
         inizioGiocoView.getStatisticheView().getTxtNumMedikit().setText(""+matriceModel.getMatriceContaElementi().calcolaNumOggettiNemiciRimanenti(EnumOggNem.MEDIKIT));
         inizioGiocoView.getStatisticheView().getTxtNumMaghi().setText(""+matriceModel.getMatriceContaElementi().calcolaNumOggettiNemiciRimanenti(EnumOggNem.MAGO));
@@ -120,9 +126,36 @@ public class MatriceController
         this.eroeView.getTxtVitaEroe().clear();
         this.eroeView.getTxtPuntiAttaccoEroe().clear();
     }
-    private void tornaAllaSchermataPrecedente()
+    /*Più che statistiche avrei dovuto chiamarli punteggi!*/
+    private void vediPunteggi()
     {
-
+        ArrayList<Punteggi> arrayStatistiche = new ArrayList<Punteggi>(UsaPunteggi.ritornaTutteRighe());
+        StringBuilder infoDaVisualizzare=new StringBuilder();
+        for(int i=0;i<arrayStatistiche.size();i++)
+        {
+            infoDaVisualizzare.append("Id Partita: "+arrayStatistiche.get(i).getId());
+            infoDaVisualizzare.append("\n");
+            infoDaVisualizzare.append("Nome Giocatore: "+arrayStatistiche.get(i).getNomeGiocatore());
+            infoDaVisualizzare.append("\n");
+            infoDaVisualizzare.append("Nemici Rimasti: "+arrayStatistiche.get(i).getNemiciRimasti());
+            infoDaVisualizzare.append("\n");
+            infoDaVisualizzare.append("Oggetti Rimasti: "+arrayStatistiche.get(i).getOggettiRimasti());
+            infoDaVisualizzare.append("\n");
+            infoDaVisualizzare.append("Data Gioco: "+arrayStatistiche.get(i).getDataGioco());
+            infoDaVisualizzare.append("\n--------------------------------------------------\n");
+        }
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Punteggi Partite");
+        alert.setHeaderText(null);
+        Label messaggio = new Label( infoDaVisualizzare.toString());
+        messaggio.setStyle("-fx-text-fill: green; -fx-font-size: 20px; -fx-font-weight: bold;");
+        alert.getDialogPane().setContent(messaggio);
+        alert.showAndWait();
+        /*UsaStatistiche.chiudiEMF(); devo ricordarmi di farlo all'uscita dell'applicazione!*/
+    }
+    private void cancellaPunteggi()
+    {
+        UsaPunteggi.cancellaTutteRighe();
     }
     private void spostaEroe(String riga,String colonna) {
         /*Aggiorno le componenti JavaFx della view Eroe:*/

@@ -18,6 +18,8 @@ import it.unicam.cs.mpgc.rpg120666.Model.ElementiPerMatrice.ElementiPerMatrice;
 import it.unicam.cs.mpgc.rpg120666.Model.Eroe.Eroe;
 import it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco.ContaElementiRimanenti.EnumOggNem;
 import it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco.ContaElementiRimanenti.MatriceContaElementi;
+import it.unicam.cs.mpgc.rpg120666.Model.Serializzazione.Persistenza.Hybernate.Punteggi;
+import it.unicam.cs.mpgc.rpg120666.Model.Serializzazione.Persistenza.Hybernate.UsaPunteggi;
 import it.unicam.cs.mpgc.rpg120666.Model.Utility.MieAnnotazioni;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
@@ -77,6 +79,7 @@ public class ManagerFineGioco
             );
             alert.getDialogPane().setContent(messaggio);
             alert.showAndWait();
+            this.inserisciPunteggio();
             return true;
         }
 
@@ -91,12 +94,22 @@ public class ManagerFineGioco
                 messaggio.setStyle("-fx-text-fill: green; -fx-font-size: 20px; -fx-font-weight: bold;");
                 alert.getDialogPane().setContent(messaggio);
                 alert.showAndWait();
+                this.inserisciPunteggio();
                 return true; //HAI VINTO!
             } else //se ci sono ancora nemici da combattere, return false!
                 return false;
         }
-
     }
-
-
+    /**Metodo che inserisce un record nella tabella del DB tramite Hibernate.
+     * Sia se la partita è stata vinta, sia se la partita è persa!
+     * @see Punteggi
+     * @since versione 2.0.
+     * @author Runci Riccardo.*/
+    private void inserisciPunteggio()
+    {
+        UsaPunteggi.inserisciPunteggio(this.ilNostroEroe.getNomePersonaggio(),
+                this.matriceContaElementi.calcolaNumOggettiNemiciRimanenti(EnumOggNem.NEMICO),
+                (this.matriceContaElementi.calcolaNumOggettiNemiciRimanenti(EnumOggNem.ARMA)+
+                            this.matriceContaElementi.calcolaNumOggettiNemiciRimanenti(EnumOggNem.MEDIKIT)));
+    }
 }

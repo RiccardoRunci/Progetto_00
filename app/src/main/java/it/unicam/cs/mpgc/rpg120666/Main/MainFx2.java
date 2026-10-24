@@ -3,6 +3,7 @@ import it.unicam.cs.mpgc.rpg120666.Controller.MatriceController;
 import it.unicam.cs.mpgc.rpg120666.Model.Difficolta.EnumDifficolta;
 import it.unicam.cs.mpgc.rpg120666.Model.Eroe.Eroe;
 import it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco.MatriceGioco;
+import it.unicam.cs.mpgc.rpg120666.Model.Serializzazione.Persistenza.Hybernate.UsaPunteggi;
 import it.unicam.cs.mpgc.rpg120666.Model.Utility.VerificaParametri;
 import it.unicam.cs.mpgc.rpg120666.View.InizioGiocoView;
 import javafx.application.Application;
@@ -46,6 +47,26 @@ public class MainFx2 extends Application
         palcoscenico.setScene(scena);
         palcoscenico.setTitle("Matrice Gioco");
         palcoscenico.show();
+
+        /*Quando clicchi sulla x in alto a destra (nella finestra principale)
+        * Chiudo EMF di Hybernate, ma per farlo richiamo il metodo stop sotto!
+        * Così non lo faccio 2 volte!*/
+        palcoscenico.setOnCloseRequest(event ->
+        {
+          this.stop();
+        });
+    }
+    /**Metodo sovrascritto di Application!
+     * Viene esegue quando esci totalmente da Stage!
+     * Qui ne approfitto per chiudere EMF di Hybernate!*/
+    @Override
+    public void stop()
+    {
+        System.out.println("Sto chiudendo il programma...");
+
+        UsaPunteggi.chiudiEMF();
+
+        System.out.println("EMF chiusa correttamente");
     }
     private String scegliNomeEroe()
     {
@@ -75,7 +96,7 @@ public class MainFx2 extends Application
     private EnumDifficolta scegliDifficolta()
     {
         JRadioButton facile = new JRadioButton("FACILE");
-        JRadioButton media = new JRadioButton("MEDIA");
+        JRadioButton media = new JRadioButton("MEDIA",true); //con true metto che il pallino "media" è selezionato di default!
         JRadioButton difficile = new JRadioButton("DIFFICILE");
 
         ButtonGroup gruppo = new ButtonGroup();
