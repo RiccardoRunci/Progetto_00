@@ -6,8 +6,8 @@ import it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco.ContaElementiRimanenti.Enu
 import it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco.Manager.ManagerFineGioco;
 import it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco.Manager.ManagerSpostamentoEroe;
 import it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco.MatriceGioco;
-import it.unicam.cs.mpgc.rpg120666.Model.Serializzazione.Persistenza.Hybernate.Punteggi;
-import it.unicam.cs.mpgc.rpg120666.Model.Serializzazione.Persistenza.Hybernate.UsaPunteggi;
+import it.unicam.cs.mpgc.rpg120666.Model.Serializzazione.Persistenza.Hibernate.Punteggi;
+import it.unicam.cs.mpgc.rpg120666.Model.Serializzazione.Persistenza.Hibernate.UsaPunteggi;
 import it.unicam.cs.mpgc.rpg120666.View.*;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;

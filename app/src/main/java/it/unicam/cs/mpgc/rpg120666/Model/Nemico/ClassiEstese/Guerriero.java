@@ -68,8 +68,7 @@ public class Guerriero extends Nemico implements InterfacciaPerPersonaggi, Eleme
     }
     /**Metodo che deriva dall'interfaccia Personaggio.InterfacciaPerPersonaggi:
      * @param e = Eroe a cui sferrare l'attacco.
-     * @return true = se il nemico ha effettuato con successo l'attacco ai danni dell' eroe!
-     * @return false = se il nemico non è riuscito ad attaccare l'eroe!
+     * @return true = se il nemico ha effettuato con successo l'attacco ai danni dell' eroe! False altrimenti
      * @throws IllegalArgumentException (se e ==null).
      * @see InterfacciaPerPersonaggi
      * @author Runci Riccardo.
@@ -98,7 +97,7 @@ public class Guerriero extends Nemico implements InterfacciaPerPersonaggi, Eleme
      *                  Questa descrizione è formata da "Classe Personaggio"+ il nome e i punti vita del Personaggio,
      *                  il danno causato(prese da super).*
      * @since versione 1.0.
-     * @autor Runci Riccardo.*/
+     * @author Runci Riccardo.*/
     @Override
     public String toString(){
         return "CLASSE Guerriero!\n"+
@@ -111,7 +110,7 @@ public class Guerriero extends Nemico implements InterfacciaPerPersonaggi, Eleme
      *@override del metodo hashCode della classe Nemico.
      *@return (int) che specifica in quale bucket andrà a cacciarsi l'oggetto.
      *@since versione 1.0.
-     *@autor Runci Riccardo.*/
+     *@author Runci Riccardo.*/
     @MieAnnotazioni(
             domanda="Mi sono accorto solo ora che non ho messo nessun campo nuovo in questa classe " +
                     "(che potesse distinguerla dalla sua superClasse Nemico). " +
@@ -127,7 +126,7 @@ public class Guerriero extends Nemico implements InterfacciaPerPersonaggi, Eleme
      *@return (boolean) True, se i due oggetti confrontati sono uguali.
      *                  False, altrimenti.
      *@since versione 1.0.
-     *@autor Runci Riccardo.*/
+     *@author Runci Riccardo.*/
     @Override
     public boolean equals(Object obj)
     {

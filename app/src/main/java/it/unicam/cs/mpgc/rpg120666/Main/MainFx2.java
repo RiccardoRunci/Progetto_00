@@ -3,7 +3,7 @@ import it.unicam.cs.mpgc.rpg120666.Controller.MatriceController;
 import it.unicam.cs.mpgc.rpg120666.Model.Difficolta.EnumDifficolta;
 import it.unicam.cs.mpgc.rpg120666.Model.Eroe.Eroe;
 import it.unicam.cs.mpgc.rpg120666.Model.MatriceGioco.MatriceGioco;
-import it.unicam.cs.mpgc.rpg120666.Model.Serializzazione.Persistenza.Hybernate.UsaPunteggi;
+import it.unicam.cs.mpgc.rpg120666.Model.Serializzazione.Persistenza.Hibernate.UsaPunteggi;
 import it.unicam.cs.mpgc.rpg120666.Model.Utility.VerificaParametri;
 import it.unicam.cs.mpgc.rpg120666.View.InizioGiocoView;
 import javafx.application.Application;
@@ -49,7 +49,7 @@ public class MainFx2 extends Application
         palcoscenico.show();
 
         /*Quando clicchi sulla x in alto a destra (nella finestra principale)
-        * Chiudo EMF di Hybernate, ma per farlo richiamo il metodo stop sotto!
+        * Chiudo EMF di Hibernate, ma per farlo richiamo il metodo stop sotto!
         * Così non lo faccio 2 volte!*/
         palcoscenico.setOnCloseRequest(event ->
         {
@@ -58,7 +58,7 @@ public class MainFx2 extends Application
     }
     /**Metodo sovrascritto di Application!
      * Viene esegue quando esci totalmente da Stage!
-     * Qui ne approfitto per chiudere EMF di Hybernate!*/
+     * Qui ne approfitto per chiudere EMF di Hibernate!*/
     @Override
     public void stop()
     {

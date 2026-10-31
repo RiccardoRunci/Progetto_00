@@ -1,8 +1,4 @@
 package it.unicam.cs.mpgc.rpg120666.View;
-
-import it.unicam.cs.mpgc.rpg120666.Model.ElementiPerMatrice.ElementiPerMatrice;
-import it.unicam.cs.mpgc.rpg120666.Model.Nemico.Nemico;
-import it.unicam.cs.mpgc.rpg120666.Model.Oggetto.Oggetto;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;

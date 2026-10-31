@@ -1,7 +1,7 @@
 /**Classe che mi permette di fare il parsing del documento xml "Oggetti.xml".
  * Oggetti.xml è un file xml che contiene Armi e Medikit.
  * Il parsing di questo documento lo vorrei fare con il metodo DOM.
- * @author Runci Riccardo.
+ * @author Runci Riccardo, Copilot.
  * @since versione 2.0*/
 package it.unicam.cs.mpgc.rpg120666.Model.Serializzazione.Persistenza;
 import it.unicam.cs.mpgc.rpg120666.Model.Oggetto.ClassiEstese.Arma;

@@ -2,7 +2,7 @@
  * (avente solo: campi, costruttore, metodi set e get) che serve per mappare
  * la tabella Statistiche del dbms.
  * QUESTE CLASSI DEVONO ESSERE SERIALIZZABILI (implements Serializable)!*/
-package it.unicam.cs.mpgc.rpg120666.Model.Serializzazione.Persistenza.Hybernate;
+package it.unicam.cs.mpgc.rpg120666.Model.Serializzazione.Persistenza.Hibernate;
 import it.unicam.cs.mpgc.rpg120666.Model.Utility.MieAnnotazioni;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

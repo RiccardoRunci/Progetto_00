@@ -152,7 +152,7 @@ public class Mago extends Nemico implements InterfacciaPerPersonaggi, ElementiPe
      *                  Questa descrizione è formata da "Classe Personaggio"+ il nome e i punti vita del Personaggio,
      *                  il danno causato(prese da super) e dal numero di magie (preso da questa classe qui).*
      * @since versione 1.0.
-     * @autor Runci Riccardo.*/
+     * @author Runci Riccardo.*/
     @Override
     public String toString(){
         return "CLASSE Mago!\n"+
@@ -165,7 +165,7 @@ public class Mago extends Nemico implements InterfacciaPerPersonaggi, ElementiPe
      *@override del metodo hashCode della classe Nemico.
      *@return (int) che specifica in quale bucket andrà a cacciarsi l'oggetto.
      *@since versione 1.0.
-     *@autor Runci Riccardo.*/
+     *@author Runci Riccardo.*/
     @Override
     public int hashCode(){
         return java.util.Objects.hash(this.numeroMagie);
@@ -175,7 +175,7 @@ public class Mago extends Nemico implements InterfacciaPerPersonaggi, ElementiPe
      *@return (boolean) True, se i due oggetti confrontati sono uguali.
      *                  False, altrimenti.
      *@since versione 1.0.
-     *@autor Runci Riccardo.*/
+     *@author Runci Riccardo.*/
     @Override
     public boolean equals(Object obj)
     {

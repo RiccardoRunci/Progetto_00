@@ -1,4 +1,4 @@
-package it.unicam.cs.mpgc.rpg120666.Model.Serializzazione.Persistenza.Hybernate;
+package it.unicam.cs.mpgc.rpg120666.Model.Serializzazione.Persistenza.Hibernate;
 import jakarta.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -54,7 +54,6 @@ public final class UsaPunteggi
 
         try
         {
-            // Qui usi ESATTAMENTE il nome della tabella SQL ("Statistiche")
             String sql = "SELECT * FROM Punteggi";
 
             // Usi createNativeQuery passando la stringa SQL e la classe di entità di destinazione
@@ -81,18 +80,15 @@ public final class UsaPunteggi
         try
         {
             em.getTransaction().begin();
-            // Qui usi ESATTAMENTE il nome della tabella SQL ("Statistiche")
             String sql = "DELETE FROM Punteggi";
 
-            // Usi createNativeQuery passando la stringa SQL e la classe di entità di destinazione
             Query query = em.createNativeQuery(sql/*,Punteggi.class*/);
             /*Punteggi.class non serve per una delete. Serve solo quando devo inserire o recuperare un record*/
 
             // Esegui la query
             query.executeUpdate();
-            //Questo che fa?
-            em.getTransaction().commit();
 
+            em.getTransaction().commit();
         } catch (Exception e) { e.printStackTrace(); }
         finally
         {

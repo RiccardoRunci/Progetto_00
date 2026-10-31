@@ -62,8 +62,10 @@ Ho deciso di usare la libreria JUnit6 per implementare i test delle classi del g
 --------------------------------------------------------------------------------------------
 9)■ DICHIARAZIONE USO AI ■
 Ho usato molto l'AI  come "collega" di studi (durante il periodo in cui studiavo).
-Mi ero successivamente ripromesso di non ri-utilizzarla per il progetto, ma, invece sono incappato nel seguente scenario:
-Nella classe che ho chiamato "UtilityPersonaggio" avevo 2 metodi quasi uguali,
+Mi ero successivamente ripromesso di non ri-utilizzarla per il progetto, ma, invece sono incappato nei seguenti scenari:
+
+
+**3**)Nella classe che ho chiamato "UtilityPersonaggio" avevo 2 metodi quasi uguali,
 l'unica cosa che cambiava era la logica del < o <=.
 
     public static boolean controllaCreazionePuntiVitaPersonaggio (int puntiVitaPersonaggio)
@@ -85,7 +87,6 @@ l'unica cosa che cambiava era la logica del < o <=.
         else
             return true;
     }
-
 
 L'ia mi ha suggerito di creare un enumerazione che specificava se - il controllo della vita del nemico -
 era da fare in fase di creazione o in fase di aggiornamento.

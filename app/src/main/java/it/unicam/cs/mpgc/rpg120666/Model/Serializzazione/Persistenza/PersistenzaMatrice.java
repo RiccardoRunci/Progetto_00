@@ -1,8 +1,8 @@
 /**Classe PersistenzaMatrice:
  * Questa classe si occupa di serializzare e deserializzare la matrice gioco tramite l'utilizzo di oggetti ObjectInputStream
  * & ObjectOutputStream.
- * Questa è una classe final, perché non voglio istanziare un oggetto, non credo che mi serva. Mi servono solo
- * i metodi carica e salva. In stile Math.sqrt!
+ * Questa è una classe final, perché non voglio estendere oggetti da questa classe, non credo che mi serva. Mi servono solo
+ * i metodi carica e salva!
  * Questi oggetti permettono la serializzazione/deserializzazione tramite stream di byte. Utilizzano i loro "antenati"
  * FileInputStream e FileOutputStream (con i relativi loro buffer, BufferedInputStream & BufferedOutputStream per "velocizzare"
  * il lavoro).

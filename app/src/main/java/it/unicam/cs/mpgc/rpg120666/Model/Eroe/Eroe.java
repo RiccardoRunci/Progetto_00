@@ -63,7 +63,7 @@ public class Eroe extends Personaggio implements InterfacciaPerPersonaggi, Eleme
      * @author Runci Riccardo*/
     public void setCellaPosizioneEroe(CellaMatrice cellaPosizioneEroe)
     {
-        if(cellaPosizioneEroe!=null) //todo ClasseMatriceAstratta.controllaPosizioniOutOfBound(cellaPosizioneEroe)
+        if(cellaPosizioneEroe!=null)
             this.cellaPosizioneEroe = cellaPosizioneEroe;
         else
             throw new IllegalArgumentException("Cella passata alla classe Eroe nel metodo set == null");
@@ -192,8 +192,7 @@ public class Eroe extends Personaggio implements InterfacciaPerPersonaggi, Eleme
     }
     /**Metodo che deriva dall'interfaccia Personaggio.InterfacciaPerPersonaggi:
      * @param nem = Nemico a cui sferrare l'attacco.
-     * @return true = se ha effettuato con successo l'attacco a eroe!
-     * @return false = se non è riuscito ad attaccare l'eroe!
+     * @return true = se ha effettuato con successo l'attacco a eroe! False altrimenti.
      * @throws IllegalArgumentException (se e ==null).
      * @since versione 1.0.
      * @author Runci Riccardo*/

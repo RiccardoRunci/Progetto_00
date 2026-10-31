@@ -1,7 +1,7 @@
 package it.unicam.cs.mpgc.rpg120666.Main;
 
-import it.unicam.cs.mpgc.rpg120666.Model.Serializzazione.Persistenza.Hybernate.Punteggi;
-import it.unicam.cs.mpgc.rpg120666.Model.Serializzazione.Persistenza.Hybernate.UsaPunteggi;
+import it.unicam.cs.mpgc.rpg120666.Model.Serializzazione.Persistenza.Hibernate.Punteggi;
+import it.unicam.cs.mpgc.rpg120666.Model.Serializzazione.Persistenza.Hibernate.UsaPunteggi;
 
 import java.util.ArrayList;
 
