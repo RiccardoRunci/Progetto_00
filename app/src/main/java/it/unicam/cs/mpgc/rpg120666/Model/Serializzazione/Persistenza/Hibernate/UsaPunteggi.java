@@ -5,6 +5,7 @@ import java.util.List;
 
 public final class UsaPunteggi
 {
+    //costruttore privato!
     private UsaPunteggi()
     {
         throw new UnsupportedOperationException("Questa classe non può essere istanziata.");

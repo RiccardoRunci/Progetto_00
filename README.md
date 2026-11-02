@@ -35,20 +35,28 @@ gradlew.bat run
 ```powershell di windows
 ./gradlew.bat run
 
+```
+
 ```NOTE:
 1)Se si esegue su un terminale cmd di windows, prima di eseguire il programma, digitare "chcp 65001".
   Serve per dire al cmd di usare la codifica UTF-8. Perchè il terminale di intellij salta questa cosa.
   Anche se l'ide intellij è impostato su utf8, non funziona. Continua a fare segni strani.
   Se il comando viene digitato nel terminale di intellij (indifferentemente se è selezionato "Windows powershell" o "local")
   comunque non funziona.
+  
 2)Se si esegue in un terminale powershell (a parte, non quello compreso in intellij) Puoi usare anche "chcp 65001",
   Non funziona uguale.
+  
+3)ALLA FINE NON FUNZIONAVA UGUALMENTE, QUINDI HO TOLTO TUTTI I CARATTERI ACCENTENTATI DAI System.out.println.
 ```
 
 ---
 
 ## 🤖 Uso di strumenti di AI
+Nella wiki ho scritto un breve recap del funzionamento dei punti dal 1 al 7.
+Il codice contiene molti commenti che ne possono spiegare il funzionamento.
 Nel progetto ho usato Copilot per aiutarmi nei seguenti casi:
+
 **1**)Nella parte grafica mi ha aiutato a capire come funziona il componente "TableView".
 Non tanto per la creazione dell'Oggetto ma per collegargli il suo click listener.
 Questo si può vedere nella classe: /Controller/ZainoController, nel metodo: collegaClickAllaTabella().
@@ -86,6 +94,9 @@ nella classe: /Model/Serializzazione/Persistenza/LeggiXMLOggetti_DOM.
 **8**)Frequentemente gli ho domandato aiuto per trovare metodi delle classi che mi servivano
 durante il progetto che fatico a ricordare. Esempi: metodi per prendere chiavi e valori delle hash,
 metodi già implementati nelle classi Collection in generale.   
+
+**9**)Gli ho anche chiesto che cosa erano i file .md e quali fossero i loro tag per formattare un
+minimo decentemente il testo per scrivere questo file e la wiki.
 ---
 
 

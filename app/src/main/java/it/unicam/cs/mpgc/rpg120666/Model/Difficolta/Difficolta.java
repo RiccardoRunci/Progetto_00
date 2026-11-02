@@ -11,7 +11,7 @@ public class Difficolta
     private final int numOggetti;
 
     /**Metodo costruttore:
-     * @param enumDifficolta = una opzione dell'enumerezione EnumDifficolta (FACILE,MEDIA,DIFFICILE).
+     * @param enumDifficolta = una opzione dell' enumerazione EnumDifficolta (FACILE, MEDIA, DIFFICILE).
      * @see EnumDifficolta
      * @since versione 1.0.
      * @author Runci Riccardo*/
@@ -35,7 +35,7 @@ public class Difficolta
                 this.numOggetti=10;
             }
             default -> throw new IllegalArgumentException("Difficoltà non valida");
-            /*Il default -> {  } vuoto non deve esserci quando usi dei campi final!
+            /*Il default -> {} vuoto non deve esserci quando usi dei campi final!
              * Perché il costruttore pensa "se arriva il caso che si deve usare il default, quei campi
              * final non vengono inizializzati!".
              * Il default ci deve essere (se no ti dà sempre errore nei campi final), ma deve avere un lancio

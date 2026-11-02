@@ -11,10 +11,11 @@ dependencies {
     implementation("org.hibernate.orm:hibernate-core:6.6.59.Final")
     //Per le JPA java persistent api(per usare le annotation (tipo @Enetity, ecc...)
     implementation("jakarta.persistence:jakarta.persistence-api:3.1.0")
+
     /* NOTA: È obbligatorio includere anche il driver del database che usi, ad esempio
-       PostgreSQL o MySQL. Runtime perchè serve solo a tempo di esecuzione, non viene
-       compilato nulla.*/
-    runtimeOnly("org.postgresql:postgresql:42.7.5")
+       PostgreSQL o MySQL. Runtime perché serve solo a tempo di esecuzione, non viene
+       compilato nulla.
+        runtimeOnly("org.postgresql:postgresql:42.7.5")*/
 
     /*Libreria per il database in memoria:
     * Vedere il file "src/main/resources/META-INF/persistence.xml"
